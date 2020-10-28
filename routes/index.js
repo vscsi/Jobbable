@@ -5,9 +5,9 @@ const path = require('path');
 const express = require('express');
 const router = express.Router();
 
-const usersController = require('../controllers/users');
+const indexController = require('../controllers/index');
 
 //get the router from correct path
-router.get('/dashboard', usersController.getUsers)
+router.get('/', indexController.getIndex)
 
 module.exports = router;
