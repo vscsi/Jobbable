@@ -33,5 +33,5 @@ app.use(errorController.get404);
 
 // hosting server
 app.listen(4000, ()=>{
-    console.log('Listening to port 4000')
+    console.log('Listening to port 4000' + path.join(__dirname, 'public'))
 })
