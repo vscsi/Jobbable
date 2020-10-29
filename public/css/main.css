@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif !important;
+        }
+        
+        .menu-bar {
+            background-color: #fff;
+        }
+        
+        .nav-link {
+            font-size: 1rem;
+            color: #44494C !important;
+            margin: 2px;
+        }
+        
+        .importantBtn {
+            margin: 0.3rem;
+            color: #faf6eb !important;
+            display: inline-flex;
+            float: right;
+        }
+        
+        #registerBtn {
+            border-radius: 1rem;
+        }
+        
+        .nav-img {
+            width: 1rem;
+            height: 1rem;
+            margin: 0;
+        }
+        /* when shrink sizes, items float to right */
+        
+        .navbar-nav {
+            text-align: right;
+        }
+        
+        .menu-bar .navbar-toggler {
+            padding-right: 0;
+            outline: none;
+            border: none;
+        }
+        
+        .banner {
+            height: 80vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/images/banner-1.jpg);
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+        
+        .banner h1 {
+            /* font-family: 'Montserrat', sans-serif; */
+            padding-top: 170px;
+            font-size: 50px;
+            letter-spacing: 6px;
+            font-weight: 600;
+            text-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .search-job {
+            padding: 30px 0;
+            margin: -50px 6% 50px;
+            background-color: #e7ba07;
+        }
+        
+        .search-job .form-control, body > div > select {
+            max-width: 250px;
+            display: inline-flex;
+            margin: 10px 5px;
+            border-radius: 0;
+            box-shadow: none !important;
+            border: none !important;
+        }
+
+        
+        .btn-primary {
+            border-radius: 0;
+            box-shadow: none !important;
+            border: none;
+            display: inline-flex;
+            margin: 5px;
+            padding: 5px 20px;
+            background-color: #44494C !important;
+        }
+        
+        .mulltiselect {
+            color: #faf8f7 !important;
+        }
+        
+        .multiselect-container.dropdown-menu {
+            margin: 0;
+            padding: 12px;
+            list-style: none;
+            border-color: #eee;
+            margin-top: -1px;
+            max-height: 225px;
+            overflow-y: scroll;
+            background: #fff;
+        }
+        /* top recruiters */
+        
+        #recruiters {
+            padding-top: 50px;
+            padding-bottom: 100px;
+        }
+        
+        #recruiters h3 {
+            text-align: center;
+            padding-bottom: 40px;
+        }
+        /* adding leaf shape  */
+        
+        #recruiters h3::before {
+            content: '';
+            background-color: #a2d6f9;
+            width: 50px;
+            height: 30px;
+            position: absolute;
+            z-index: -10;
+            margin-top: -15px;
+            border-top-left-radius: 70px;
+            border-bottom-right-radius: 90px;
+        }
+        /* images */
+        
+        img {
+            max-width: 10vw;
+            margin: 10px 20px;
+        }
+        
+        .calendarLogo {
+            max-width: 1vw;
+            margin: 0.5rem;
+        }
+        /* recent jobs */
+        
+        #jobs {
+            background: #f8f8fa;
+            padding: 50px 0;
+        }
+        
+        .company-details {
+            box-shadow: 0 2px 70px rgba(110, 130, 208, .18);
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .job-update {
+            background: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        
+        .job-update .fas {
+            margin-top: 5px;
+            margin-right: 10px;
+            color: #77d1b1;
+        }
+        
+        .scrapeTags,
+        .skillTags {
+            font-weight: 400;
+            text-transform: uppercase;
+            padding: 1px 5px;
+            margin: 0.2rem 5px;
+            border: 0.1rem black solid;
+        }
+        
+        .skillTags {
+            background: #efefef;
+        }
+        
+        .scrapeTags {
+            color: #fff;
+            background-color: #072ac8;
+        }
+        
+        .job-update p {
+            margin-bottom: 0.5rem !important;
+        }
+        
+        .job-update a {
+            text-decoration: none !important;
+            color: #b6bed2;
+            float: right;
+        }
+        
+        .apply-btn {
+            height: 40px;
+            background-color: #e7ba07;
+            padding: 3px;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .apply-btn .btn-primary {
+            padding: 0 30px;
+            float: right;
+            border-radius: 0;
+            box-shadow: none !important;
+            background: transparent;
+            border: 1px solid #fff;
+        }
+        
+        .apply-btn .btn-primary:hover {
+            background-color: #44494C;
+        }
+        
+        .page-link li {
+            height: 25px;
+            width: 25px;
+            list-style: none;
+            display: inline-block;
+            cursor: pointer;
+        }
+        
+        .page-link li:hover,
+        .active {
+            color: #fff !important;
+            background-color: #44494C;
+        }
+        
+        .left-arrow {
+            color: #999;
+        }
+        
+        .right-arrow {
+            color: #29b929;
+        }
+        /* footer */
+        /* navigation */
+        
+        #footer {
+            background: #f8f9fd;
+            padding: 20px;
+        }
+        
+        .footer-logo {
+            margin: 30px 0;
+        }
+        
+        #footer p {
+            color: #333;
+        }
+        
+        .navigation-links li {
+            padding: 0 10px;
+            list-style: none;
+            display: inline-block;
+            cursor: pointer;
+        }
