@@ -53,11 +53,12 @@ body{
 .wrapper .form .inputfield{
   margin-bottom: 15px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
 }
 
 .wrapper .form .inputfield label{
-   width: 200px;
+   /* width: 100%; */
    color: #757575;
    margin-right: 10px;
   font-size: 14px;
@@ -121,18 +122,16 @@ body{
    font-size: 14px;
    color: #757575;
 }
-.wrapper .form .inputfield .check{
-  width: 15px;
-  height: 15px;
-  position: relative;
-  display: block;
-  cursor: pointer;
-}
-.wrapper .form .inputfield .check input[type="checkbox"]{
+
+/* .wrapper .form .inputfield .check input[type="checkbox"]{
   position: absolute;
   top: 0;
   left: 0;
   opacity: 0;
+} */
+
+#payment {
+  
 }
 .wrapper .form .inputfield .check .checkmark{
   width: 15px;

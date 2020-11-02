@@ -23,7 +23,7 @@ app.set('views', 'views');
 
 // app.use set up 
 app.use(bodyParser.urlencoded({ extended:false }));
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname + '/public')))
 
 app.use(indexRoutes);
 app.use('/admin', adminRoutes);
