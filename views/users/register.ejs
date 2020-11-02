@@ -8,64 +8,63 @@
             Registration
         </div>
         <%- include('../messages') %>
-        <form class="form" action="/users/register" method="POST">
-            <div class="social-container">
-                <p>Register with :</p>
-                <a href="#" class="social"><img src="../images/icons/google-brands.svg"></a>
-            </div>
+            <form class="form" action="/users/register" method="POST">
+                <div class="social-container">
+                    <p>Register with :</p>
+                    <a href="#" class="social"><img src="../images/icons/google-brands.svg"></a>
+                </div>
 
-            <div class="inputfield">
-                <label>First Name</label>
-                <input name="firstname" type="text" class="input">
-            </div>
+                <div class="inputfield">
+                    <label>First Name</label>
+                    <input name="firstname" type="text" class="input">
+                </div>
 
-            <div class="inputfield">
-                <label>Last Name</label>
-                <input name="lastname" type="text" class="input">
-            </div>
+                <div class="inputfield">
+                    <label>Last Name</label>
+                    <input name="lastname" type="text" class="input">
+                </div>
 
 
-            <div class="inputfield">
-                <label>Username</label>
-                <input name="username" type="text" class="input">
-            </div>
+                <div class="inputfield">
+                    <label>Username</label>
+                    <input name="username" type="text" class="input">
+                </div>
 
-            <div class="inputfield">
-                <label>Password</label>
-                <input name="password" type="password" class="input">
-            </div>
+                <div class="inputfield">
+                    <label>Password</label>
+                    <input name="password" type="password" class="input">
+                </div>
 
-            <div class="inputfield">
-                <label>Confirm Password</label>
-                <input name="password2" type="password" class="input">
-            </div>
+                <div class="inputfield">
+                    <label>Confirm Password</label>
+                    <input name="password2" type="password" class="input">
+                </div>
 
-            <div class="inputfield" id="roleSelection">
-                <label>Are you an employee or employer?</label>
-                <div class="custom_select">
-                    <select name="role" id="mySelect">
+                <div class="inputfield" id="roleSelection">
+                    <label>Are you an employee or employer?</label>
+                    <div class="custom_select">
+                        <select name="role" id="mySelect">
                       <option value="">Select</option>
                       <option value="employee">employee</option>
                       <option value="employer">employer</option>
                     </select>
+                    </div>
                 </div>
-            </div>
 
-            <div class="inputfield">
-                <label>Email Address</label>
-                <input name="email" type="email" class="input">
-            </div>
+                <div class="inputfield">
+                    <label>Email Address</label>
+                    <input name="email" type="email" class="input">
+                </div>
 
-            <div class="inputfield">
-                <label>Phone Number</label>
-                <input name="phone" type="text" class="input">
-            </div>
+                <div class="inputfield">
+                    <label>Phone Number</label>
+                    <input name="phone" type="text" class="input">
+                </div>
 
-            <div class="inputfield">
-                <input type="submit" value="Register" class="btn">
-            </div>
+                <div class="inputfield">
+                    <input type="submit" value="Register" class="btn">
+                </div>
     </div>
     </form>
-
-    <script src="/js/register.js"></script>
     <%- include('../includes/end.ejs') %>
+    <script src="/js/register.js"></script>
