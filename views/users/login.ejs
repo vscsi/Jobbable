@@ -1,7 +1,35 @@
 <%- include('../includes/head.ejs') %>
+<script src="https://kit.fontawesome.com/0909bd6695.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/css/login.css">
 </head>
 
-<h1>Login</h1>
-<a href="/users/dashboard">Dashboard</a>
+<!-- <a href="/users/dashboard">Dashboard</a> -->
+<div class="wrapper">
+  <div class="title">
+      Log in to Jobbable
+  </div>
+  <%- include('../messages') %>
+      <form class="form" action="/users/login" method="POST">
+          <div class="social-container">
+              <p>Sign in with google:</p>
+              <a href=""><i class="fab fa-google text-dark"></i></a>
+          </div>
+
+          <div class="inputfield">
+              <label>Username:</label>
+              <input name="username" type="text" class="input">
+          </div>
+
+          <div class="inputfield">
+              <label>Password:</label>
+              <input name="password" type="password" class="input">
+          </div>
+
+          <div class="inputfield">
+              <input type="submit" value="Log in" class="btn">
+              
+          </div>
+</div>
+</form>
+
 <%- include('../includes/end.ejs') %>
