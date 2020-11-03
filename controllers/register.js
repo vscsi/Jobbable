@@ -15,7 +15,11 @@ exports.postRegister = async (req, res, next) => {
         username,
         email,
         password,
-        password2
+        password2,
+        employee,
+        employer,
+        businessRegNo,
+        payment
     } = req.body;
 
     let errors = [];
@@ -24,6 +28,12 @@ exports.postRegister = async (req, res, next) => {
         errors.push({
             message: 'please enter all fields'
         });
+    }
+
+    if(!employee && !employer){
+        errors.push({
+            message: 'Please state whether you are an employer or employee for further processing.'
+        })
     }
 
     if (password.length < 6) {
@@ -52,7 +62,10 @@ exports.postRegister = async (req, res, next) => {
 
         //test
         pool.query(
-            `select exists(select 1 from employees where username=$1)`, [username], (err, results) => {
+            `select exists
+                (select * from employees where username=$1)`
+            
+            , [username], (err, results) => {
                 if (err) {
                     console.log(err)
                 }
