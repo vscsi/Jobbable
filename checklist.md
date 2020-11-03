@@ -16,3 +16,8 @@
 
 ### API
 
+### Passport Authorization
+[X]Set up Database connection
+[X]set up knex/create migration folder
+[X]make first migration ( create table employees without foreign keys)
+[]configure passport
