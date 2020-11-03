@@ -11,6 +11,7 @@ const errorController = require('./controllers/error');
 const indexRoutes = require('./routes/index');
 const adminRoutes = require('./routes/admin');
 const usersRoutes = require('./routes/users');
+const registerRoutes = require('./routes/register');
 
 // set up app
 const app = express();
@@ -28,6 +29,9 @@ app.use(express.static(path.join(__dirname + '/public')))
 app.use(indexRoutes);
 app.use('/admin', adminRoutes);
 app.use('/users', usersRoutes);
+app.use(registerRoutes);
+
+
 
 app.use(errorController.get404);
 

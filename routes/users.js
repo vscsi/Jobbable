@@ -46,13 +46,13 @@ const passportAuth = passport.authenticate(
 
 /**Routes */
 //get the router from correct path
+
 router.get('/dashboard',  usersController.getUsers)
-router.get('/register', usersController.checkAuthenticated, usersController.getRegister)
 router.get('/login', usersController.checkAuthenticated,usersController.getLogin)
 router.get('/logout', usersController.getLogout);
 
 //post in correct paths
-router.post('/register', usersController.postRegister)
 router.post('/login', passportAuth, usersController.postLogin)
+
 
 module.exports = router;
