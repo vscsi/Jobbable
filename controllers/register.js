@@ -39,8 +39,9 @@ exports.postRegister = async (req, res, next) => {
     }
 
     if (errors.length > 0) {
-        res.render('./users/register', {
+        res.render('register/register', {
             pageTitle: 'Register',
+            path: '/register',
             errors
         });
     } else {
@@ -61,7 +62,7 @@ exports.postRegister = async (req, res, next) => {
                     errors.push({
                         message: "Username already registered"
                     })
-                    return res.render("./users/register", {
+                    return res.render("register/register", {
                         pageTitle: 'register',
                         errors
                     });
