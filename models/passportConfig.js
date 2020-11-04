@@ -4,9 +4,11 @@ const bcrypt = require('bcrypt');
 
 //initialize a local strategy
 function initialize(passport) {
-    const authenticateUser = (username, password, done) => {
+    //req param is passed from passReqtoCallback in strategy config
+    const authenticateUser = (role, username, password, done) => {
+        // console.log(role)
         pool.query(
-            `select * from employees where username=$1`, [username], (err, results) => {
+            `select * from employees where role=$1 username=$2 `, [role, username], (err, results) => {
                 if (err) {
                     console.log(err)
                 }
@@ -23,11 +25,11 @@ function initialize(passport) {
                             return done(null, user)
                         } else {
                             console.log(`${user.password} ${user.username} yoyoyo5`)
-                            return done(null, false, { message: "Password is not correct" })
+                            return done(null, false,  {message: "Password is not correct"} )
                         }
                     })
                 } else { //if there are no users
-                    return done(null, false, { message: "Username is not registered" })
+                    return done(null, false, {message: "Username is not registered"})
                 }
             }
         )
@@ -37,7 +39,8 @@ function initialize(passport) {
         new LocalStrategy({
                 //change the default authentication units: username and password to other parameters
                 usernameField: 'username',
-                passportField: 'password'
+                passwordField: 'password',
+                passReqToCallback:true //it adds req param to authenticateUser
             },
             authenticateUser
         )
