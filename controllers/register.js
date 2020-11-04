@@ -74,6 +74,7 @@ exports.postRegister = async(req, res, next) => {
     if (errors.length > 0) {
         res.render('register/register', {
             pageTitle: 'Register',
+            path: '/register',
             errors
         });
     } else {
