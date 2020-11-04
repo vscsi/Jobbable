@@ -24,5 +24,24 @@ exports.getUsers = (req, res, next) => {
         })
     }
 
+<<<<<<< HEAD
+=======
+//login page
+exports.getLogin = (req, res, next) => {
+    res.render('users/login', {
+        pageTitle: 'Login',
+        path: '/users/login',
+    })
+}
+
+exports.postLogin = (req, res, next) => {
+    let {
+        username,
+        password,
+    } = req.body;
+    console.log(req.body)
+}
+
+>>>>>>> master
 
 

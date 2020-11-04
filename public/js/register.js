@@ -6,16 +6,17 @@ $(document).ready(function() {
 
   select.addEventListener('input', function(e) {
     let optionTarget = e.target.value;
+    console.log(optionTarget)
     if (optionTarget == 'employer' && click === 0) {
       $('.form :nth-child(7)').append(
         `<div class='inputfield' id='businessRegNo'>
         <label>Business Registration Number</label>
         <input name="businessRegNo" type="text" class="input">
         </div>
-        
-        <div class='inputfield' id='payment'>
-        <label>Do you want to upgrade to premium plan?</label>
-        <input name="payment" type="checkbox" class="input">
+
+        <div class='inputfield' id='coName'>
+        <label>Company Name</label>
+        <input name="coName" type="text" class="input">
         </div>
         `
         );
@@ -23,8 +24,9 @@ $(document).ready(function() {
         console.log(click);
       } else {
         click = 0;
-        $('#businessRegNo').remove()
-        $('#payment').remove();
+        $('#businessRegNo').remove();
+        $('#coName').remove();
+
       }
   })
 })

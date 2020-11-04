@@ -1,6 +1,21 @@
 //==== Register controller ====//
 
-//Registration page
+
+//Registration pag//Modules requirement
+const express = require('express')
+const app = express();
+const ejs = require('ejs')
+const bodyParser = require('body-parser');
+const { pool } = require('../models/database');
+const bcrypt = require('bcrypt');
+require('dotenv').config({ path: __dirname + '../models/.env' })
+const session = require('express-session');
+const flash = require('express-flash');
+
+app.set('view engine', 'ejs')
+app.use(express.urlencoded({ extended: true })) // set to true for posting form
+
+
 exports.getRegister = (req, res, next) => {
     res.render('register/register', {
         pageTitle: 'Sign up',
@@ -8,15 +23,20 @@ exports.getRegister = (req, res, next) => {
     })
 }
 
-exports.postRegister = async (req, res, next) => {
+exports.postRegister = async(req, res, next) => {
     let {
         firstname,
         lastname,
         username,
         email,
         password,
-        password2
+        password2,
+        role,
+        businessRegNo,
+        coName
     } = req.body;
+    
+    console.log(`${req.body.firstname} ${req.body.role} ${req.body.businessRegNo} ${req.body.coName}`);
 
     let errors = [];
 
@@ -24,6 +44,19 @@ exports.postRegister = async (req, res, next) => {
         errors.push({
             message: 'please enter all fields'
         });
+    }
+
+
+    if (!role) {
+        errors.push({
+            message: 'Please state whether you are an employer or employee for further processing.'
+        })
+    }
+
+    if(role == 'employer'&&!businessRegNo || role == 'employer'&&!coName  ){
+        errors.push({
+            message: 'Please input business registration number and company name.'
+        })
     }
 
     if (password.length < 6) {
@@ -45,18 +78,50 @@ exports.postRegister = async (req, res, next) => {
             errors
         });
     } else {
-        
         //form validation has passed
         let hashedPassword = await bcrypt.hash(password, 10);
 
-        //  query database to see if user email already exists in database
+        //  query database to see if user username already exists in databases
 
-        //test
-        pool.query(
-            `select exists(select 1 from employees where username=$1)`, [username], (err, results) => {
-                if (err) {
-                    console.log(err)
+        if (role == 'employee') {
+            pool.query(
+                `select 1 
+                from (
+                    select username as username from employees 
+                    union all
+                    select username from employers    
+                ) a
+                where username = $1`, [username], (err, results) => {
+                    if (err) {
+                        console.log(err)
+                    }
+                    console.log(results.rows);
+                    if (results.rows.length > 0) {
+                        errors.push({
+                            message: "Username already registered. Please pick a new username."
+                        })
+                        return res.render("register/register", {
+                            pageTitle: 'register',
+                            errors
+                        });
+                    } else { 
+                        pool.query(
+                            `insert into employees (first_name,last_name,username,email,password,status)
+                                        values ($1, $2, $3, $4, $5, $6)
+                                        returning id, password`, [firstname, lastname, username, email, hashedPassword, role],
+                            (err, results) => {
+            console.log(results)
+                                if (err) {
+                                    throw err
+                                }
+                                // console.log(results.rows.password);
+                                // req.flash('success_msg','You are now registered. Please log in.')
+                                res.redirect('/users/login');
+                            }
+                        )
+                    }
                 }
+<<<<<<< HEAD
                 console.log(results.rows);
                 if (results.rows.length > 0) {
                     errors.push({
@@ -74,14 +139,52 @@ exports.postRegister = async (req, res, next) => {
                         (err, results) => {
                             if (err) {
                                 throw err
+=======
+            )
+        } 
+       if(role == 'employer'){
+            pool.query(
+                `select 1 
+                from (
+                    select username as username from employees 
+                    union all
+                    select username from employers    
+                ) a
+                where username = $1`, [username], (err, results) => {
+                    if (err) {
+                        console.log(err)
+                    }
+                    console.log(results.rows);
+                    if (results.rows.length > 0) {
+                        errors.push({
+                            message: "Username already registered. Please pick a new username."
+                        })
+                        return res.render("register/register", {
+                            pageTitle: 'register',
+                            errors
+                        });
+                    } else {
+                        pool.query(
+                            `insert into employers (first_name,last_name,username,email,password,status,company_name,br_number)
+                            values ($1, $2, $3, $4, $5, $6, $7, $8)
+                            `, [firstname, lastname, username, email, hashedPassword, role, coName, businessRegNo],
+                            (err, results) => {
+                                if (err) {
+                                    console.error(err)
+                                    console.log(`Hiii ${results}`)
+                                    throw err
+                                }
+                                // console.log(results.rows.password);
+                                // req.flash('success_msg','You are now registered. Please log in.')
+                                res.redirect('/users/login');
+>>>>>>> master
                             }
-                            console.log(results.rows.password);
-                            // req.flash('success_msg','You are now registered. Please log in.')
-                            res.redirect('/users/login')
-                        }
-                    )
+                        )
+                    }
                 }
-            }
-        )
+            )
+
+        }
     }
+
 }
