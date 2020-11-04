@@ -21,6 +21,12 @@ initializePassport(passport);
 
 router.use(express.urlencoded({ extended: true })) // set to true for posting form
 
+<<<<<<< HEAD
+/**Routes */
+//get the router from correct path
+
+router.get('/dashboard',  usersController.getUsers)
+=======
 //setting initiazlize and sessions from passport
 router.use(session({
     //key to keep secret which will encrypt all of our information
@@ -51,9 +57,8 @@ const passportAuth = passport.authenticate(
 router.get('/dashboard', usersController.checkAuthenticated, usersController.getUsers)
 router.get('/login', usersController.checkAuthenticated,usersController.getLogin)
 router.get('/logout', usersController.getLogout);
+>>>>>>> master
 
-//post in correct paths
-router.post('/login', passportAuth, usersController.postLogin)
 
 
 module.exports = router;

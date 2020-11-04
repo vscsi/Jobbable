@@ -74,6 +74,7 @@ exports.postRegister = async(req, res, next) => {
     if (errors.length > 0) {
         res.render('register/register', {
             pageTitle: 'Register',
+            path: '/register',
             errors
         });
     } else {
@@ -120,6 +121,25 @@ exports.postRegister = async(req, res, next) => {
                         )
                     }
                 }
+<<<<<<< HEAD
+                console.log(results.rows);
+                if (results.rows.length > 0) {
+                    errors.push({
+                        message: "Username already registered"
+                    })
+                    return res.render("register/register", {
+                        pageTitle: 'register',
+                        errors
+                    });
+                } else {
+                    pool.query(
+                        `insert into employees (first_name,last_name,username,email,password)
+                        values ($1, $2, $3, $4, $5)
+                        returning id, password`, [firstname, lastname, username, email, hashedPassword],
+                        (err, results) => {
+                            if (err) {
+                                throw err
+=======
             )
         } 
        if(role == 'employer'){
@@ -157,6 +177,7 @@ exports.postRegister = async(req, res, next) => {
                                 // console.log(results.rows.password);
                                 // req.flash('success_msg','You are now registered. Please log in.')
                                 res.redirect('/users/login');
+>>>>>>> master
                             }
                         )
                     }
