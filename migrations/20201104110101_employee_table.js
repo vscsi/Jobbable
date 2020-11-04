@@ -3,6 +3,7 @@ exports.up = knex => {
   return knex.schema
   .createTable('jobs', function(table){
     table.increments('id').primary();
+    table.string('github_id')
     table.boolean('status(exclusive/non-exclusive)').defaultTo('false').notNullable();
     table.string('title', 255).notNullable();
     table.string('company', 255).notNullable();
@@ -15,5 +16,5 @@ exports.up = knex => {
 };
 
 exports.down = knex => {
-  return knex.schema.dropTable('Jobs');
+  return knex.schema.dropTable('jobs');
 };
