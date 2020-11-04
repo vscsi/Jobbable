@@ -15,6 +15,13 @@ const router = require('../routes/users');
 const initializePassport = require('../models/passportConfig');
 initializePassport(passport);
 
+exports.checkAuthenticated = (req, res, next) => {
+    if (req.isAuthenticated()) {
+        return res.redirect('/users/dashboard')
+    }
+    console.log(`${req} yoyoyo2`)
+    next();
+}
 
 //user dashboard
 exports.getUsers = (req, res, next) => {
@@ -23,25 +30,3 @@ exports.getUsers = (req, res, next) => {
             path: '/users/dashboard'
         })
     }
-
-<<<<<<< HEAD
-=======
-//login page
-exports.getLogin = (req, res, next) => {
-    res.render('users/login', {
-        pageTitle: 'Login',
-        path: '/users/login',
-    })
-}
-
-exports.postLogin = (req, res, next) => {
-    let {
-        username,
-        password,
-    } = req.body;
-    console.log(req.body)
-}
-
->>>>>>> master
-
-
