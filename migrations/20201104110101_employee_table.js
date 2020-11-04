@@ -1,8 +1,8 @@
 //create table 'Jobs'
 exports.up = knex => {
   return knex.schema
-  .createTable('Jobs', function(table){
-    table.increments().primary();
+  .createTable('jobs', function(table){
+    table.increments('id').primary();
     table.boolean('status(exclusive/non-exclusive)').defaultTo('false').notNullable();
     table.string('title', 255).notNullable();
     table.string('company', 255).notNullable();
