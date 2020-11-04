@@ -40,14 +40,15 @@ const passportAuth = passport.authenticate(
   {
       successRedirect: '/users/dashboard',
       failureRedirect: '/users/login',
-      failureFlash: true
+      failureFlash: true,
+      
   }
 )
 
 /**Routes */
 //get the router from correct path
 
-router.get('/dashboard',  usersController.getUsers)
+router.get('/dashboard', usersController.checkAuthenticated, usersController.getUsers)
 router.get('/login', usersController.checkAuthenticated,usersController.getLogin)
 router.get('/logout', usersController.getLogout);
 

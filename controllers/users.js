@@ -49,6 +49,11 @@ exports.getLogin = (req, res, next) => {
 }
 
 exports.postLogin = (req, res, next) => {
+    let {
+        username,
+        password,
+    } = req.body;
+    console.log(req.body)
 }
 
 
