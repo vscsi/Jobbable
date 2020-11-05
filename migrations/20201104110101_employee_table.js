@@ -12,6 +12,8 @@ exports.up = knex => {
     table.string('url');
     table.string('job_type').notNullable();
     table.string('description').notNullable();
+    table.string('company_logo');
+    table.string('how_to_apply', 1000)
   })
 };
 
