@@ -108,7 +108,7 @@ exports.postRegister = async(req, res, next) => {
                         pool.query(
                             `insert into employees (first_name,last_name,username,email,password,status)
                                         values ($1, $2, $3, $4, $5, $6)
-                                        returning id, password`, [firstname, lastname, username, email, hashedPassword, role],
+                                        returning id, password`, [firstname, lastname, username, email, hashedPassword, 'true'],
                             (err, results) => {
             console.log(results)
                                 if (err) {
@@ -148,7 +148,7 @@ exports.postRegister = async(req, res, next) => {
                         pool.query(
                             `insert into employers (first_name,last_name,username,email,password,status,company_name,br_number)
                             values ($1, $2, $3, $4, $5, $6, $7, $8)
-                            `, [firstname, lastname, username, email, hashedPassword, role, coName, businessRegNo],
+                            `, [firstname, lastname, username, email, hashedPassword, 'true', coName, businessRegNo],
                             (err, results) => {
                                 if (err) {
                                     console.error(err)
