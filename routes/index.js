@@ -7,6 +7,9 @@ const router = express.Router();
 
 const indexController = require('../controllers/index');
 
+
+
+
 //get the router from correct path
 router.get('/', indexController.getIndex)
 
