@@ -1,4 +1,4 @@
-//create job bookmark, employers_jobs listing ,  
+//create job bookmark, employers_jobs listing ,  talent bookmarks
 
 exports.up = function(knex) {
   return knex.schema
