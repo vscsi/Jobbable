@@ -75,11 +75,11 @@
         <section id="jobs">
             <div class="container">
                 <h5>RECENT UPDATES</h5>
-                <!-- job post 1 -->
+                <% for (let company of companies){ %>  
                 <div class="company-details">
                     <div class="job-update">
-                        <h4><img src="/images/logo/cisco.svg" alt="cisco"><b>Senior Python Developer</b></h4>
-                        <p>XYZcompany</p>
+                        <h4><img src=<%= company.company_logo %> alt="Company logo"><b><%= company.title %></b></h4>
+                        <p><%= company.company%></p>
                         <p>Skills
                             <button class="skillTags">Java</button>
                             <button class="skillTags">Python</button>
@@ -88,12 +88,16 @@
                             <button class="skillTags">Javascript</button>
                         </p>
                         <p>
-                            <button class="scrapeTags">
+                            <button class="scrapeTags" style="<%= company.status == false ? 'display:none;' : '' %>">
                         Exclusive to Jobbable
+                       
                       </button>
                         </p>
                         <p>
-                            <img class="calendarLogo" src="/images/icons/calendar-alt-solid.svg" alt=""> 3 days
+                            <img class="calendarLogo" src='' alt=""> 3 days
+                        </p>
+                        <p>
+                            Job type: <%= company.job_type %>
                         </p>
                         <!-- on clicking show more , display description -->
                         <p id="Description" style="display: none;"><i class="fas fa-angle-double-right"></i><a href="#">Read more</a></p>
@@ -104,64 +108,7 @@
                         <button type="button" class="btn btn-primary">Apply</button>
                     </div>
                 </div>
-                <!-- job post 2 -->
-                <div class="company-details">
-                    <div class="job-update">
-                        <h4><img src="/images/logo/oracle.svg" alt=""><b>Senior Python Developer</b></h4>
-                        <p>XYZcompany</p>
-                        <p>Skills
-                            <button class="skillTags">Java</button>
-                            <button class="skillTags">Python</button>
-                            <button class="skillTags">HTML</button>
-                            <button class="skillTags">CSS</button>
-                            <button class="skillTags">Javascript</button>
-                        </p>
-                        <p>
-                            <button class="scrapeTags">
-                      Exclusive to Jobbable
-                    </button>
-                        </p>
-                        <p>
-                            <img class="calendarLogo" src="/images/icons/calendar-alt-solid.svg" alt=""> 3 days
-                        </p>
-                        <!-- on clicking Show more btn , display description -->
-                        <p id="Description" style="display: none;"><i class=" fas fa-angle-double-right "></i><a href="# ">Read more</a></p>
-
-                    </div>
-                    <div class="apply-btn ">
-                        <button type="button " class="btn btn-primary ">Show more</button>
-                        <button type="button " class="btn btn-primary ">Apply</button>
-                    </div>
-                </div>
-                <!-- job post 3 -->
-                <div class="company-details ">
-                    <div class="job-update ">
-                        <h4><img src="/images/logo/netflix.svg" alt=""><b>Senior Python Developer</b></h4>
-                        <p><%= company %></p>
-                        <p>Skills
-                            <button class="skillTags">Java</button>
-                            <button class="skillTags">Python</button>
-                            <button class="skillTags">HTML</button>
-                            <button class="skillTags">CSS</button>
-                            <button class="skillTags">Javascript</button>
-                        </p>
-                        <p>
-                            <button class="scrapeTags">
-                      Exclusive to Jobbable
-                    </button>
-                        </p>
-                        <p>
-                            <img class="calendarLogo" src="/images/icons/calendar-alt-solid.svg" alt=""> 3 days
-                        </p>
-                        <!-- on clicking Show more btn , display description -->
-                        <p id="Description " style="display: none;"><i class="fas fa-angle-double-right"></i><a href="#">Read more</a></p>
-
-                    </div>
-                    <div class="apply-btn">
-                        <button type="button" class="btn btn-primary">Show more</button>
-                        <button type="button" class="btn btn-primary">Apply</button>
-                    </div>
-
+                <% } %>
                     <ul class="page-link text-center">
                         <li class="left-arrow"><a href="">&#8592;</a></li>
                         <li class="active"><a href="">1</a></li>
