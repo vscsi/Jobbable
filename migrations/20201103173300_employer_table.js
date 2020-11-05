@@ -2,7 +2,7 @@
 exports.up = function(knex) {
   return knex.schema.createTable('employers',(table)=>{
     table.increments('id').primary();
-    table.boolean('status').notNullable();
+    table.string('status').notNullable();
     table.text('first_name').notNullable();
     table.text('last_name').notNullable();
     table.text('email').notNullable();
