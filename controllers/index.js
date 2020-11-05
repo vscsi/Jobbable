@@ -11,18 +11,19 @@ app.use(express.urlencoded({ extended: true }))
 //routes
 exports.getIndex = (req, res, next) => {
     pool.query(`
-    select company 
+    select company,title,created_at,company_logo,status,job_type
     from jobs 
     limit 10
     `, (err, results) => {
         if (err) {
             console.log(err)
         }
-        console.log(results.rows[0].company);
+        // console.log(results.rows[0].company);
+        console.log(results.rows);
     res.render('index', {
         pageTitle: 'Index Page',
         path: '/',
-        company: results.rows[0].company
+        companies: results.rows
     });
     });
 }
