@@ -12,5 +12,5 @@ const indexController = require('../controllers/index');
 
 //get the router from correct path
 router.get('/', indexController.getIndex)
-
+router.post('/', indexController.postIndex)
 module.exports = router;
