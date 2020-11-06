@@ -55,7 +55,6 @@ app.use(registerRoutes);
 app.use(loginRoutes);
 
 
-
 app.use(errorController.get404);
 
 // hosting server
