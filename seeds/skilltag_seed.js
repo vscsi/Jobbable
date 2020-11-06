@@ -35,6 +35,10 @@ exports.seed = function(knex) {
         {id: 28, skilltag_name: 'AI'},
         {id: 29, skilltag_name: 'VueJS'},
         {id: 30, skilltag_name: 'C++'},
+        {id: 31, skilltag_name: 'Frontend'},
+        {id: 32, skilltag_name: '.NET'},
+        {id: 33, skilltag_name: 'PHP'},
+        
       ]);
     });
 };

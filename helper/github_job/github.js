@@ -34,23 +34,23 @@ async function scrapePage(i) {
     console.log(rows.length)
 
 
-    // const csvWriter = createCsvWriter({
-    //     path: '/scraping/github_job/githubjobs.csv',
-    //     header: [
-    //         {id: 'github_id', title: 'github_id'},
-    //         {id: 'status', title: 'status'},
-    //         {id: 'title', title: 'title'},
-    //         {id: 'company', title: 'company'},
-    //         {id: 'location', title: 'location'},
-    //         {id: 'created_at', title: 'created_at'},
-    //         {id: 'url', title: 'url'},
-    //         {id: 'job_type', title: 'job_type'},
-    //         {id: 'description', title: 'description'},
-    //         {id: 'company_logo', title: 'company_logo'},
-    //         {id: 'how_to_apply', title: 'how_to_apply'}
-    //     ]
-    // });
+    const csvWriter = createCsvWriter({
+        path: 'githubjobs.csv',
+        header: [
+            {id: 'github_id', title: 'github_id'},
+            {id: 'status', title: 'status'},
+            {id: 'title', title: 'title'},
+            {id: 'company', title: 'company'},
+            {id: 'location', title: 'location'},
+            {id: 'created_at', title: 'created_at'},
+            {id: 'url', title: 'url'},
+            {id: 'job_type', title: 'job_type'},
+            {id: 'description', title: 'description'},
+            {id: 'company_logo', title: 'company_logo'},
+            {id: 'how_to_apply', title: 'how_to_apply'}
+        ]
+    });
 
-    // csvWriter.writeRecords(rows)
+    csvWriter.writeRecords(rows)
 
 })();

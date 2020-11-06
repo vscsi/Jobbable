@@ -1,3 +1,4 @@
+
 const pg = require('pg');
 const { pool } = require('../models/database');
 const knex = require('knex')({
@@ -8,6 +9,7 @@ const knex = require('knex')({
         password: "postgres"
     }
 });
+
 
 //routes
 exports.getIndex = async(req, res, next) => {
