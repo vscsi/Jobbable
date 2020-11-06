@@ -42,9 +42,10 @@ exports.postIndex = async (req, res, next) => {
     //user search in search box , receive names in server 
     //user:parameter method to render  after search page
 
-    let { search } = req.body
+    let { search, company, location } = req.body
     console.log(search)
 
+    
     let query = await knex.raw(
         `SELECT *        
          FROM
@@ -93,3 +94,4 @@ exports.postIndex = async (req, res, next) => {
 
 
 }
+
