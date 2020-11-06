@@ -13,7 +13,7 @@ exports.up = knex => {
     table.string('job_type').notNullable();
     table.string('description', 15000).notNullable();
     table.string('company_logo');
-    table.string('how_to_apply', 1000)
+    table.string('how_to_apply', 8000)
   })
 };
 

@@ -1,0 +1,128 @@
+<%- include('./includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/main.css">
+
+    <body>
+        </head>
+
+
+        <!-- header -->
+        <section id="header">
+            <div class="menu-bar">
+                <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+                    <a class="navbar-brand" href="#">JOBBABLE</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+                    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/login"><img class="nav-img" src="/images/icons/sign-in-alt-solid.svg"> LOGIN</a>
+                            </li>
+                        </ul>
+
+                        <button class="btn btn-warning importantBtn" id="registerBtn">
+                              <a href="/register" class="text-white"><img class="nav-img" src="images/icons/key-solid.svg">   REGISTER</a>
+                        </button>
+                        <button class="btn btn-warning importantBtn">
+                          <a href="#" class="text-white">POST A JOB</a>
+                    </button>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="banner text-center">
+                <h1>Your dream jobs are within reach!</h1>
+                <p>Explore jobs in your area</p>
+            </div>
+        </section>
+        <form action="/" method="POST">
+        <div class="form-group search-job text-center">
+            <input name="search" type="text" class="form-control" placeholder="Search Keyword">
+            <input type="text" class="form-control" placeholder="Company">
+            <input type="text" class="form-control" placeholder="Location">
+            
+            <input type="submit" class="btn btn-primary" value="Search">
+        </div>
+    </form>
+        <!-- top recruiters -->
+        <section id="recruiters">
+            <div class="container">
+                <div class="text-center">
+                    <h3>TOP RECRUITERS</h3>
+                    <div>
+                        <img src="/images/logo/dell.jpg" id="img1">
+                        <img src="/images/logo/netflix.svg" id="img2">
+                        <img src="/images/logo/oracle.svg" id="img3">
+                        <img src="/images/logo/cisco.svg" id="img4">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- recent jobs -->
+        <section id="jobs">
+            <div class="container">
+                <h5>RECENT UPDATES</h5>
+                <% for (let job of jobsInfo){ %>  
+                <div class="company-details">
+                    <div class="job-update">
+                        <h4><img src=<%= job.company_logo %> alt="Company logo"><b><%= job.title %></b></h4>
+                        <p><%= job.company%></p>
+                        <p>Skills
+                            <button class="skillTags">Java</button>
+                            <button class="skillTags">Python</button>
+                            <button class="skillTags">HTML</button>
+                            <button class="skillTags">CSS</button>
+                            <button class="skillTags">Javascript</button>
+                        </p>
+                        <p>
+                            <button class="scrapeTags" style = "<%= job.status == false ? 'display:none;' : '' %>">
+                        Exclusive to Jobbable
+                       
+                      </button>
+                        </p>
+                        <p>
+                            <img class="calendarLogo" src='' alt=""> 3 days
+                        </p>
+                        <p>
+                            Job type: <%= job.job_type %>
+                        </p>
+                        <!-- on clicking show more , display description -->
+                        <p id="Description" style="display: none;"><i class="fas fa-angle-double-right"></i><a href="#">Read more</a></p>
+
+                    </div>
+                    <div class="apply-btn">
+                        <button type="button" class="btn btn-primary">Show more</button>
+                        <button type="button" class="btn btn-primary">Apply</button>
+                    </div>
+                </div>
+                <% } %>
+                    <ul class="page-link text-center">
+                        <li class="left-arrow"><a href="">&#8592;</a></li>
+                        <li class="active"><a href="">1</a></li>
+                        <li><a href="">2</a></li>
+                        <li><a href="">3</a></li>
+                        <li><a href="">4</a></li>
+                        <li><a href="">5</a></li>
+                        <li class="right-arrow"><a href=""> &#8594;</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="footer" class="text-center">
+            <h1 class="footer-logo">JOBBABLE</h1>
+            <div class="navigation">
+                <p>Navigation</p>
+                <ul class="navigation-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Companies</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Sign-up</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <script src="/js/main.js"></script>
+        <%- include('./includes/end.ejs') %>
