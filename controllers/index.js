@@ -14,10 +14,7 @@ const knex = require('knex')({
 
 //routes
 exports.getIndex = async (req, res, next) => {
-    // let query = knex.select('jobs_skilltag'); 
-    // let ;
 
-    // query data from jobs_skilltag table as tags onto the website
     let showjobs = await knex('jobs').orderBy('status', 'desc').limit(10)
 
     res.render('index', {
