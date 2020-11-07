@@ -67,8 +67,10 @@
                 <% for (let company of companies){ %>  
                 <div class="company-details">
                     <div class="job-update">
-                        <h4><img src=<%= company.company_logo %> alt="Company logo"><b><%= company.title %></b></h4>
-                        <p><%= company.company%></p>
+
+                        <h4><img src=<%= jobs.company_logo %> alt="../public/images/photo-not-available"><b><%= jobs.title %></b></h4>
+                        <p><%= jobs.company%></p>
+
                         <p>Skills
                             <button class="skillTags">Java</button>
                             <button class="skillTags">Python</button>
@@ -86,7 +88,13 @@
                             <img class="calendarLogo" src='' alt=""> 3 days
                         </p>
                         <p>
-                            Job type: <%= company.job_type %>
+                            Job type: <%= jobs.job_type %>
+                        </p>
+                        <p>
+                            Location: <%= jobs.location %> 
+                        </p>
+                        <p>
+                            <!-- Description: <%= jobs.description %>  -->
                         </p>
                         <!-- on clicking show more , display description -->
                         <p id="Description" style="display: none;"><i class="fas fa-angle-double-right"></i><a href="#">Read more</a></p>
