@@ -116,7 +116,7 @@ exports.postRegister = async(req, res, next) => {
                                 }
                                 // console.log(results.rows.password);
                                 // req.flash('success_msg','You are now registered. Please log in.')
-                                res.redirect('/users/login');
+                                res.redirect('/login');
                             }
                         )
                     }
@@ -157,7 +157,7 @@ exports.postRegister = async(req, res, next) => {
                                 }
                                 // console.log(results.rows.password);
                                 // req.flash('success_msg','You are now registered. Please log in.')
-                                res.redirect('/users/login');
+                                res.redirect('/login');
                             }
                         )
                     }
