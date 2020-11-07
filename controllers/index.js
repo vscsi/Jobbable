@@ -20,8 +20,6 @@ exports.getIndex = async (req, res, next) => {
     res.render('index', {
         pageTitle: 'Index Page',
         jobsInfoArr: showjobs
-    });
-
 
 }
 
