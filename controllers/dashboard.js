@@ -26,8 +26,8 @@ exports.getDashboard = async(req, res, next) => {
     if (user_role === 1) {
         console.log('user role 1')
 
-        //sql in jobs_bookmark
-        //select company, title, location, status from jobs j, jobs_bookmarks jb where j.id = jb.jobs_id and jb.employee_id = 1
+        // sql in jobs_bookmark
+        // select company, title, location, status from jobs j, jobs_bookmarks jb where j.id = jb.jobs_id and jb.employee_id = 1
 
         pool.query(`
             select company,title,location,created_at,company_logo,status,job_type, id
@@ -38,12 +38,11 @@ exports.getDashboard = async(req, res, next) => {
                     console.log(err)
                 }
                 // console.log(results.rows[0].company);
-                // console.log(results.rows);
+                console.log(results.rows);
                 res.render('users/user-dashboard', {
                     pageTitle: 'Dashboard',
                     pageHeader: 'Employees fitting the criterion',
-                    path: '/',
-                    //companies: 'test'
+                    // companies: 'test'
                     companies: results.rows
                 });
             });
@@ -57,12 +56,11 @@ exports.getDashboard = async(req, res, next) => {
                     console.log(err)
                 }
                 // console.log(results.rows[0].company);
-                // console.log(results.rows);
+                console.log(results.rows);
                 res.render('users/user-dashboard', {
                     pageTitle: 'Dashboard',
                     pageHeader: 'Employers fitting the criterion',
-                    path: '/',
-                    //companies: 'test'
+                    // companies: 'test'
                     companies: results.rows
                 });
             });

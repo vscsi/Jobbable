@@ -108,7 +108,7 @@ exports.postRegister = async(req, res, next) => {
                         pool.query(
                             `insert into employees (first_name,last_name,username,email,password,status)
                                         values ($1, $2, $3, $4, $5, $6)
-                                        returning id, password`, [firstname, lastname, username, email, hashedPassword, role],
+                                        `, [firstname, lastname, username, email, hashedPassword, role],
                             (err, results) => {
             console.log(results)
                                 if (err) {

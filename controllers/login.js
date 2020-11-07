@@ -4,7 +4,7 @@
 //Passport local strategy authentication when landing into pages
 exports.checkAuthenticated = (req, res, next) => {
     if (req.isAuthenticated()) {
-        return res.redirect('/users/dashboard')
+        return res.redirect('users/dashboard')
     }
     console.log(`${req} yoyoyo2`)
     next();
