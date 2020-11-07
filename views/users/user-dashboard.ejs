@@ -42,34 +42,35 @@
                      </div>
                 </div>
 
+               
 
                 <div class="charts">
-                    <h1>Employees fitting the criterion</h1>
+                    <h1><%= pageHeader%></h1>
+
+                    <% for (let company of companies){ %>  
                     <div class="charts__left">
                         <div class="charts__left__title">
                             <div>
-                                <h1>Employee 1</h1>
-                                <p>Name:</p>
-                                <p>Company:</p>
+                                <h1><%= company.title%></h1>
+                                <p>Company: <%= company.company%></p>
+                                <p>Location: <%= company.location%></p>
                                 <p>Skills:</p>
                             </div>
                             <i class="fas fa-user-friends"></i>
                         </div>
                     </div>
-                    
-                    <div class="charts__left">
-                        <div class="charts__left__title">
-                            <div class="">
-                                <h1>Employee 2</h1>
-                                <p>Name:</p>
-                                <p>Company:</p>
-                                <p>Skills:</p>
-                            </div>
-                            <i class="fas fa-user-friends"></i>
-                        </div>
-                    </div>
+                    <% } %>
                 </div>
             </div>
+            <ul class="page-link text-center">
+                <li class="left-arrow"><a href="">&#8592;</a></li>
+                <li class="active"><a href="/dashboard/1">1</a></li>
+                <li><a href="/dashboard/2">2</a></li>
+                <li><a href="">3</a></li>
+                <li><a href="">4</a></li>
+                <li><a href="">5</a></li>
+                <li class="right-arrow"><a href=""> &#8594;</a></li>
+            </ul>
         </main>
 
 

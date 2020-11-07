@@ -1,3 +1,4 @@
+
 const pg = require('pg');
 const { pool } = require('../models/database');
 const knex = require('knex')({
@@ -16,11 +17,11 @@ exports.getIndex = async(req, res, next) => {
     // let ;
 
     // query data from jobs_skilltag table as tags onto the website
-   
+
 
 
     pool.query(`
-    select company,title,created_at,company_logo,status,job_type, id, location, description
+    select company,title,created_at,company_logo,status,job_type, id
     from jobs 
     limit 10
     `, (err, results) => {
@@ -31,49 +32,69 @@ exports.getIndex = async(req, res, next) => {
         // console.log(results.rows);
         res.render('index', {
             pageTitle: 'Index Page',
-            jobsInfoArr: results.rows
+            path: '/',
+            //companies: 'test'
+            companies: results.rows
         });
     });
 
 }
 
-exports.postIndex = async(req, res, next) => {
+exports.postIndex = async (req, res, next) => {
     //filtering jobs
     //user search in search box , receive names in server 
     //user:parameter method to render  after search page
 
-    let { skill,nameLocation,nameCompany } = req.body
-    console.log(skill)
-    console.log(nameLocation)
-    console.log(nameCompany)
+    let { search, company, location } = req.body
+    console.log(search)
 
-    let data = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location','description').where('description', 'ilike', `%${skill}%`);
-    let location = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location').where('location', 'ilike', `%${nameLocation}%`);
-    let company = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location').where('company', 'ilike', `%${nameCompany}%`);
-    console.log(data.description, 'fuckrs');
-    if (skill && data.length > 0) {
-        res.render('index', {
-            pageTitle: 'Index Page',
-            jobsInfoArr: data,
-        })
-
-    } else if(nameLocation && location.length>0){
-        
-            res.render('index', {
-                pageTitle: 'Index Page',
-                jobsInfoArr: location,
     
-            })
+    let query = await knex.raw(
+        `SELECT *        
+         FROM
+             skilltag
+         WHERE LOWER(skilltag_name) LIKE LOWER('${search}%')`
 
-        } else{
-            res.render('index', {
-                pageTitle: 'Index Page',
-                jobsInfoArr: company,
-    
-            })
+    );
+        console.log(query.rows)
+        let targetIds = [];
+    query.rows.forEach((item,index)=>{
+        let resultRows = item.id;
+        targetIds.push(resultRows)
+    })
+    console.log(targetIds)
 
-        }
-        
 
+    let jobsSkillTagIds = [];
+    for(let targetId of targetIds){
+        let data = await knex.select('jobs_id').from('jobs_skilltag').where('skilltag_id', `${targetId}`) 
+        jobsSkillTagIds.push(data[0].jobs_id);
+        console.log(jobsSkillTagIds)
     }
+
+
+    let jobsInfo = {};
+    let jobsInfoArr =[] // in order for ejs page to loop through 
+    for (let jobsSkillTagId of jobsSkillTagIds){
+        let data = await knex.select('company','title','created_at','company_logo','status','job_type', 'id').from('jobs').where('id', `${jobsSkillTagId}`)
+        jobsInfo['company'] = data[0].company;
+        jobsInfo['title'] = data[0].title;
+        jobsInfo['created_at'] = data[0].created_at;
+        jobsInfo['company_logo'] = data[0].company_logo;
+        jobsInfo['status'] = data[0].status;
+        jobsInfo['job_type'] = data[0].job_type;
+        jobsInfo['id']=data[0].id;
+        jobsInfoArr.push(jobsInfo);
+        console.log(jobsInfoArr);
+
+    }    
+
+    res.render('index_afterSearch',{
+        pageTitle: 'Index Page',
+        jobsInfo:jobsInfoArr,
+        
+    })
+
+
+}
 
