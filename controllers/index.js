@@ -1,4 +1,3 @@
-
 const pg = require('pg');
 const {
     pool
@@ -23,6 +22,7 @@ exports.getIndex = async (req, res, next) => {
         pageTitle: 'Index Page',
         jobsInfoArr: showjobs
 
+    })
 }
 
 exports.postIndex = async (req, res, next) => {
@@ -66,12 +66,12 @@ exports.postIndex = async (req, res, next) => {
         })
 
 
-    let jobsSkillTagIds = [];
-    for(let targetId of targetIds){
-        let data = await knex.select('jobs_id').from('jobs_skilltag').where('skilltag_id', `${targetId}`) 
-        jobsSkillTagIds.push(data[0].jobs_id);
-        console.log(jobsSkillTagIds)
+        let jobsSkillTagIds = [];
+        for (let targetId of targetIds) {
+            let data = await knex.select('jobs_id').from('jobs_skilltag').where('skilltag_id', `${targetId}`)
+            jobsSkillTagIds.push(data[0].jobs_id);
+            console.log(jobsSkillTagIds)
+        }
+
     }
-
 }
-

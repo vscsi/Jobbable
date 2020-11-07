@@ -64,7 +64,8 @@
         <section id="jobs">
             <div class="container">
                 <h5>RECENT UPDATES</h5>
-                <% for (let company of companies){ %>  
+                <% if(jobsInfoArr.length >0) { %>
+                <% for (let jobs of jobsInfoArr){ %>  
                 <div class="company-details">
                     <div class="job-update">
 
@@ -79,7 +80,7 @@
                             <button class="skillTags">Javascript</button>
                         </p>
                         <p>
-                            <button class="scrapeTags" style="<%= company.status == false ? 'display:none;' : '' %>">
+                            <button class="scrapeTags" style="<%= jobs.status == false ? 'display:none;' : '' %>">
                         Exclusive to Jobbable
                        
                       </button>
@@ -106,6 +107,10 @@
                     </div>
                 </div>
                 <% } %>
+            <% } else { %>
+                <h1>No jobs found!</h1>
+            <% } %>
+
                     <ul class="page-link text-center">
                         <li class="left-arrow"><a href="">&#8592;</a></li>
                         <li class="active"><a href="">1</a></li>
