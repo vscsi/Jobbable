@@ -16,7 +16,7 @@ exports.getIndex = async(req, res, next) => {
     // let ;
 
     // query data from jobs_skilltag table as tags onto the website
-
+   
 
 
     pool.query(`
