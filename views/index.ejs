@@ -38,9 +38,7 @@
         </section>
         <form action="/" method="POST">
         <div class="form-group search-job text-center">
-            <input name="search" type="text" class="form-control" placeholder="Search Skills">
-            <input name="company" type="text" class="form-control" placeholder="Company">
-            <input name="location" type="text" class="form-control" placeholder="Location">
+            <input name="search" type="text" class="form-control" placeholder="Search Skills, companies or locations">
             
             <input type="submit" class="btn btn-primary" value="Search">
         </div>
@@ -64,11 +62,12 @@
         <section id="jobs">
             <div class="container">
                 <h5>RECENT UPDATES</h5>
-                <% for (let company of companies){ %>  
+                <% if(jobsInfoArr.length>0) { %>
+                <% for(let jobs of jobsInfoArr){%>  
                 <div class="company-details">
                     <div class="job-update">
-                        <h4><img src=<%= company.company_logo %> alt="Company logo"><b><%= company.title %></b></h4>
-                        <p><%= company.company%></p>
+                        <h4><img src=<%= jobs.company_logo %> alt="Company logo"><b><%= jobs.title %></b></h4>
+                        <p><%= jobs.company%></p>
                         <p>Skills
                             <button class="skillTags">Java</button>
                             <button class="skillTags">Python</button>
@@ -77,7 +76,7 @@
                             <button class="skillTags">Javascript</button>
                         </p>
                         <p>
-                            <button class="scrapeTags" style="<%= company.status == false ? 'display:none;' : '' %>">
+                            <button class="scrapeTags" style = "<%= jobs.status == false ? 'display:none;' : '' %>">
                         Exclusive to Jobbable
                        
                       </button>
@@ -86,7 +85,10 @@
                             <img class="calendarLogo" src='' alt=""> 3 days
                         </p>
                         <p>
-                            Job type: <%= company.job_type %>
+                            Job type: <%= jobs.job_type %>
+                        </p>
+                        <p>
+                            Location: <%= jobs.location %> 
                         </p>
                         <!-- on clicking show more , display description -->
                         <p id="Description" style="display: none;"><i class="fas fa-angle-double-right"></i><a href="#">Read more</a></p>
@@ -97,6 +99,9 @@
                         <button type="button" class="btn btn-primary">Apply</button>
                     </div>
                 </div>
+                    <% } %>
+                <% } else { %>
+                    <h1>No jobs found!</h1>
                 <% } %>
                     <ul class="page-link text-center">
                         <li class="left-arrow"><a href="">&#8592;</a></li>
