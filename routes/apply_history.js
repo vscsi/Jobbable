@@ -5,7 +5,7 @@
 const express = require('express');
 const router = express.Router();
 
-const dashboardController = require('../controllers/dashboard');
+const dashboardController = require('../controllers/apply_history');
 
 //get the router from correct path
 /*router.get('/dashboard', function (req, res){
@@ -14,8 +14,8 @@ const dashboardController = require('../controllers/dashboard');
 
 //http://localhost:4000/
 
-router.get('/dashboard', dashboardController.getDashboard)
-router.get('/dashboard/:page', dashboardController.getDashboard)
+router.get('/apply_history', dashboardController.getApplyHistory)
+router.get('/apply_history/:page', dashboardController.getApplyHistory)
     //req.params.page
 
 
