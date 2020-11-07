@@ -38,7 +38,9 @@
         </section>
         <form action="/" method="POST">
         <div class="form-group search-job text-center">
-            <input name="search" type="text" class="form-control" placeholder="Search Skills, companies or locations">
+            <input name="search" type="text" class="form-control" placeholder="Search Skills">
+            <input name="nameCompany" type="text" class="form-control" placeholder="Search companies ">
+            <input name="nameLocation" type="text" class="form-control" placeholder="Search locations">
             
             <input type="submit" class="btn btn-primary" value="Search">
         </div>
@@ -90,7 +92,9 @@
                         <p>
                             Location: <%= jobs.location %> 
                         </p>
+                        <p>
                             Description: <%= jobs.description %> 
+                        </p>
                         <!-- on clicking show more , display description -->
                         <p id="Description" style="display: none;"><i class="fas fa-angle-double-right"></i><a href="#">Read more</a></p>
 

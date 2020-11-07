@@ -42,22 +42,22 @@ exports.postIndex = async(req, res, next) => {
     //user search in search box , receive names in server 
     //user:parameter method to render  after search page
 
-    let { search } = req.body
-    console.log(search)
+    let { skill,nameLocation,nameCompany } = req.body
+    console.log(skill)
+    console.log(nameLocation)
+    console.log(nameCompany)
 
-        
-
-    let data = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location','description').where('description', 'ilike', `%${search}%`);
-    let location = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location').where('location', 'ilike', `%${search}%`);
-    let company = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location').where('company', 'ilike', `%${search}%`);
+    let data = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location','description').where('description', 'ilike', `%${skill}%`);
+    let location = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location').where('location', 'ilike', `%${nameLocation}%`);
+    let company = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location').where('company', 'ilike', `%${nameCompany}%`);
     console.log(data.description, 'fuckrs');
-    if (data.length > 0) {
+    if (skill && data.length > 0) {
         res.render('index', {
             pageTitle: 'Index Page',
             jobsInfoArr: data,
         })
 
-    } else if(location.length>0){
+    } else if(nameLocation && location.length>0){
         
             res.render('index', {
                 pageTitle: 'Index Page',
