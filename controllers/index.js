@@ -16,12 +16,13 @@ exports.getIndex = async(req, res, next) => {
     // let ;
 
     // query data from jobs_skilltag table as tags onto the website
-   
 
-
+    let query = await knex('jobs').orderBy('status')
     pool.query(`
-    select company,title,created_at,company_logo,status,job_type, id, location, description
+    select *
     from jobs 
+    order by status
+    dsc
     limit 10
     `, (err, results) => {
         if (err) {
