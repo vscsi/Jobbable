@@ -1,3 +1,4 @@
+
 const pg = require('pg');
 const {
     pool
@@ -13,6 +14,7 @@ const knex = require('knex')({
 
 
 //routes
+
 exports.getIndex = async (req, res, next) => {
 
     let showjobs = await knex('jobs').orderBy('status', 'desc').limit(10)
@@ -27,6 +29,7 @@ exports.postIndex = async (req, res, next) => {
     //filtering jobs
     //user search in search box , receive names in server 
     //user:parameter method to render  after search page
+
 
     let {
         skill,
@@ -62,7 +65,13 @@ exports.postIndex = async (req, res, next) => {
 
         })
 
+
+    let jobsSkillTagIds = [];
+    for(let targetId of targetIds){
+        let data = await knex.select('jobs_id').from('jobs_skilltag').where('skilltag_id', `${targetId}`) 
+        jobsSkillTagIds.push(data[0].jobs_id);
+        console.log(jobsSkillTagIds)
     }
 
-
 }
+

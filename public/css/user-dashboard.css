@@ -380,3 +380,26 @@ main {
         display: none;
     }
 }
+
+/* pageing css */
+.page-link li {
+    height: 25px;
+    width: 25px;
+    list-style: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.page-link li:hover,
+.active {
+    color: #fff !important;
+    background-color: #44494C;
+}
+
+.left-arrow {
+    color: #999;
+}
+
+.right-arrow {
+    color: #29b929;
+}
