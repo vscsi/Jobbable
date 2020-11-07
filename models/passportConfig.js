@@ -8,7 +8,13 @@ function initialize(passport) {
     const authenticateUser = (role, username, password, done) => {
         // console.log(role)
         pool.query(
-            `select * from employees where role=$1 username=$2 `, [role, username], (err, results) => {
+            `select 1 
+            from (
+                select username as username from employees 
+                union all
+                select username from employers    
+            ) a
+            where username = $1`, [role, username], (err, results) => {
                 if (err) {
                     console.log(err)
                 }

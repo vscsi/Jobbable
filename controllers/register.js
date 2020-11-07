@@ -108,7 +108,7 @@ exports.postRegister = async(req, res, next) => {
                         pool.query(
                             `insert into employees (first_name,last_name,username,email,password,status)
                                         values ($1, $2, $3, $4, $5, $6)
-                                        returning id, password`, [firstname, lastname, username, email, hashedPassword, role],
+                                        `, [firstname, lastname, username, email, hashedPassword, role],
                             (err, results) => {
             console.log(results)
                                 if (err) {
@@ -116,7 +116,7 @@ exports.postRegister = async(req, res, next) => {
                                 }
                                 // console.log(results.rows.password);
                                 // req.flash('success_msg','You are now registered. Please log in.')
-                                res.redirect('/users/login');
+                                res.redirect('/login');
                             }
                         )
                     }
@@ -157,7 +157,7 @@ exports.postRegister = async(req, res, next) => {
                                 }
                                 // console.log(results.rows.password);
                                 // req.flash('success_msg','You are now registered. Please log in.')
-                                res.redirect('/users/login');
+                                res.redirect('/login');
                             }
                         )
                     }
