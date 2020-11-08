@@ -67,8 +67,9 @@ exports.getDashboard = async(req, res, next) => {
                     cur_page: cur_page
 
                 // console.log(results.rows[0].company);
-               
-            });
+                })   
+            })
+            
     } else if (user_role === 2){
         console.log('user role 2')
         pool.query(`select company,title,location,created_at,company_logo,status,job_type, id
@@ -91,5 +92,5 @@ exports.getDashboard = async(req, res, next) => {
                 });
             });
     }
-    
+
 }
