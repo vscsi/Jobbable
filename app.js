@@ -19,7 +19,11 @@ const usersRoutes = require('./routes/users');
 const registerRoutes = require('./routes/register');
 const loginRoutes = require('./routes/login');
 const dashboardRoutes = require('./routes/dashboard');
-const applyHistoryRoutes = require('./routes/apply_history');
+// const applyHistoryRoutes = require('./routes/apply_history');
+// const appliedCandidatesRoutes = require('./routes/applied_candidates');
+// const saveJobsRoutes = require('./routes/save_Jobs');
+// const profileRoutes = require('./routes/profile');
+// // const postedJobsRoutes = require('./routes/posted_Jobs');
 
 // set up app
 const app = express();
@@ -56,7 +60,11 @@ app.use('/users', usersRoutes);
 app.use(registerRoutes);
 app.use(loginRoutes);
 app.use(dashboardRoutes);
-app.use(applyHistoryRoutes);
+// app.use(applyHistoryRoutes);
+// app.use(appliedCandidatesRoutes);
+// app.use(saveJobsRoutes);
+// app.use(profileRoutes);
+// app.use(postedJobsRoutes);
 
 
 app.use(errorController.get404);

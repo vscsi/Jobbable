@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/0909bd6695.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/user-dashboard.css">
+    <title>Employees Dashboard</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="nav_icon" onclick="toggleSidebar()">
+                <i class="fa fa-bars"></i>
+            </div>
+            <div class="navbar__left">
+            </div>
+            <div class="navbar__right">
+            </div>
+        </nav>
+
+        <main>
+            <div class="main__container">
+                <div class="main__title">
+                    <img src="/images/hello.svg">
+                    <div class="main__greeting">
+                        <h1>Hello</h1>
+                        <p>Welcome to your dashboard</p>
+                    </div>
+                </div>
+
+                <div class="main__cards">
+                    <div class="wrap">
+                        <div class="search">
+                           <input type="text" class="searchTerm" placeholder="Type in skills">
+                           <button type="submit" class="searchButton">
+                             <i class="fa fa-search"></i>
+                          </button>
+                        </div>
+                     </div>
+                </div>
+
+               
+
+                <div class="charts">
+                    <h1><%= pageHeader%></h1>
+
+                    <% for (let company of companies){ %>  
+                    <div class="charts__left">
+                        <div class="charts__left__title">
+                            <div>
+                                <h1><%= company.title%></h1>
+                                <p>Company: <%= company.company%></p>
+                                <p>Location: <%= company.location%></p>
+                                <p>Skills:</p>
+                            </div>
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+            <ul class="page-link text-center">
+                <li class="left-arrow"><a href="">&#8592;</a></li>
+                <li class="active"><a href="/dashboard/1">1</a></li>
+                <li><a href="/dashboard/2">2</a></li>
+                <li><a href="">3</a></li>
+                <li><a href="">4</a></li>
+                <li><a href="">5</a></li>
+                <li class="right-arrow"><a href=""> &#8594;</a></li>
+            </ul>
+        </main>
+
+
+        <div id="sidebar">
+            <div class="sidebar__title">
+                <div class="sidebar__img">
+                    <h1>JOBBABLE</h1>
+                </div>
+                <i id="sidebarIcon" class="fas fa-times" onclick="closeSidebar()"></i>
+            </div>
+
+            <div class="sidebar__menu">
+                <div class="sidebar__link active_menu_link">
+                    <a href="#">Dashboard</a>
+                </div>
+
+                <div class="sidebar__link">
+                    <i class="fas fa-home"></i>
+                    <a href="#">Home</a>
+                </div>
+                <div class="sidebar__link">
+                    <i class="fas fa-bookmark"></i>
+                    <a href="#">Job Bookmarks</a>
+                </div>
+                <div class="sidebar__link">
+                    <i class="fas fa-wrench"></i>
+                    <a href="#">Profile</a>
+                </div>
+
+                <h2>PREMIUM</h2>
+                <div class="sidebar__link">
+                    <i class="fas fa-crown"></i>
+                    <a href="#">Upgrade to Premium!</a>
+                </div>
+                <div class="sidebar__link">
+                    <a href="/users/logout">Logout</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+</body>
+
+</html>
+
+<script src="/js/user-dashboard.js"></script>

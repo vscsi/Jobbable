@@ -98,15 +98,28 @@
                     </div>
                 </div>
                 <% } %>
-                    <ul class="page-link text-center">
+                
+                        <!-- <ul class="page-link text-center">
                         <li class="left-arrow"><a href="">&#8592;</a></li>
                         <li class="active"><a href="">1</a></li>
                         <li><a href="">2</a></li>
                         <li><a href="">3</a></li>
                         <li><a href="">4</a></li>
                         <li><a href="">5</a></li>
-                        <li class="right-arrow"><a href=""> &#8594;</a></li>
-                    </ul>
+                        <li class="right-arrow"><a href=""> &#8594;</a></li> -->
+        </section>
+        <section>
+            
+            <ul class="page-link text-center">
+                    <li class="left-arrow"><a href="/home/<%= parseInt(cur_page) <= 1 ? 1 : parseInt(cur_page)-1 %>">&#8592;</a></li>
+                    <li>
+                        <select onchange="window.location='/home/'+this.value">
+                            <% for (let i = 1; i <= no_of_page; i++ ) { %>
+                                <option value="<%= i %>" <%= parseInt(cur_page) == i ? 'selected':'' %>><%= i %></option>
+                            <% } %>
+                        </select>
+                    </li>
+                    <li class="right-arrow"><a href="/home/<%= parseInt(cur_page) >= parseInt(no_of_page) ? cur_page : parseInt(cur_page)+1 %>"> &#8594;</a></li>
                 </div>
             </div>
         </section>

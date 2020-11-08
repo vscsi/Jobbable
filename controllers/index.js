@@ -10,44 +10,60 @@ const knex = require('knex')({
     }
 });
 
-
+const page_limit = 10;
 //routes
 exports.getIndex = async(req, res, next) => {
-    // let query = knex.select('jobs_skilltag'); 
-    // let ;
+   
+    let cur_page;
+    
+    if (req.params.page){
+        cur_page = req.params.page;
+    } else {
+        cur_page = 1;
+    }
+    
+    let offset = (cur_page - 1) * page_limit;
 
-    // query data from jobs_skilltag table as tags onto the website
+    let total_rows_count = 0
 
+    pool.query(`select company,title,location,created_at,company_logo,status,job_type, id from jobs`
+        , (err, rows_count_results) => {
+            total_rows_count = rows_count_results.rowCount
 
+            pool.query(`
+            select company,title,created_at,company_logo,status,job_type, id
+            from jobs
+            limit ` + page_limit + ` offset ` + offset
+            , (err, results) => {
+                if (err) {
+                    console.log(err)
+                }
 
-    pool.query(`
-    select company,title,created_at,company_logo,status,job_type, id
-    from jobs 
-    limit 10
-    `, (err, results) => {
-        if (err) {
-            console.log(err)
-        }
-        // console.log(results.rows[0].company);
-        // console.log(results.rows);
-        res.render('index', {
-            pageTitle: 'Index Page',
-            path: '/',
-            //companies: 'test'
-            companies: results.rows
-        });
-    });
+                let no_of_page = Math.ceil(total_rows_count / page_limit)
+                // console.log(results.rows[0].company);
+                // console.log(results.rows);
+                res.render('index', {
+                    pageTitle: 'Index Page',
+                    path: '/',
+                    //companies: 'test'
+                    companies: results.rows,
+                    no_of_page: no_of_page,
+                    cur_page: cur_page
+                });
+            });
 
+        }        
+    )
 }
+
 
 exports.postIndex = async (req, res, next) => {
     //filtering jobs
     //user search in search box , receive names in server 
     //user:parameter method to render  after search page
-
+    
     let { search, company, location } = req.body
     console.log(search)
-
     
     let query = await knex.raw(
         `SELECT *        
@@ -86,7 +102,6 @@ exports.postIndex = async (req, res, next) => {
         jobsInfo['id']=data[0].id;
         jobsInfoArr.push(jobsInfo);
         console.log(jobsInfoArr);
-
     }    
 
     res.render('index_afterSearch',{
@@ -94,7 +109,4 @@ exports.postIndex = async (req, res, next) => {
         jobsInfo:jobsInfoArr,
         
     })
-
-
 }
-
