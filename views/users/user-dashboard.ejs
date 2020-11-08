@@ -38,7 +38,6 @@
                
 
                 <div class="charts">
-                    <h1><%= pageHeader%></h1>
 
                     <% for (let company of companies){ %>  
                     <div class="charts__left">
@@ -74,9 +73,20 @@
             
         </main>
 
+
         <%- include('./../includes/portal_nav.ejs') %>
         
 
+                <h2>PREMIUM</h2>
+                <div class="sidebar__link">
+                    <i class="fas fa-crown"></i>
+                    <a href="#">Upgrade to Premium!</a>
+                </div>
+                <div class="sidebar__link">
+                    <a href="/logout">Logout</a>
+                </div>
+            </div>
+        </div>
     </div>
     
 </body>

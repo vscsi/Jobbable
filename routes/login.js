@@ -19,7 +19,7 @@ router.use(express.urlencoded({ extended: true })) // set to true for posting fo
 
 const passportAuth = passport.authenticate(
     "local", {
-        successRedirect: '/users/dashboard',
+        successRedirect: '/dashboard',
         failureRedirect: '/login',
         failureFlash: true
     }
