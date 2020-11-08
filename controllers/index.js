@@ -18,6 +18,10 @@ exports.getIndex = async (req, res, next) => {
 
     let showjobs = await knex('jobs').orderBy('status', 'desc').limit(10)
 
+    let showskills = await knex('jobs').join('jobs_skilltag', 'jobs.id', 'jobs_skilltag.jobs_id').select('jobs.id', 'jobs_skilltag.jobs_id', 'jobs_skilltag.skilltag_id'); 
+
+    console.log(showskills, 'MOTHERFUCKERS')
+
     res.render('index', {
         pageTitle: 'Index Page',
         jobsInfoArr: showjobs
@@ -47,7 +51,7 @@ exports.postIndex = async (req, res, next) => {
     let jobType = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location').where('job_type', 'ilike', `%${nameJobType}%`);
     // console.log(data.description, 'fuckrs');
 
-    if (data.length > 0) {
+     if (data.length > 0) {
         res.render('index', {
             pageTitle: 'Index Page',
             jobsInfoArr: data,
