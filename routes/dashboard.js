@@ -6,6 +6,7 @@ const express = require('express');
 const router = express.Router();
 
 const dashboardController = require('../controllers/dashboard');
+const loginController = require('../controllers/login')
 
 //get the router from correct path
 /*router.get('/dashboard', function (req, res){
@@ -14,8 +15,13 @@ const dashboardController = require('../controllers/dashboard');
 
 //http://localhost:4000/
 
+//Note: add loginController.checkNotAuthenticated
+router.get('/dashboard', dashboardController.getDashboard)
+/*router.get('/dashboard/:page', dashboardController.setPage, dashboardController.getDashboard)*/
+
 router.get('/dashboard', dashboardController.getDashboard)
 router.get('/dashboard/:page', dashboardController.getDashboard)
+
     //req.params.page
 
 
