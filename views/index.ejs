@@ -95,16 +95,13 @@
                         <p>
                             Location: <%= jobs.location %> 
                         </p>
-                        <p>
-                            <!-- Description: <%= jobs.description %>  -->
-                        </p>
                         <!-- on clicking show more , display description -->
-                        <p id="Description" style="display: none;"><i class="fas fa-angle-double-right"></i><a href="#">Description</a></p>
+                        <p id="Description" >Description: <%= jobs.description %></p>
 
                     </div>
                     <div class="apply-btn">
-                        <button type="button" class="btn btn-primary">Show more</button>
-                        <button type="button" class="btn btn-primary">Apply</button>
+                        <button type="button" class="btn btn-primary" id="showMore">Show more</button>
+                        <button type="button" class="btn btn-primary" id="Apply">Apply</button>
                     </div>
                 </div>
                 <% } %>
