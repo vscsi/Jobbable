@@ -1,0 +1,103 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/user-dashboard.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="nav_icon" onclick="toggleSidebar()">
+                <i class="fa fa-bars"></i>
+            </div>
+            <div class="navbar__left">
+            </div>
+            <div class="navbar__right">
+            </div>
+        </nav>
+
+        <main>
+            <div class="main__container">
+                <div class="main__title">
+                    <img src="/images/hello.svg">
+                    <div class="main__greeting">
+                        <h1>Hello</h1>
+                        <p>Apply History</p>
+                    </div>
+                </div>
+
+                <div class="main__cards">
+                    <div class="wrap">
+                        <div class="search">
+                           <input type="text" class="searchTerm" placeholder="Type in skills">
+                           <button type="submit" class="searchButton">
+                             <i class="fa fa-search"></i>
+                          </button>
+                        </div>
+                     </div>
+                </div>
+
+               
+
+                <div class="charts">
+                    <h1><%= pageHeader%></h1>
+
+                    <div class="charts__left">
+                        <div class="charts__left__title">
+                            <div>
+                              <form action="/dashboard/profile" method="POST">
+                                <select name="profileSelect" id="profileSelect">
+                                  <option value="">Select</option>
+                                  <option value="">HTML</option>
+                                  <option value="">CSS</option>
+                                  <option value="">Javascript</option>
+                                  <option value="">Python</option>
+                                  <option value="">Front end</option>
+                                  <option value="">Back end</option>
+                                  <option value="">NodeJS</option>
+                                  <option value="">React</option>
+                                  <option value="">Data</option>
+                                  <option value="">Engineer</option>
+                                  <option value="">Web Dev</option>
+                                  <option value="">AWS</option>
+                                  <option value="">Ruby</option>
+                                  <option value="">Mobile</option>
+                                  <option value="">Senior</option>
+                                  <option value="">Junior</option>
+                                  <option value="">Java</option>
+                                  <option value="">Fullstack</option>
+                                  <option value="">Django</option>
+                                  <option value="">Fintech</option>
+                                  <option value="">SQL</option>
+                                  <option value="">Typescript</option>
+                                  <option value="">MongoDB</option>
+                                  <option value="">MySQL</option>
+                                  <option value="">C#</option>
+                                  <option value="">Dev Ops</option>
+                                  <option value="">Machine Learning</option>
+                                  <option value="">AI</option>
+                                  <option value="">VueJS</option>
+                                  <option value="">C++</option>
+                                  <option value="">Front end</option>
+                                  <option value="">.Net</option>
+                                  <option value="">PHP</option>
+                                                </select>
+            
+                              </form>
+                            </div>
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <%- include('../includes/portal_nav.ejs') %>
+        
+
+    </div>
+    
+</body>
+
+</html>
+
+<script src="/js/user-dashboard.js"></script>
+<%- include('../includes/end.ejs') %>

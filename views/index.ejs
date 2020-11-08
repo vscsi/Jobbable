@@ -41,6 +41,7 @@
             <input name="skill" type="text" class="form-control" placeholder="Search Skills">
             <input name="nameCompany" type="text" class="form-control" placeholder="Company">
             <input name="nameLocation" type="text" class="form-control" placeholder="Location">
+            <input name="nameJobType" type="text" class="form-control" placeholder="Full Time/ part time / remote">
             
             <input type="submit" class="btn btn-primary" value="Search">
         </div>
@@ -70,7 +71,7 @@
                     <div class="job-update">
 
                         <h4><img src=<%= jobs.company_logo %> alt="../public/images/photo-not-available"><b><%= jobs.title %></b></h4>
-                        <p><%= jobs.company%></p>
+                        <p>Company: <%= jobs.company%></p>
 
                         <p>Skills
                             <button class="skillTags">Java</button>
@@ -98,7 +99,7 @@
                             <!-- Description: <%= jobs.description %>  -->
                         </p>
                         <!-- on clicking show more , display description -->
-                        <p id="Description" style="display: none;"><i class="fas fa-angle-double-right"></i><a href="#">Read more</a></p>
+                        <p id="Description" style="display: none;"><i class="fas fa-angle-double-right"></i><a href="#">Description</a></p>
 
                     </div>
                     <div class="apply-btn">
