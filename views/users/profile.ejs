@@ -1,50 +1,39 @@
 <%- include('../includes/head.ejs') %>
     <link rel="stylesheet" href="/css/user-dashboard.css">
-</head>
+    </head>
 
-<body>
-    <div class="container">
-        <nav class="navbar">
-            <div class="nav_icon" onclick="toggleSidebar()">
-                <i class="fa fa-bars"></i>
-            </div>
-            <div class="navbar__left">
-            </div>
-            <div class="navbar__right">
-            </div>
-        </nav>
-
-        <main>
-            <div class="main__container">
-                <div class="main__title">
-                    <img src="/images/hello.svg">
-                    <div class="main__greeting">
-                        <h1>Hello</h1>
-                        <p>Apply History</p>
-                    </div>
+    <body>
+        <div class="container">
+            <nav class="navbar">
+                <div class="nav_icon" onclick="toggleSidebar()">
+                    <i class="fa fa-bars"></i>
                 </div>
+                <div class="navbar__left">
+                </div>
+                <div class="navbar__right">
+                </div>
+            </nav>
 
-                <div class="main__cards">
-                    <div class="wrap">
-                        <div class="search">
-                           <input type="text" class="searchTerm" placeholder="Type in skills">
-                           <button type="submit" class="searchButton">
-                             <i class="fa fa-search"></i>
-                          </button>
+            <main>
+                <div class="main__container">
+                    <div class="main__title">
+                        <img src="/images/hello.svg">
+                        <div class="main__greeting">
+                            <h1>Hello</h1>
+                            <p>Profile page</p>
                         </div>
-                     </div>
-                </div>
+                    </div>
 
-               
+                    <div class="charts">
+                        <h1>
+                            <%= pageHeader%>
+                        </h1>
 
-                <div class="charts">
-                    <h1><%= pageHeader%></h1>
-
-                    <div class="charts__left">
-                        <div class="charts__left__title">
-                            <div>
-                              <form action="/profile" method="POST">
-                                <select name="profileSelect" id="profileSelect">
+                        <div class="charts__left">
+                            <div class="charts__left__title">
+                                <div>
+                                    <form action="/profile" method="POST">
+                                        <select name="profileSelect" id="profileSelect">
                                   <option value="">Select</option>
                                   <option value="">HTML</option>
                                   <option value="">CSS</option>
@@ -80,24 +69,24 @@
                                   <option value="">.Net</option>
                                   <option value="">PHP</option>
                                                 </select>
-            
-                              </form>
+
+                                        <button type="submit"> add skills</button>
+                                    </form>
+                                </div>
                             </div>
-                            <i class="fas fa-user-friends"></i>
                         </div>
                     </div>
                 </div>
-            </div>
-        </main>
+            </main>
 
-        <%- include('../includes/portal_nav.ejs') %>
-        
+            <%- include('../includes/portal_nav.ejs') %>
 
-    </div>
-    
-</body>
 
-</html>
+        </div>
 
-<script src="/js/user-dashboard.js"></script>
-<%- include('../includes/end.ejs') %>
+    </body>
+
+    </html>
+
+    <script src="/js/user-dashboard.js"></script>
+    <%- include('../includes/end.ejs') %>

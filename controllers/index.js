@@ -11,6 +11,14 @@ const knex = require('knex')({
     }
 });
 
+//passport middleware
+// exports.checkIndexAuthenticated = (req, res, next) => {
+//     if (req.isAuthenticated()) {
+//         return res.redirect('/dashboard')
+//     }
+//     // console.log(`${req} yoyoyo2`)
+//     next();
+// }
 
 //routes
 
@@ -25,7 +33,7 @@ exports.getIndex = async (req, res, next) => {
     .select('skilltag.skilltag_name', 'jobs_skilltag.jobs_id', 'jobs_skilltag.skilltag_id')
     .where({jobs_id: '1'})
 
-    console.log(showskills, 'MOTHERFUCKERS')
+    // console.log(showskills, 'MOTHERFUCKERS')
 
     let justskilltags = [];
 
@@ -33,7 +41,7 @@ exports.getIndex = async (req, res, next) => {
         justskilltags.push(showskills[i].skilltag_name)
     }
 
-    console.log(justskilltags, `WEEEEEEEEEEEEE`)
+    // console.log(justskilltags, `WEEEEEEEEEEEEE`)
 
     
     res.render('index', {
