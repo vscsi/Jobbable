@@ -1,9 +1,8 @@
 <%- include('./../includes/head.ejs') %>
-    <link rel="stylesheet" href="/css/user-dashboard.css">
-</head>
-
+<link rel="stylesheet" href="/css/user-dashboard.css">
 <body>
-    <div class="container">
+    
+<div class="container">
         <nav class="navbar">
             <div class="nav_icon" onclick="toggleSidebar()">
                 <i class="fa fa-bars"></i>
@@ -20,7 +19,7 @@
                     <img src="/images/hello.svg">
                     <div class="main__greeting">
                         <h1>Hello</h1>
-                        <p>Welcome to your dashboard</p>
+                        <p>Welcome to your dashboard, </p>
                     </div>
                 </div>
 
@@ -34,9 +33,6 @@
                         </div>
                      </div>
                 </div>
-
-               
-
                 <div class="charts">
 
                     <% for (let company of companies){ %>  
@@ -74,7 +70,7 @@
         </main>
 
 
-        <%- include('./../includes/portal_nav.ejs') %>
+        <%- include('../includes/portal_nav.ejs') %>
         
 
                 <h2>PREMIUM</h2>
@@ -83,14 +79,12 @@
                     <a href="#">Upgrade to Premium!</a>
                 </div>
                 <div class="sidebar__link">
-                    <a href="/logout">Logout</a>
+                    <a href="/">Logout</a>
                 </div>
             </div>
         </div>
     </div>
     
-</body>
-
-</html>
 
 <script src="/js/user-dashboard.js"></script>
+<%- include('./../includes/end.ejs') %>

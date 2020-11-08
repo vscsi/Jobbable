@@ -23,6 +23,7 @@ exports.getLogin = (req, res, next) => {
     res.render('users/login', {
         pageTitle: 'Login',
         path: '/login',
+        message: ''
     })
 }
 //post
