@@ -23,11 +23,12 @@ exports.getLogin = (req, res, next) => {
     res.render('users/login', {
         pageTitle: 'Login',
         path: '/login',
-        message: ''
+        // message: req.user.message
     })
 }
 //post
 exports.postLogin = (req, res, next) => {
+    console.log(req.user,username);
 }
 
 //logout
