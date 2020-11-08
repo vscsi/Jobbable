@@ -15,8 +15,13 @@ const loginController = require('../controllers/login')
 
 //http://localhost:4000/
 
+<<<<<<< HEAD
 router.get('/dashboard', loginController.checkNotAuthenticated,dashboardController.getDashboard)
 /*router.get('/dashboard/:page', dashboardController.setPage, dashboardController.getDashboard)*/
+=======
+router.get('/dashboard', dashboardController.getDashboard)
+router.get('/dashboard/:page', dashboardController.getDashboard)
+>>>>>>> f12318b6d986f9901e314b887b84945214a07eae
     //req.params.page
 
 
