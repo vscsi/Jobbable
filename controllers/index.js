@@ -18,10 +18,24 @@ exports.getIndex = async (req, res, next) => {
 
     let showjobs = await knex('jobs').orderBy('status', 'desc').limit(10)
 
-    let showskills = await knex('jobs').join('jobs_skilltag', 'jobs.id', 'jobs_skilltag.jobs_id').select('jobs.id', 'jobs_skilltag.jobs_id', 'jobs_skilltag.skilltag_id'); 
+    // let showskills = await knex('jobs').join('jobs_skilltag', 'jobs.id', 'jobs_skilltag.jobs_id').select('jobs.id', 'jobs_skilltag.jobs_id', 'jobs_skilltag.skilltag_id'); 
+    
+    let showskills = await knex('skilltag')
+    .join('jobs_skilltag', 'skilltag.id', 'jobs_skilltag.skilltag_id')
+    .select('skilltag.skilltag_name', 'jobs_skilltag.jobs_id', 'jobs_skilltag.skilltag_id')
+    .where({jobs_id: '1'})
 
     console.log(showskills, 'MOTHERFUCKERS')
 
+    let justskilltags = [];
+
+    for(let i=0; i<showskills.length; i++){
+        justskilltags.push(showskills[i].skilltag_name)
+    }
+
+    console.log(justskilltags, `WEEEEEEEEEEEEE`)
+
+    
     res.render('index', {
         pageTitle: 'Index Page',
         jobsInfoArr: showjobs
