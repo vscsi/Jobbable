@@ -25,7 +25,7 @@ const passportAuth = passport.authenticate(
     }
 )
 
-//setting initiazlize and sessions from passport
+// setting initiazlize and sessions from passport
 router.use(session({
     //key we want to keep secret which will encrypt all of our information
     secret: 'secret',
