@@ -24,6 +24,5 @@ router.get('/dashboard/:page', dashboardController.getDashboard)
 
     //req.params.page
 
-router.get('/profile', dashboardController.getProfile)
 
 module.exports = router;

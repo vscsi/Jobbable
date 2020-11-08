@@ -20,6 +20,7 @@ const registerRoutes = require('./routes/register');
 const loginRoutes = require('./routes/login');
 const dashboardRoutes = require('./routes/dashboard');
 const applyHistoryRoutes = require('./routes/apply_history');
+const profileRoutes = require('./routes/profile')
 
 // set up app
 const app = express();
@@ -57,7 +58,7 @@ app.use(registerRoutes);
 app.use(loginRoutes);
 app.use(dashboardRoutes);
 app.use(applyHistoryRoutes);
-
+app.use(profileRoutes);
 
 app.use(errorController.get404);
 

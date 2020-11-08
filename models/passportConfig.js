@@ -59,7 +59,7 @@ function initialize(passport) {
         done(null, user.id));
 
     passport.deserializeUser(async(id, done) => {
-        console.log(id)
+        // console.log(id)
         let employeesIdQuery = await knex.select('*').from('employees').where('id', `${id}`);
         let employersIdQuery = await knex.select('*').from('employers').where('id', `${id}`);
         if (employeesIdQuery == '') {
