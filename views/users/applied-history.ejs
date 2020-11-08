@@ -20,7 +20,7 @@
                     <img src="/images/hello.svg">
                     <div class="main__greeting">
                         <h1>Hello</h1>
-                        <p>Welcome to your dashboard</p>
+                        <p>Apply History</p>
                     </div>
                 </div>
 
@@ -38,6 +38,7 @@
                
 
                 <div class="charts">
+                    <h1><%= pageHeader%></h1>
 
                     <% for (let company of companies){ %>  
                     <div class="charts__left">
@@ -55,38 +56,19 @@
                 </div>
             </div>
             <ul class="page-link text-center">
-                <li class="left-arrow"><a href="/dashboard/<%= cur_page <= 1 ? 1 : cur_page-1 %>">&#8592;</a></li>
-                <!--class="active"
-                <% for (let i = 1; i <= no_of_page; i++ ) { %>
-                <li class="<%= cur_page == i ? 'active':'' %>" ><a href="/dashboard/<%= i %>"><%= i %></a></li>
-                <% } %>-->
-                <li>
-                    <select onchange="window.location='/dashboard/'+this.value">
-                        <% for (let i = 1; i <= no_of_page; i++ ) { %>
-                            <option value="<%= i %>" <%= cur_page == i ? 'selected':'' %>><%= i %></option>
-                        <% } %>
-                    </select>
-                </li>
-                <li class="right-arrow"><a href="/dashboard/<%= cur_page >= no_of_page ? cur_page : cur_page + 1 %>"> &#8594;</a></li>
+                <li class="left-arrow"><a href="">&#8592;</a></li>
+                <li class="active"><a href="/dashboard/1">1</a></li>
+                <li><a href="/dashboard/2">2</a></li>
+                <li><a href="">3</a></li>
+                <li><a href="">4</a></li>
+                <li><a href="">5</a></li>
+                <li class="right-arrow"><a href=""> &#8594;</a></li>
             </ul>
-
-            
         </main>
-
 
         <%- include('./../includes/portal_nav.ejs') %>
         
 
-                <h2>PREMIUM</h2>
-                <div class="sidebar__link">
-                    <i class="fas fa-crown"></i>
-                    <a href="#">Upgrade to Premium!</a>
-                </div>
-                <div class="sidebar__link">
-                    <a href="/logout">Logout</a>
-                </div>
-            </div>
-        </div>
     </div>
     
 </body>
