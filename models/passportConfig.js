@@ -53,7 +53,7 @@ function initialize(passport) {
             // console.log(`${req} ${req.body.id} ${req.body.rows} ${req.body.status} this is user status`)
             // console.log(typeof employersQuery)
             let user;
-            if(employersQuery == '' && employersQuery == ''){
+            if(employeesQuery == '' && employersQuery == ''){
                 console.log("console log Credentials are not correct")
                 return done(null, false, { message: "Credentials are not correct" })
             }
@@ -94,11 +94,15 @@ function initialize(passport) {
     )
 
     passport.serializeUser((user, done) =>
-        done(null, user.id));
+        done(null, user.username));
 
-    passport.deserializeUser(async(id, done) => {
-        let employeesIdQuery = await knex.select('*').from('employees').where('id', `${id}`);
-        let employersIdQuery = await knex.select('*').from('employers').where('id', `${id}`);
+    passport.deserializeUser(async(username, done) => {
+        let employeesIdQuery = await knex.select('*').from('employees').where('username', `${username}`);
+        let employersIdQuery = await knex.select('*').from('employers').where('username', `${username}`);
+        // console.log(username)
+        // console.log(employeesIdQuery, 'this is employeesIdquery')
+        // console.log(employersIdQuery, 'this is employersIdquery')
+        
         if (employeesIdQuery == '') {
             return done(null, employersIdQuery[0])
 
