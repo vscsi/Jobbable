@@ -11,7 +11,7 @@ const profileController = require('../controllers/profile');
 
 
 router.get('/profile', profileController.getProfile)
-
+router.post('profile', profileController.postCheckSkills)
 router.post('/profile', profileController.postSkills)
 
 // router.post(`/profile?delete=:`, profileController.postDeleteSkills)
