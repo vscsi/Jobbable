@@ -46,10 +46,6 @@ exports.getTalentPool = async (req, res, next) => {
     }
 
 
-
-exports.getTalentPool = async(req,res,next)=>{
-        console.log(req.user.id)
-
     console.log(whoApplied, `WHO THE APPLIED`)
 
     // console.log(whoApplied[1].jobs_id, `who applied [1] jobs id`)
