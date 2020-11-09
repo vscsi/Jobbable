@@ -5,23 +5,20 @@
         </div>
         <i id="sidebarIcon" class="fas fa-times" onclick="closeSidebar()"></i>
     </div>
-    
-        <% if (user_role == 1) { %>
+
+    <% if (user_role == 1) { %>
         <div class="sidebar__menu">
             <div class="sidebar__link active_menu_link">
                 <a href="#">Jobs Bookmarks</a>
             </div>
-    
+
             <div class="sidebar__link">
-                <i class="fas fa-home"></i>
                 <a href="/apply_history">Applied History</a>
             </div>
             <div class="sidebar__link">
-                <i class="fas fa-bookmark"></i>
                 <a href="/Profile">Profile</a>
             </div>
             <div class="sidebar__link">
-                <i class="fas fa-wrench"></i>
                 <a href="/">Home Page</a>
             </div>
             <div class="sidebar__link">
@@ -31,20 +28,21 @@
         <% } else if (user_role == 2) { %>
             <div class="sidebar__menu">
                 <div class="sidebar__link active_menu_link">
-                    <a href="/talent_pool">Talents Pool</a>
-                </div>
-        
-                <div class="sidebar__link">
-                    <i class="fas fa-home"></i>
-                    <a href="#">Jobs Posted History</a>
-                </div>
-                <div class="sidebar__link">
-                    <i class="fas fa-wrench"></i>
-                    <a href="/">Home Page</a>
-                </div>
-                <div class="sidebar__link">
-                    <a href="/logout">Logout</a>
+                    <a href="/talent_pool">Talents Pool: Who has applied?</a>
                 </div>
             </div>
-            <% } %>
+            <div class="sidebar__link">
+                <a href="/job_post">Post a job!</a>
+            </div>
+            <div class="sidebar__link">
+                <a href="/job_posting_history">Jobs Posting History</a>
+            </div>
+            <div class="sidebar__link">
+                <a href="/">Home Page</a>
+            </div>
+            <div class="sidebar__link">
+                <a href="/logout">Logout</a>
+            </div>
 </div>
+<% } %>
+    </div>

@@ -25,7 +25,7 @@ exports.getDashboard = async(req, res, next) => {
     // let query = knex.select('jobs_skilltag'); 
     // let ;
 
-    console.log(req.user.email, req.user)
+    // console.log(req.user.email, req.user)
 
     let cur_page;
 

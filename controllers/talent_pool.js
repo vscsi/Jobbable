@@ -9,11 +9,9 @@ const knex = require('knex')({
     }
 });
 
-const user_role = 2;
-const page_limit = 10;
 
 exports.getTalentPool = async(req,res,next)=>{
-        console.log('user role 2')
+        console.log(req.user.id)
 
                     res.render('users/talent-pool', {
                         pageTitle: 'Talent Pool',

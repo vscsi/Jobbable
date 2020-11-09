@@ -1,0 +1,68 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/register.css">
+    </head>
+
+    <button><a href="/dashboard">Go back to dashboard</a> </button>
+
+    <div class="wrapper">
+        <div class="title">
+            Post a job and find talents!
+        </div>
+
+
+        <form class="form" action="/job_post" method="POST">
+
+            <div class="inputfield">
+                <label>Company</label>
+                <input name="nameCompany" type="text" class="input">
+            </div>
+
+            <div class="inputfield">
+                <label>Title</label>
+                <input name="nameTitle" type="text" class="input">
+            </div>
+
+            <div class="inputfield">
+                <label>Location</label>
+                <input name="nameLocation" type="text" class="input">
+            </div>
+
+
+            <div class="inputfield">
+                <label>Company url:</label>
+                <input name="nameUrl" type="text" class="input">
+            </div>
+
+            <div class="inputfield" id="roleSelection">
+                <label>Job types:</label>
+                <div class="custom_select">
+                    <select name="nameJob_type">
+                      <option name="part_time">Part-time</option>
+                      <option name="full_time">Full-time</option>
+                      <option name="remote">Remote</option>
+                                    </select>
+                </div>
+            </div>
+
+            <div class="inputfield">
+                <label>Description</label>
+                <textarea name="nameDescription" type="text" class="input"></textarea>
+            </div>
+
+            <div class="inputfield">
+                <label>Company Logo</label>
+                <input name="nameCompany_logo" type="text" class="input">
+            </div>
+
+            <div class="inputfield">
+                <label>How do talents apply for jobs?</label>
+                <input name="nameHow_to_apply" type="text" class="input">
+            </div>
+
+            <div class="inputfield">
+                <input type="submit" value="Post the job" class="btn">
+            </div>
+    </div>
+    </form>
+    <%- include('../includes/end.ejs') %>
+        <script src="/js/register.js"></script>

@@ -1,0 +1,51 @@
+<%- include('./../includes/portal-head.ejs') %>
+    <link rel="stylesheet" href="/css/user-dashboard.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <nav class="navbar">
+                <div class="nav_icon" onclick="toggleSidebar()">
+                    <i class="fa fa-bars"></i>
+                </div>
+                <div class="navbar__left">
+                </div>
+                <div class="navbar__right">
+                </div>
+            </nav>
+
+            <main>
+                <div class="main__container">
+                    <div class="main__title">
+                        <img src="/images/hello.svg">
+                        <div class="main__greeting">
+                            <h1>Hello</h1>
+                            <p>Job posting History</p>
+                        </div>
+                    </div>
+
+                    <div class="charts">
+                        <div class="charts__left">
+                            <%for (let jobQuery of jobQueries){ %>
+                                <p>Company:<%=jobQuery.company%></p>
+                                <p>Title:<%=jobQuery.title%></p>
+                                <p>Location:<%=jobQuery.location%></p>
+                                <p>Company url:<%=jobQuery.url%></p>
+                                <p>Job types:<%=jobQuery.job_type%></p>
+                                <p>Description:<%=jobQuery.description%></p>
+                                <p>Company logo:<%=jobQuery.company_logo%></p>
+                                <p>How do talents apply for jobs:<%=jobQuery.how_to_apply%></p>
+                                <%}%>
+                        </div>
+            </main>
+
+            <%- include('./../includes/portal_nav-employees.ejs') %>
+
+
+                </div>
+
+    </body>
+
+    </html>
+
+    <script src="/js/user-dashboard.js"></script>
