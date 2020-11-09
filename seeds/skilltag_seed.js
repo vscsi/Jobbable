@@ -22,7 +22,7 @@ exports.seed = function(knex) {
         {id: 15, skilltag_name: 'Senior'},
         {id: 16, skilltag_name: 'Junior'},
         {id: 17, skilltag_name: 'Java'},
-        {id: 18, skilltag_name: 'Full stack'},
+        {id: 18, skilltag_name: 'C#'},
         {id: 19, skilltag_name: 'Django'},
         {id: 20, skilltag_name: 'Fintech'},
         {id: 21, skilltag_name: 'SQL'},
@@ -35,7 +35,7 @@ exports.seed = function(knex) {
         {id: 28, skilltag_name: 'AI'},
         {id: 29, skilltag_name: 'VueJS'},
         {id: 30, skilltag_name: 'C++'},
-        {id: 31, skilltag_name: 'Frontend'},
+        {id: 31, skilltag_name: 'Swift'},
         {id: 32, skilltag_name: '.NET'},
         {id: 33, skilltag_name: 'PHP'},
         

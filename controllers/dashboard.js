@@ -94,12 +94,3 @@ exports.getDashboard = async(req, res, next) => {
     }
 
 }
-
-exports.getProfile = (req,res,next) => {
-    res.render('users/Profile', {
-
-        pageTitle: 'Dashboard > Employees',
-        pageHeader: 'Edit your skills',
-
-    });
-}

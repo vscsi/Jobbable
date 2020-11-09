@@ -1,92 +1,104 @@
 <%- include('../includes/head.ejs') %>
-    <link rel="stylesheet" href="/css/user-dashboard.css">
-    </head>
+<link rel="stylesheet" href="/css/user-dashboard.css">
+</head>
 
-    <body>
-        <div class="container">
-            <nav class="navbar">
-                <div class="nav_icon" onclick="toggleSidebar()">
-                    <i class="fa fa-bars"></i>
-                </div>
-                <div class="navbar__left">
-                </div>
-                <div class="navbar__right">
-                </div>
-            </nav>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="nav_icon" onclick="toggleSidebar()">
+                <i class="fa fa-bars"></i>
+            </div>
+            <div class="navbar__left">
+            </div>
+            <div class="navbar__right">
+            </div>
+        </nav>
 
-            <main>
-                <div class="main__container">
-                    <div class="main__title">
-                        <img src="/images/hello.svg">
-                        <div class="main__greeting">
-                            <h1>Hello</h1>
-                            <p>Profile page</p>
-                        </div>
+        <main>
+            <div class="main__container">
+                <div class="main__title">
+                    <img src="/images/hello.svg">
+                    <div class="main__greeting">
+                        <h1>Hello</h1>
+                        <p>Profile page</p>
                     </div>
+                </div>
 
-                    <div class="charts">
-                        <h1>
-                            <%= pageHeader%>
-                        </h1>
+                <div class="charts">
+                    <h1>
+                        <%= pageHeader%>
+                    </h1>
 
-                        <div class="charts__left">
-                            <div class="charts__left__title">
-                                <div>
-                                    <form action="/profile" method="POST">
-                                        <select name="profileSelect" id="profileSelect">
-                                  <option value="">Select</option>
-                                  <option value="">HTML</option>
-                                  <option value="">CSS</option>
-                                  <option value="">Javascript</option>
-                                  <option value="">Python</option>
-                                  <option value="">Front end</option>
-                                  <option value="">Back end</option>
-                                  <option value="">NodeJS</option>
-                                  <option value="">React</option>
-                                  <option value="">Data</option>
-                                  <option value="">Engineer</option>
-                                  <option value="">Web Dev</option>
-                                  <option value="">AWS</option>
-                                  <option value="">Ruby</option>
-                                  <option value="">Mobile</option>
-                                  <option value="">Senior</option>
-                                  <option value="">Junior</option>
-                                  <option value="">Java</option>
-                                  <option value="">Fullstack</option>
-                                  <option value="">Django</option>
-                                  <option value="">Fintech</option>
-                                  <option value="">SQL</option>
-                                  <option value="">Typescript</option>
-                                  <option value="">MongoDB</option>
-                                  <option value="">MySQL</option>
-                                  <option value="">C#</option>
-                                  <option value="">Dev Ops</option>
-                                  <option value="">Machine Learning</option>
-                                  <option value="">AI</option>
-                                  <option value="">VueJS</option>
-                                  <option value="">C++</option>
-                                  <option value="">Front end</option>
-                                  <option value="">.Net</option>
-                                  <option value="">PHP</option>
-                                                </select>
+                    <div class="charts__left">
+                        <div class="charts__left__title">
+                            <div>
+                                <form action="/profile" method="POST">
+                                    <select name="profileSelect" id="profileSelect">
+                                        <option value="">Select</option>
+                                        <option value="1">HTML</option>
+                                        <option value="2">CSS</option>
+                                        <option value="3">Javascript</option>
+                                        <option value="4">Python</option>
+                                        <option value="5">Front end</option>
+                                        <option value="6">Back end</option>
+                                        <option value="7">NodeJS</option>
+                                        <option value="8">React</option>
+                                        <option value="9">Data</option>
+                                        <option value="10">Engineer</option>
+                                        <option value="11">Web Dev</option>
+                                        <option value="12">AWS</option>
+                                        <option value="13">Ruby</option>
+                                        <option value="14">Mobile</option>
+                                        <option value="15">Senior</option>
+                                        <option value="16">Junior</option>
+                                        <option value="17">Java</option>
+                                        <option value="18">C#</option>
+                                        <option value="19">Django</option>
+                                        <option value="20">Fintech</option>
+                                        <option value="21">SQL</option>
+                                        <option value="22">Typescript</option>
+                                        <option value="23">MongoDB</option>
+                                        <option value="24">MySQL</option>
+                                        <option value="25">C#</option>
+                                        <option value="26">Dev Ops</option>
+                                        <option value="27">Machine Learning</option>
+                                        <option value="28">AI</option>
+                                        <option value="29">VueJS</option>
+                                        <option value="30">C++</option>
+                                        <option value="31">Swift</option>
+                                        <option value="32">.Net</option>
+                                        <option value="33">PHP</option>
+                                    </select>
 
-                                        <button type="submit"> add skills</button>
-                                    </form>
-                                </div>
+                                    <button type="submit"> add skills</button>
+                                </form>
                             </div>
                         </div>
                     </div>
+
+                    <% if(skilltags.length > 0){ %>
+                        <% for(let st of skilltags) { %>
+                            <div>
+                                <span><%= st.skilltag_name %></span>
+                                <%- include('../includes/delete-skill.ejs') %>
+                            </div>
+                        <% } %>
+                    <% } else { %>
+                        <h1> Add some skills!</h1>
+                    <% } %>
+
                 </div>
-            </main>
+            </div>
+        </main>
 
-            <%- include('../includes/portal_nav.ejs') %>
+        <%- include('../includes/portal_nav.ejs') %>
 
 
-        </div>
+                </div>
 
-    </body>
+</body>
 
-    </html>
+</html>
 
-    <script src="/js/user-dashboard.js"></script>
-    <%- include('../includes/end.ejs') %>
+<script src="/js/user-dashboard.js"></script>
+<%- include('../includes/end.ejs') %>

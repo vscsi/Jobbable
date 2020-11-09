@@ -2,18 +2,10 @@
 
 
 //Registration pag//Modules requirement
-// const express = require('express')
-// const app = express();
-// const ejs = require('ejs')
-// const bodyParser = require('body-parser');
+
 const { pool } = require('../models/database');
 const bcrypt = require('bcrypt');
 require('dotenv').config({ path: __dirname + '../models/.env' })
-// const session = require('express-session');
-// const flash = require('express-flash');
-
-// app.set('view engine', 'ejs')
-// app.use(express.urlencoded({ extended: true })) // set to true for posting form
 
 
 exports.getRegister = (req, res, next) => {
