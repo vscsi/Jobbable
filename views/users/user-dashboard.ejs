@@ -23,19 +23,7 @@
                         <p>Welcome to your dashboard, </p>
                     </div>
                 </div>
-
-                <div class="main__cards">
-                    <div class="wrap">
-                        <div class="search">
-                           <input type="text" class="searchTerm" placeholder="Type in skills">
-                           <button type="submit" class="searchButton">
-                             <i class="fa fa-search"></i>
-                          </button>
-                        </div>
-                     </div>
-                </div>
                 <div class="charts">
-
                     <% for (let company of companies){ %>  
                     <div class="charts__left">
                         <div class="charts__left__title">
@@ -71,9 +59,7 @@
 
             
         </main>
-
-
-        <%- include('../includes/portal_nav.ejs') %>
+        <%- include('./../includes/portal_nav-employees.ejs') %>
         
 
             </div>
@@ -82,4 +68,3 @@
     
 
 <script src="/js/user-dashboard.js"></script>
-<%- include('./../includes/portal_nav-employees.ejs') %>
