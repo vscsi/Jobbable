@@ -87,9 +87,9 @@
                         <% for(let st of skilltags) { %>
                             <div>
                                 <span><%= st.skilltag_name %></span>
-                                <form action="/profile" menthod="post">
+                                <form action="/profile/delete" method="post">
                                     <button class="btn" type="submit">Delete</button>
-                                    <input type="hidden" name="delete" value="<%= st.id %>"></input>
+                                    <input type="hidden" name="skillDelete" value="<%= st.skilltag_id %>"></input>
                                 </form>
                             </div>
                         <% } %>
