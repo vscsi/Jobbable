@@ -81,7 +81,7 @@ body {
 }
 
 .nav_icon {
-    /* display: none; */
+    
     filter: #fff;
 }
 
@@ -262,30 +262,16 @@ main {
     margin-bottom: 30px;
 }
 
-.sidebar__menu>h2 {
-    color: #3ea175;
-    font-size: 16px;
-    margin-top: 15px;
-    margin-bottom: 5px;
-    padding: 0 10px;
-    font-weight: 700;
-}
 
 .sidebar__link {
     color: #f3f4f6;
     padding: 10px;
     border-radius: 3px;
     margin-bottom: 5px;
+    margin-top:5px;
 }
 
-.active_menu_link {
-    background: rgba(62, 161, 117, 0.3);
-    color: #3ea175;
-}
 
-.active_menu_link a {
-    color: #3ea175;
-}
 
 .sidebar__link>a {
     text-decoration: none;
