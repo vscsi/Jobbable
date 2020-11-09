@@ -4,7 +4,7 @@
 //Passport local strategy authentication when landing into pages
 exports.checkAuthenticated = (req, res, next) => {
     if (req.isAuthenticated()) {
-        return res.redirect('/users/dashboard')
+        return res.redirect('/dashboard')
     }
     console.log(`${req} yoyoyo2`)
     next();
@@ -23,6 +23,7 @@ exports.getLogin = (req, res, next) => {
     res.render('users/login', {
         pageTitle: 'Login',
         path: '/login',
+        message: ''
     })
 }
 //post
@@ -33,5 +34,5 @@ exports.postLogin = (req, res, next) => {
 exports.getLogout = (req, res, next) => {
     req.logout();
     req.flash('success_msg', 'You have logged out')
-    res.redirect('/login')
+    res.redirect('/')
 }

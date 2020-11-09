@@ -18,26 +18,12 @@
                 <div class="main__title">
                     <img src="/images/hello.svg">
                     <div class="main__greeting">
-                        <h1>Hello</h1>
-                        <p>Welcome to your dashboard</p>
+                        <h1>Hello <%= username %></h1>
+                        <p>Welcome to your dashboard, </p>
                     </div>
                 </div>
 
-                <div class="main__cards">
-                    <div class="wrap">
-                        <div class="search">
-                           <input type="text" class="searchTerm" placeholder="Type in skills">
-                           <button type="submit" class="searchButton">
-                             <i class="fa fa-search"></i>
-                          </button>
-                        </div>
-                     </div>
-                </div>
-
-               
-
                 <div class="charts">
-                    <h1><%= pageHeader%></h1>
 
                     <% for (let company of companies){ %>  
                     <div class="charts__left">
@@ -76,12 +62,10 @@
         </main>
 
         <%- include('./../includes/portal_nav-employees.ejs') %>
-        
-
+            </div>
+        </div>
     </div>
     
-</body>
-
-</html>
 
 <script src="/js/user-dashboard.js"></script>
+<%- include('./../includes/end.ejs') %>

@@ -5,3 +5,8 @@
 <% } %>
 
  <!-- Login succeed , passport will store error messages in messages object by passport (./passportConfig)-->
+ <ul>
+  <% if(messages.error){ %>
+      <li><%= messages.error %></li>
+  <% } %>
+</ul>
