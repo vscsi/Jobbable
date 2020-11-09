@@ -15,19 +15,52 @@ const knex = require('knex')({
 function initialize(passport) {
     //req param is passed from passReqtoCallback in strategy config
     const authenticateUser = async(username, password, done) => {
-       
-            console.log(username)
+        /** 
+        // console.log(username)
+        let employersQuery = await knex.select('password', 'id', 'status', 'username').from('employers').where('username', `${username}`);
+        let employeesQuery = await knex.select('password', 'id', 'status', 'username').from('employees').where('username', `${username}`);
+
+        // console.log(`This is employersQuery ${employersQuery}`)
+        // console.log(`This is employeesQuery ${employeesQuery}`)
+        // console.log(`${req} ${req.body.id} ${req.body.rows} ${req.body.status} this is user status`)
+        // console.log(typeof employersQuery)
+        let user;
+        employersQuery == '' ? user = employeesQuery[0] : user = employersQuery[0];
+        console.log(`This is user status: ${user.status}`)
+        console.log(`This is user username: ${user.username}`)
+        console.log(`This is user id: ${user.id}`)
+
+
+        bcrypt.compare(password, user.password, (err, isMatch) => {
+            if (err) {
+                throw err;
+            }
+            if (isMatch) {
+                console.log(`${user.password} >>>>>${user.username} ${user.status} Authenticated`)
+                return done(null, user)
+            } else {
+                console.log(`${user.password} ${user.username} ${user.status} not auth`)
+                return done(null, false, { message: "Password is not correct" })
+            }
+        })
+*/
+        try {
             let employersQuery = await knex.select('password', 'id', 'status', 'username').from('employers').where('username', `${username}`);
             let employeesQuery = await knex.select('password', 'id', 'status', 'username').from('employees').where('username', `${username}`);
-            console.log(`This is employersQuery ${employersQuery}`)
-            console.log(`This is employeesQuery ${employeesQuery}`)
+
+            // console.log(`This is employersQuery ${employersQuery}`)
+            // console.log(`This is employeesQuery ${employeesQuery}`)
+            // console.log(`${req} ${req.body.id} ${req.body.rows} ${req.body.status} this is user status`)
             // console.log(typeof employersQuery)
             let user;
-            employersQuery == '' ? user=employeesQuery[0] :user=employersQuery[0];
+            if(employersQuery == '' && employersQuery == ''){
+                console.log("console log Credentials are not correct")
+                return done(null, false, { message: "Credentials are not correct" })
+            }
+            employersQuery == '' ? user = employeesQuery[0] : user = employersQuery[0];
             console.log(`This is user status: ${user.status}`)
             console.log(`This is user username: ${user.username}`)
             console.log(`This is user id: ${user.id}`)
-        
 
             bcrypt.compare(password, user.password, (err, isMatch) => {
                 if (err) {
@@ -38,12 +71,17 @@ function initialize(passport) {
                     return done(null, user)
                 } else {
                     console.log(`${user.password} ${user.username} ${user.status} not auth`)
-                    return done(null, false, { message: "Password is not correct" })
+                    return done(null, false, { messages: "Password is not correct" })
                 }
             })
 
+        } catch(err) {
+            return done(err);
         }
-    
+
+    }
+
+
     passport.use(
         new LocalStrategy({
                 //change the default authentication units: username and password to other parameters
@@ -59,7 +97,6 @@ function initialize(passport) {
         done(null, user.id));
 
     passport.deserializeUser(async(id, done) => {
-        // console.log(id)
         let employeesIdQuery = await knex.select('*').from('employees').where('id', `${id}`);
         let employersIdQuery = await knex.select('*').from('employers').where('id', `${id}`);
         if (employeesIdQuery == '') {

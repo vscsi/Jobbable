@@ -6,7 +6,6 @@ exports.checkAuthenticated = (req, res, next) => {
     if (req.isAuthenticated()) {
         return res.redirect('/dashboard')
     }
-    // console.log(`${req} yoyoyo2`)
     next();
 }
 
@@ -23,12 +22,10 @@ exports.getLogin = (req, res, next) => {
     res.render('users/login', {
         pageTitle: 'Login',
         path: '/login',
-        // message: req.user.message
     })
 }
 //post
 exports.postLogin = (req, res, next) => {
-    console.log(req.user.username, `This is the user who log in`);
 }
 
 //logout

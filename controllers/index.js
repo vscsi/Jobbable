@@ -76,15 +76,16 @@ exports.postIndex = async (req, res, next) => {
     // console.log(nameCompany)
     console.log(nameJobType)
 
+
+    
     let data = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location', 'description').where('description', 'ilike', `%${skill}%`);
     let dataLimit10 = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location', 'description').where('description', 'ilike', `%${skill}%`).orderBy('status', 'desc').limit(10);
     let location = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location').where('location', 'ilike', `%${nameLocation}%`);
-    let locationLimit10 = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location').where('location', 'ilike', `%${nameLocation}%`).orderBy('status', 'desc').limit(10);;
+    let locationLimit10 = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location').where('location', 'ilike', `%${nameLocation}%`).orderBy('status', 'desc').limit(10);
     let company = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location').where('company', 'ilike', `%${nameCompany}%`);
-    let companyLimit10 = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location').where('company', 'ilike', `%${nameCompany}%`).orderBy('status', 'desc').limit(10);;
+    let companyLimit10 = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location').where('company', 'ilike', `%${nameCompany}%`).orderBy('status', 'desc').limit(10);
     let jobType = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location').where('job_type', 'ilike', `%${nameJobType}%`);
-    let jobTypeLimit10 = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location').where('job_type', 'ilike', `%${nameJobType}%`).orderBy('status', 'desc').limit(10);;
-
+    let jobTypeLimit10 = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location').where('job_type', 'ilike', `%${nameJobType}%`).orderBy('status', 'desc').limit(10);
 
      if (data.length > 0) {
         // let query = await knex('jobs').select();
