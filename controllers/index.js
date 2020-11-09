@@ -20,35 +20,36 @@ const knex = require('knex')({
 //     next();
 // }
 
-//routes
 
+//routes
 exports.getIndex = async (req, res, next) => {
 
-    let showjobs = await knex('jobs').orderBy('status', 'desc').limit(10)
+    let cur_page;
 
-    // let showskills = await knex('jobs').join('jobs_skilltag', 'jobs.id', 'jobs_skilltag.jobs_id').select('jobs.id', 'jobs_skilltag.jobs_id', 'jobs_skilltag.skilltag_id'); 
-    
-    let showskills = await knex('skilltag')
-    .join('jobs_skilltag', 'skilltag.id', 'jobs_skilltag.skilltag_id')
-    .select('skilltag.skilltag_name', 'jobs_skilltag.jobs_id', 'jobs_skilltag.skilltag_id')
-    .where({jobs_id: '1'})
-
-    // console.log(showskills, 'MOTHERFUCKERS')
-
-    let justskilltags = [];
-
-    for(let i=0; i<showskills.length; i++){
-        justskilltags.push(showskills[i].skilltag_name)
+    if (req.params.page) {
+        cur_page = req.params.page;
+    } else {
+        cur_page = 1;
     }
 
-    // console.log(justskilltags, `WEEEEEEEEEEEEE`)
+    let query = await knex('jobs').select();
 
-    
+    let queryLength = query.length
+
+    let totalPage = await knex('jobs').orderBy('status', 'desc').limit(10);
+
+    let totalPageLength = totalPage.length;
+
+    let noOfPage = Math.ceil(queryLength / totalPageLength)
+
     res.render('index', {
         pageTitle: 'Index Page',
-        jobsInfoArr: showjobs
+        path: '/',
+        jobsInfoArr: totalPage,
+        noOfPage: noOfPage,
+        cur_page: cur_page,
+    });
 
-    })
 }
 
 exports.postIndex = async (req, res, next) => {
