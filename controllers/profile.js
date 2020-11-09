@@ -4,7 +4,12 @@ const knex = require('../models/knex');
 
 exports.getProfile = async (req, res, next) => {
     let username = req.user.username
-
+    let user_role;
+    if (req.user.status === 'employee') {
+        user_role = 1;
+    } else {
+        user_role = 2;
+    }
 
     //query for getting employee's skilltag and render them out for ejs
     let getSkilltag = await knex('employee_skilltag')
@@ -16,7 +21,8 @@ exports.getProfile = async (req, res, next) => {
         pageTitle: 'Dashboard > Employees',
         pageHeader: 'Edit your skills',
         skilltags: getSkilltag,
-        username: username
+        username: username,
+        user_role: user_role
     });
 }
 

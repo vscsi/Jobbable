@@ -15,35 +15,7 @@ const knex = require('knex')({
 function initialize(passport) {
     //req param is passed from passReqtoCallback in strategy config
     const authenticateUser = async(username, password, done) => {
-        /** 
-        // console.log(username)
-        let employersQuery = await knex.select('password', 'id', 'status', 'username').from('employers').where('username', `${username}`);
-        let employeesQuery = await knex.select('password', 'id', 'status', 'username').from('employees').where('username', `${username}`);
 
-        // console.log(`This is employersQuery ${employersQuery}`)
-        // console.log(`This is employeesQuery ${employeesQuery}`)
-        // console.log(`${req} ${req.body.id} ${req.body.rows} ${req.body.status} this is user status`)
-        // console.log(typeof employersQuery)
-        let user;
-        employersQuery == '' ? user = employeesQuery[0] : user = employersQuery[0];
-        console.log(`This is user status: ${user.status}`)
-        console.log(`This is user username: ${user.username}`)
-        console.log(`This is user id: ${user.id}`)
-
-
-        bcrypt.compare(password, user.password, (err, isMatch) => {
-            if (err) {
-                throw err;
-            }
-            if (isMatch) {
-                console.log(`${user.password} >>>>>${user.username} ${user.status} Authenticated`)
-                return done(null, user)
-            } else {
-                console.log(`${user.password} ${user.username} ${user.status} not auth`)
-                return done(null, false, { message: "Password is not correct" })
-            }
-        })
-*/
         try {
             let employersQuery = await knex.select('password', 'id', 'status', 'username').from('employers').where('username', `${username}`);
             let employeesQuery = await knex.select('password', 'id', 'status', 'username').from('employees').where('username', `${username}`);

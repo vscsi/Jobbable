@@ -11,15 +11,17 @@ const knex = require('knex')({
     }
 });
 
-const user_role = 1;
 const page_limit = 10;
 
 
 //routes
-exports.getDashboard = async (req, res, next) => {
+exports.getDashboard = async(req, res, next) => {
     let username = req.user.username
-
-
+    if (req.user.status === 'employee') {
+        user_role = 1;
+    } else {
+        user_role = 2;
+    }
     // let query = knex.select('jobs_skilltag'); 
     // let ;
 
@@ -62,8 +64,8 @@ exports.getDashboard = async (req, res, next) => {
 
 
             let no_of_page = Math.ceil(total_rows_count / page_limit)
-            // console.log(results.rows[0].company);
-            // console.log(results.rows);
+                // console.log(results.rows[0].company);
+                // console.log(results.rows);
             res.render('users/user-dashboard', {
                 pageTitle: 'Dashboard > Employers',
                 pageHeader: 'Talents Pool',
@@ -72,7 +74,8 @@ exports.getDashboard = async (req, res, next) => {
                 companies: results.rows,
                 no_of_page: no_of_page,
                 cur_page: cur_page,
-                username: username
+                username: username,
+                user_role: user_role
 
                 // console.log(results.rows[0].company);
             })
@@ -94,7 +97,7 @@ exports.getDashboard = async (req, res, next) => {
             }
 
             let no_of_page = Math.ceil(total_rows_count / page_limit)
-            // console.log(results.rows[0].company);
+                // console.log(results.rows[0].company);
             console.log(results.rows);
             res.render('users/user-dashboard', {
 
@@ -104,8 +107,9 @@ exports.getDashboard = async (req, res, next) => {
                 //companies: 'test'
                 companies: results.rows,
                 no_of_page: no_of_page,
-                cur_page: cur_page
-
+                cur_page: cur_page,
+                username: username,
+                user_role: user_role
             });
         });
     }

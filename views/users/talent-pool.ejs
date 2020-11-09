@@ -1,0 +1,53 @@
+<%- include('./../includes/portal-head.ejs') %>
+    <link rel="stylesheet" href="/css/user-dashboard.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="nav_icon" onclick="toggleSidebar()">
+                <i class="fa fa-bars"></i>
+            </div>
+            <div class="navbar__left">
+            </div>
+            <div class="navbar__right">
+            </div>
+        </nav>
+
+        <main>
+            <div class="main__container">
+                <div class="main__title">
+                    <img src="/images/hello.svg">
+                    <div class="main__greeting">
+                        <h1>Hello</h1>
+                        <p>Talent Pool</p>
+                    </div>
+                </div>
+
+                <div class="charts">
+                    <h1><%= pageHeader%></h1>
+
+                    <div class="charts__left">
+                        <div class="charts__left__title">
+                            <div>
+                                <p>Name of talent applied:</p>
+                                <p>Skills:</p>
+                                <p>Application Time:</p>
+                            </div>
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <%- include('../includes/portal_nav.ejs') %>
+        
+
+    </div>
+    
+</body>
+
+</html>
+
+<script src="/js/user-dashboard.js"></script>
