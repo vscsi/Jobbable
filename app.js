@@ -19,6 +19,7 @@ const usersRoutes = require('./routes/users');
 const registerRoutes = require('./routes/register');
 const loginRoutes = require('./routes/login');
 const dashboardRoutes = require('./routes/dashboard');
+const talentPoolRoutes = require('./routes/talent-pool')
 const applyHistoryRoutes = require('./routes/apply_history');
 const profileRoutes = require('./routes/profile')
 
@@ -58,6 +59,7 @@ app.use(registerRoutes);
 app.use(loginRoutes);
 app.use(dashboardRoutes);
 app.use(applyHistoryRoutes);
+app.use(talentPoolRoutes);
 app.use(profileRoutes);
 
 app.use(errorController.get404);

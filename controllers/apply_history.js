@@ -9,7 +9,7 @@ const knex = require('knex')({
     }
 });
 
-const user_role = 2;
+const user_role = 1;
 const page_limit = 10;
 
 
@@ -50,7 +50,8 @@ exports.getApplyHistory = async(req, res, next) => {
                     pageHeader: 'Applied History',
                     path: '/',
                     //companies: 'test'
-                    companies: results.rows
+                    companies: results.rows,
+                    user_role:user_role
                 });
             });
     
