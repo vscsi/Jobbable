@@ -1,5 +1,5 @@
 <%- include('./../includes/portal-head.ejs') %>
-    <link rel="stylesheet" href="/css/user-dashboard.css">
+<link rel="stylesheet" href="/css/user-dashboard.css">
 </head>
 
 <body>
@@ -27,25 +27,40 @@
                 <div class="charts">
                     <h1><%= pageHeader%></h1>
 
+
+                    <% if(applyHistory.length > 0) { %>
+                    <% for(let data of applyHistory) { %>
+
                     <div class="charts__left">
                         <div class="charts__left__title">
                             <div>
-                                <p>Name of talent applied:</p>
-                                <p>Skills:</p>
-                                <p>Application Time:</p>
+                                <p>Jobs applied: <%= data.jobs %> </p>
+                                <p>Name of talent applied: <%= data.firstname %> <%= data.lastname %> </p>
+                                <%if(data.skills.length > 0 ) { %>
+                                <p>Skills: <%= data.skills %> </p>
+                                <% } else { %>
+                                <p>Skills: -</p>
+                                <% } %>
                             </div>
                             <i class="fas fa-user-friends"></i>
                         </div>
                     </div>
+                    <% } %>
+                    <% } else { %>
+                    <h1> No one has applied yet! </h1>
+                    <% } %>
+
+
+
                 </div>
             </div>
         </main>
 
         <%- include('../includes/portal_nav.ejs') %>
-        
+
 
     </div>
-    
+
 </body>
 
 </html>
