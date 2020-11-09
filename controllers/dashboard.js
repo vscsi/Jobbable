@@ -98,7 +98,7 @@ exports.getDashboard = async(req, res, next) => {
 
             let no_of_page = Math.ceil(total_rows_count / page_limit)
                 // console.log(results.rows[0].company);
-            console.log(results.rows);
+            // console.log(results.rows);
             res.render('users/user-dashboard', {
 
                 pageTitle: 'Dashboard > Employees',
