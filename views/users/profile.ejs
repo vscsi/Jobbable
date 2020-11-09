@@ -19,7 +19,7 @@
                 <div class="main__title">
                     <img src="/images/hello.svg">
                     <div class="main__greeting">
-                        <h1>Hello</h1>
+                        <h1>Hello <%= username %></h1>
                         <p>Profile page</p>
                     </div>
                 </div>
@@ -80,7 +80,10 @@
                         <% for(let st of skilltags) { %>
                             <div>
                                 <span><%= st.skilltag_name %></span>
-                                <%- include('../includes/delete-skill.ejs') %>
+                                <form action="/profile" menthod="post">
+                                    <button class="btn" type="submit">Delete</button>
+                                    <input type="hidden" name="delete" value="<%= st."></input>
+                                </form>
                             </div>
                         <% } %>
                     <% } else { %>

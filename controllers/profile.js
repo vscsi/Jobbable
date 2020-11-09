@@ -3,6 +3,7 @@ const knex = require('../models/knex');
 
 
 exports.getProfile = async (req, res, next) => {
+    let username = req.user.username
 
 
     //query for getting employee's skilltag and render them out for ejs
@@ -11,12 +12,11 @@ exports.getProfile = async (req, res, next) => {
     .select('employee_skilltag.employees_id', 'employee_skilltag.skilltag_id', 'skilltag.skilltag_name')
     .where('employees_id', `${req.user.id}`);
     
-    console.log(getSkilltag, 'FUCKYOU')
-
     res.render('users/profile', {
         pageTitle: 'Dashboard > Employees',
         pageHeader: 'Edit your skills',
-        skilltags: getSkilltag
+        skilltags: getSkilltag,
+        username: username
     });
 }
 
