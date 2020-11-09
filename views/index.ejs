@@ -70,7 +70,7 @@
                 <div class="company-details">
                     <div class="job-update">
 
-                        <h4><img src=<%= jobs.company_logo %> alt="../public/images/photo-not-available"><b><%= jobs.title %></b></h4>
+                        <h4><img src=<%= jobs.company_logo %> alt="./images/photo-not-available"><b><%= jobs.title %></b></h4>
                         <p>Company: <%= jobs.company%></p>
 
                         <p>Skills
@@ -96,12 +96,11 @@
                             Location: <%= jobs.location %> 
                         </p>
                         <!-- on clicking show more , display description -->
-                        <p id="Description" >Description: <%= jobs.description %></p>
-
+                            <p class="description" style="display:none;">Description: <%= jobs.description %></p>
                     </div>
                     <div class="apply-btn">
-                        <button type="button" class="btn btn-primary" id="showMore">Show more</button>
-                        <button type="button" class="btn btn-primary" id="Apply">Apply</button>
+                        <button type="button" class="btn btn-primary showMoreClass">Show more</button>
+                    <button type="button" class="btn btn-primary"> <a href="<%= jobs.status ==='true'? `#`:jobs.url %>" target = "_blank"> Apply</a></button>
                     </div>
                 </div>
                 <% } %>
@@ -134,6 +133,8 @@
                 </ul>
             </div>
         </section>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
+        integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
+        crossorigin="anonymous"></script>
         <script src="/js/main.js"></script>
         <%- include('./includes/end.ejs') %>

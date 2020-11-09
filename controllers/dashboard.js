@@ -17,6 +17,7 @@ const page_limit = 10;
 exports.getDashboard = async(req, res, next) => {
     // let query = knex.select('jobs_skilltag'); 
     // let ;
+    console.log(req.user.email, req.user)
     let cur_page;
     
     if (req.params.page){

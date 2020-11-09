@@ -67,10 +67,10 @@ exports.postIndex = async (req, res, next) => {
     // console.log(nameCompany)
     console.log(nameJobType)
 
-    let data = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location', 'description').where('description', 'ilike', `%${skill}%`);
-    let location = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location').where('location', 'ilike', `%${nameLocation}%`);
-    let company = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location').where('company', 'ilike', `%${nameCompany}%`);
-    let jobType = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location').where('job_type', 'ilike', `%${nameJobType}%`);
+    let data = await knex.from('jobs').select('*').where('description', 'ilike', `%${skill}%`);
+    let location = await knex.from('jobs').select('*').where('location', 'ilike', `%${nameLocation}%`);
+    let company = await knex.from('jobs').select('*').where('company', 'ilike', `%${nameCompany}%`);
+    let jobType = await knex.from('jobs').select('*').where('job_type', 'ilike', `%${nameJobType}%`);
     // console.log(data.description, 'fuckrs');
 
      if (data.length > 0) {
