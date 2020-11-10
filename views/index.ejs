@@ -1,4 +1,5 @@
 <%- include('./includes/head.ejs') %>
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <link rel="stylesheet" href="/css/main.css">
 
 <body>
@@ -9,7 +10,7 @@
     <section id="header">
         <div class="menu-bar">
             <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-                <a class="navbar-brand" href="#">JOBBABLE</a>
+                <a class="navbar-brand ml-5" href="#">JOBBABLE</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -17,29 +18,33 @@
                 </button>
 
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login"><img class="nav-img"
-                                    src="/images/icons/sign-in-alt-solid.svg"> LOGIN</a>
-                        </li>
+                    <ul class="navbar-nav ml-auto mr-5">
+                        <%if (user!==undefined) {%>
+                            <button class="btn btn-warning importantBtn" id="registerBtn">
+                                <a href="/dashboard" class="text-white">
+                                   GO BACK TO DASHBOARD</a>
+                                </button>  
+                                <%}else {%>
+                                    <li class="nav-item">
+                                    <a class="nav-link" href="/login"><img class="nav-img" src="/images/icons/sign-in-alt-solid.svg"> LOGIN</a>
+                                </li>
+                                <button class="btn btn-warning importantBtn" id="registerBtn">
+                                    <a href="/register" class="text-white"><img class="nav-img" src="/images/icons/key-solid.svg">
+                                        REGISTER</a>
+                                    </button>
+                                <%} %>
+                                
                     </ul>
-
-                    <button class="btn btn-warning importantBtn" id="registerBtn">
-                        <a href="/register" class="text-white"><img class="nav-img" src="/images/icons/key-solid.svg">
-                            REGISTER</a>
-                    </button>
-                    <button class="btn btn-warning importantBtn">
-                        <a href="#" class="text-white">POST A JOB</a>
-                    </button>
                 </div>
             </nav>
         </div>
 
-        <div class="banner text-center">
+        <div class="banner text-center words">
             <h1>Your dream jobs are within reach!</h1>
             <p>Explore jobs in your area</p>
         </div>
     </section>
+    <section id="landingForm">
     <form action="/" method="POST">
         <div class="form-group search-job text-center">
             <input name="skill" type="text" class="form-control" placeholder="Search Skills">
@@ -48,17 +53,24 @@
             <input type="submit" class="btn btn-primary" value="Search">
         </div>
     </form>
+</section>
     <!-- top recruiters -->
     <section id="recruiters">
         <div class="container">
             <div class="text-center">
-                <h2>You can post or apply for jobs here.</h2>
-                <h3>MATCH RECRUITERS LIKE THEM:</h3>
+                <h2>Who are we:</h2>
+                <h3>Jobbable is a website for you to freely post or apply for jobs. 
+                    Register now to match recruiters like them:</h3>
                 <div>
-                    <img src="/images/logo/dell.jpg" id="img1">
-                    <img src="/images/logo/netflix.svg" id="img2">
-                    <img src="/images/logo/oracle.svg" id="img3">
-                    <img src="/images/logo/cisco.svg" id="img4">
+                    <img src="/images/logo/dell.jpg">
+                    <img src="/images/logo/netflix.svg">
+                    <img src="/images/logo/oracle.svg">
+                    <img src="/images/logo/cisco.svg">
+                    <img src="/images/logo/Reddit-512.png">
+                    <img src="/images/logo/xccelerate_logo.png">
+                    <img src="/images/logo/facebook.png">
+                    <img src="/images/logo/google.png">
+                    <img src="/images/logo/twitter.png" alt="">
                 </div>
             </div>
         </div>
@@ -67,19 +79,22 @@
     <!-- recent jobs -->
     <section id="jobs">
         <div class="container">
-            <h5>RECENT UPDATES</h5>
+            <h5>RECENT JOB UPDATES</h5>
             <% if(jobsInfoArr.length >0) { %>
             <% for (let jobs of jobsInfoArr){ %>
-            <div class="company-details">
+            <div class="company-details" data-aos="fade-right">
                 <div class="job-update">
-
-
-                    <h4><img src=<%= jobs.company_logo %> alt="./images/photo-not-available"><b><%= jobs.title %></b>
+                    <h4>
+                        <% if(jobs.company_logo == undefined) {%>
+                            <img src="./images/not-available.jpg"><b><%= jobs.title %></b>
+                            <%}else {%>
+                            <img src=<%= jobs.company_logo %>><b><%= jobs.title %></b>
+                            <%} %>
                     </h4>
-                    <p>Company: <%= jobs.company%></p>
+                    <p><strong>Company : </strong> <%= jobs.company%></p>
 
 
-                    <p>Skills
+                    <p><strong>Skills :</strong>
                         <button class="skillTags">Java</button>
                         <button class="skillTags">Python</button>
                         <button class="skillTags">HTML</button>
@@ -93,19 +108,17 @@
                         </button>
                     </p>
                     <p>
-                        <img class="calendarLogo" src='' alt=""> 3 days
+                        <img class="calendarLogo" src='./images/icons/calendar-alt-solid.svg' alt=""> <%= jobs.created_at %>
                     </p>
                     <p>
-                        Job type: <%= jobs.job_type %>
+                        <strong>Job type : </strong><%= jobs.job_type %>
                     </p>
                     <p>
-                        Location: <%= jobs.location %>
+                        <strong>Location :</strong><%= jobs.location %>
                     </p>
 
-                    <p class="description" style="display:none;">Description: <%= jobs.description %></p>
                 </div>
                 <div class="apply-btn">
-                    <button type="button" class="btn btn-primary showMoreClass">Show more</button>
                     <%if (user!==undefined) {%>
                     <form action="/apply/loggedin" method="POST">
                         <input type="hidden" name="applyButton" value="<%= jobs.id %>"></input>
@@ -122,6 +135,7 @@
             <% } else { %>
             <h1>No jobs found!</h1>
             <% } %>
+            </div>
     </section>
 
     <section id="footer" class="text-center">
@@ -141,4 +155,9 @@
         integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
         crossorigin="anonymous"></script>
     <script src="/js/main.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
     <%- include('./includes/end.ejs') %>
+
