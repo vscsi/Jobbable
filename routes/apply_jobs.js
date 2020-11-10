@@ -18,8 +18,8 @@ router.post('/apply/loggedin', applyController.postApplyLoggedIn);
 router.get('/apply_jobs', applyController.getApplyJobs);
 
 
-router.post('/apply_jobs/loggedin', applyController.postCheckApply)
-router.post('/apply_jobs/loggedin', applyController.postApplyNotify);
+router.post('/apply_jobs', applyController.postCheckApply)
+router.post('/apply_jobs', applyController.postApplyNotify);
 
 
 
