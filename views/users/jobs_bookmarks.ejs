@@ -22,8 +22,8 @@
                         <p>Jobs Bookmark</p>
                     </div>
                 </div>
-                <%if(jobQueries.length>0){%>
                 <div class="charts">
+                    <%if(jobQueries.length>0){%>
                     <%for (let jobQuery of jobQueries){ %>
                     <div class="charts__left">
                         <p>Company:<%=jobQuery.company%></p>
@@ -33,8 +33,12 @@
                         <p>Job types:<%=jobQuery.job_type%></p>
                         <p>Description:<%=jobQuery.description%></p>
                     </div>
+                    <form action="/delete-bookmark" method="POST">
+                        <input name="jobid" type="hidden" value="<%= jobQuery.id %>" >
+                        <button  type="submit">Delete</button>
+                    </form>
                     <%}%>
-                    </div>
+                </div>
                     <%} else {%>
                     <h1> No jobs saved, bookmark a job!</h1>
                     <% } %>

@@ -1,7 +1,9 @@
+
+// passportCOnfig js
 const LocalStrategy = require('passport-local').Strategy;
 const { pool } = require('../models/database')
 const bcrypt = require('bcrypt');
-
+ 
 const knex = require('knex')({
     client: 'postgresql',
     connection: {
@@ -10,16 +12,16 @@ const knex = require('knex')({
         password: "postgres"
     }
 });
-
+ 
 //initialize a local strategy
 function initialize(passport) {
     //req param is passed from passReqtoCallback in strategy config
     const authenticateUser = async(username, password, done) => {
-
+ 
         try {
             let employersQuery = await knex.select('password', 'id', 'status', 'username').from('employers').where('username', `${username}`);
             let employeesQuery = await knex.select('password', 'id', 'status', 'username').from('employees').where('username', `${username}`);
-
+ 
             // console.log(`This is employersQuery ${employersQuery}`)
             // console.log(`This is employeesQuery ${employeesQuery}`)
             // console.log(`${req} ${req.body.id} ${req.body.rows} ${req.body.status} this is user status`)
@@ -33,7 +35,7 @@ function initialize(passport) {
             console.log(`This is user status: ${user.status}`)
             console.log(`This is user username: ${user.username}`)
             console.log(`This is user id: ${user.id}`)
-
+ 
             bcrypt.compare(password, user.password, (err, isMatch) => {
                 if (err) {
                     throw err;
@@ -46,14 +48,14 @@ function initialize(passport) {
                     return done(null, false, { messages: "Password is not correct" })
                 }
             })
-
+ 
         } catch(err) {
             return done(err);
         }
-
+ 
     }
-
-
+ 
+ 
     passport.use(
         new LocalStrategy({
                 //change the default authentication units: username and password to other parameters
@@ -64,10 +66,10 @@ function initialize(passport) {
             authenticateUser
         )
     )
-
+ 
     passport.serializeUser((user, done) =>
         done(null, user.username));
-
+ 
     passport.deserializeUser(async(username, done) => {
         let employeesIdQuery = await knex.select('*').from('employees').where('username', `${username}`);
         let employersIdQuery = await knex.select('*').from('employers').where('username', `${username}`);
@@ -77,12 +79,12 @@ function initialize(passport) {
         
         if (employeesIdQuery == '') {
             return done(null, employersIdQuery[0])
-
+ 
         } else {
             return done(null, employeesIdQuery[0])
         }
     })
-
+ 
 }
-
+ 
 module.exports = initialize

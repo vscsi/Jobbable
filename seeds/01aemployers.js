@@ -10,7 +10,6 @@ exports.seed = function (knex) {
     .then(function(){
       // Inserts seed entries
       return knex('employers').insert([{
-          id: 1,
           status: 'employer',
           first_name: 'Giordano',
           last_name: 'Miriam',
@@ -22,7 +21,6 @@ exports.seed = function (knex) {
           username: 'gm1234'
         },
         {
-          id: 2,
           status: 'employer',
           first_name: 'Anne',
           last_name: 'Daran',
