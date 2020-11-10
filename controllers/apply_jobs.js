@@ -66,6 +66,10 @@ exports.postCheckApply = async (req, res, next) => {
 
 exports.postApplyNotify = async (req, res, next) => {
 
+  let {
+    jobsid
+  } = req.body
+
   await knex('apply_history')
     .insert({
       jobs_id: `${jobsid}`,

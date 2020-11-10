@@ -1,6 +1,9 @@
 exports.seed = function (knex) {
   return knex('employers_job_listings').del()
     .then(() => {
+      return knex('jobs_skilltag').del()
+    })
+    .then(() => {
       return knex('apply_history').del()
     })
     .then(() => {
