@@ -25,6 +25,7 @@ const profileRoutes = require('./routes/profile');
 const jobPostRoutes = require('./routes/job-posting');
 const jobHistRoutes = require('./routes/job-posting-history');
 const applyJobsRoutes = require('./routes/apply_jobs');
+const jobsBookmarkRoutes = require('./routes/jobs_bookmark');
 
 // set up app
 const app = express();
@@ -67,6 +68,7 @@ app.use(profileRoutes);
 app.use(jobPostRoutes);
 app.use(jobHistRoutes);
 app.use(applyJobsRoutes);
+app.use(jobsBookmarkRoutes);
 
 app.use(errorController.get404);
 
