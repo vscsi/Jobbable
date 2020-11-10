@@ -16,10 +16,10 @@ const knex = require('../models/knex');
 
 
 //routes
-exports.getApplyHistory = async(req, res, next) => {
+exports.getJobsBookmark = async(req, res, next) => {
 
-    let query = await knex.from('apply_history').select().where('employees_id', `${req.user.id}`);
-    console.log(query, `testapplyhistory`)
+    let query = await knex.from('jobs_bookmarks').select().where('employees_id', `${req.user.id}`);
+    console.log(query, `testjobsbookmark`)
 
     let jobsId = [];
 
@@ -71,9 +71,9 @@ exports.getApplyHistory = async(req, res, next) => {
     //             }
                 // console.log(results.rows[0].company);
                 // console.log(results.rows);
-                res.render('users/applied-history', {
-                    pageTitle: 'Applied History',
-                    pageHeader: 'Applied History',
+                res.render('users/jobs_bookmarks', {
+                    pageTitle: 'Jobs Bookmark',
+                    pageHeader: 'Jobs Bookmark',
                     path: '/',
                     //companies: 'test'
                     // companies: results.rows,

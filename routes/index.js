@@ -6,7 +6,7 @@ const express = require('express');
 const router = express.Router();
 
 const indexController = require('../controllers/index');
-const { getDashboard } = require('../controllers/dashboard');
+// const { getDashboard } = require('../controllers/dashboard');
 
 
 

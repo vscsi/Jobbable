@@ -1,18 +1,20 @@
 <%- include('../includes/head.ejs') %>
-    <link rel="stylesheet" href="/css/register.css">
-    </head>
+<link rel="stylesheet" href="/css/register.css">
+</head>
 
 
-    <div class="wrapper">
-        <div class="title">
-            Apply jobs
-        </div>
-
-        <form class="form" action="/apply_jobs" method="POST">
-            <div class="inputfield">
-                <input name="apply" type="submit" value="Notify your employer so that your talent can be discovered sooner!" class="btn">
-            </div>
+<div class="wrapper">
+    <div class="title">
+        Apply jobs
     </div>
+
+    <form class="form" action="/apply_jobs" method="POST">
+        <div class="inputfield">
+            <input name="jobsid" type="submit" value="<%= jobsId %>"
+                class="btn">
+        </div>
+        <h1> <%= jobsId %></h1>
     </form>
-    <%- include('../includes/end.ejs') %>
-        <script src="/js/register.js"></script>
+</div>
+<%- include('../includes/end.ejs') %>
+<script src="/js/register.js"></script>
