@@ -45,7 +45,8 @@
         
         .banner {
             height: 80vh;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/images/banner-1.jpg);
+            background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/images/banner-1.jpg);
+            clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
             background-size: cover;
             background-position: center;
             color: #fff;
@@ -58,7 +59,10 @@
             letter-spacing: 6px;
             font-weight: 600;
             text-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+                /* border-bottom: 3px solid white;
+                outline:3px solid white;    */
         }
+
         
         .search-job {
             padding: 30px 0;
@@ -69,7 +73,7 @@
         .search-job .form-control, body > div > select {
             max-width: 250px;
             display: inline-flex;
-            margin: 10px 5px;
+            margin: 100px 5px;
             border-radius: 0;
             box-shadow: none !important;
             border: none !important;
@@ -100,6 +104,13 @@
             overflow-y: scroll;
             background: #fff;
         }
+
+        /* landing form section */
+        #landingForm{
+            background-color: #37373F;
+
+        }
+
         /* top recruiters */
         
         #recruiters {
@@ -107,14 +118,15 @@
             padding-bottom: 100px;
         }
         
-        #recruiters h3 {
+        #recruiters h2 {
             text-align: center;
             padding-top:40px;
             padding-bottom: 40px;
         }
+
         /* adding leaf shape  */
         
-        #recruiters h3::before {
+        #recruiters h2::before {
             content: '';
             background-color: #a2d6f9;
             width: 50px;
@@ -151,9 +163,8 @@
         
         .job-update {
             background: #fff;
-            padding: 20px 50px;
+            padding: 10px 20px;
             border-radius: 5px;
-
         }
         
         .job-update .fas {
@@ -255,5 +266,38 @@
             cursor: pointer;
         }
 
-        /* Description */
-      
+        /* pageing css */
+
+        .page-link {
+            margin: 5px;
+        }
+        .page-link li {
+            height: 25px;
+            width: 25px;
+            list-style: none;
+            display: inline-block;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+
+        .page-link li a {
+            text-decoration: none;
+        }
+
+        .page-link li:hover,
+        .active {
+            color: #fff !important;
+            background-color: #44494C;
+        }
+
+        .left-arrow, .left-arrow a:visited {
+            color: #999;
+        }
+
+        .right-arrow, .right-arrow a:visited {
+            color: #29b929;
+        }
+
+        .text-center {
+            text-align: center;
+        } 

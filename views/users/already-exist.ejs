@@ -1,0 +1,19 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/register.css">
+</head>
+
+
+<div class="wrapper">
+    <div class="title">
+        Apply jobs
+    </div>
+
+    <form class="form" action="/apply_jobs" method="POST">
+        <div class="inputfield">
+            <button><a href="/">Go back to jobbable</a></button>
+        </div>
+        <h1> <%= message %>  </h1>
+    </form>
+</div>
+<%- include('../includes/end.ejs') %>
+<script src="/js/register.js"></script>

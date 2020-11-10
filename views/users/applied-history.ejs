@@ -18,38 +18,27 @@
                 <div class="main__title">
                     <img src="/images/hello.svg">
                     <div class="main__greeting">
-                        <h1>Hello</h1>
+                        <h1>Hello </h1>
                         <p>Apply History</p>
                     </div>
                 </div>
-
-                <div class="charts">
-                    <h1><%= pageHeader%></h1>
-
-                    <% for (let company of companies){ %>  
-                    <div class="charts__left">
-                        <div class="charts__left__title">
-                            <div>
-                                <h1><%= company.title%></h1>
-                                <p>Company: <%= company.company%></p>
-                                <p>Location: <%= company.location%></p>
-                                <p>Skills:</p>
-                            </div>
-                            <i class="fas fa-user-friends"></i>
+                <%if(jobQueries.length>0){%>
+                    <div class="charts">
+                        <%for (let jobQuery of jobQueries){ %>
+                        <div class="charts__left">
+                            <p>Company:<%=jobQuery.company%></p>
+                            <p>Title:<%=jobQuery.title%></p>
+                            <p>Location:<%=jobQuery.location%></p>
+                            <p>Company url:<%=jobQuery.url%></p>
+                            <p>Job types:<%=jobQuery.job_type%></p>
+                            <p>Description:<%=jobQuery.description%></p>
                         </div>
+                        <%}%>
                     </div>
-                    <% } %>
-                </div>
+                    <%} else {%>
+                        <h1> No jobs apply history!</h1>
+                        <% } %>
             </div>
-            <ul class="page-link text-center">
-                <li class="left-arrow"><a href="">&#8592;</a></li>
-                <li class="active"><a href="/dashboard/1">1</a></li>
-                <li><a href="/dashboard/2">2</a></li>
-                <li><a href="">3</a></li>
-                <li><a href="">4</a></li>
-                <li><a href="">5</a></li>
-                <li class="right-arrow"><a href=""> &#8594;</a></li>
-            </ul>
         </main>
 
         <%- include('./../includes/portal_nav-employees.ejs') %>
