@@ -24,9 +24,7 @@ exports.getTalentPool = async (req, res, next) => {
 
 
     //let's say we know now that the this employers has two jobs, 1 and 2
-
     // select * from apply_history where jobs_id=1 or jobs_id=2;
-
     //as we dunno if the employers have posted one or more jobs we can't query in one go, we need to for loop the number
 
     let queryApplyHistory;
@@ -48,7 +46,6 @@ exports.getTalentPool = async (req, res, next) => {
 
     console.log(whoApplied, `WHO THE APPLIED`)
 
-    // console.log(whoApplied[1].jobs_id, `who applied [1] jobs id`)
 
     let theJobs, theFirstNames, theLastNames, theSkills;
 
@@ -87,14 +84,6 @@ exports.getTalentPool = async (req, res, next) => {
 
     }
 
-    // console.log(theJobsArr, `THE JOBS`)
-    // console.log(theFirstNamesArr, `THE FIRST NAMES`)
-    // console.log(theLastNamesArr, `THE LAST NAMES`)
-    // console.log(theSkillsArr, `THE SKILLS`)
-    // console.log(theJobsArr[0].title, `fuckyouuuuuuuu`)
-
-    console.log(theSkillsArr)
-
     let applyhistoryArr = []
     let applyhistoryObj = {jobs:'', firstname:'', lastname:'', skills: []}
 
@@ -110,9 +99,6 @@ exports.getTalentPool = async (req, res, next) => {
         applyhistoryObj = {jobs:'', firstname:'', lastname:'', skills: []}
 
     }
-
-    console.log(applyhistoryArr, `DLLM`)
-
 
     res.render('users/talent-pool', {
         pageTitle: 'Talent Pool',

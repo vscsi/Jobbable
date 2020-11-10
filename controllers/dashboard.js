@@ -56,7 +56,7 @@ exports.getDashboard = async(req, res, next) => {
 
         await pool.query(`
             select company,title,location,created_at,company_logo,status,job_type, id
-            from jobs order by title asc
+            from jobs order by status desc
             limit ` + page_limit + ` offset ` + offset, (err, results) => {
             if (err) {
                 console.log(err)
@@ -90,7 +90,7 @@ exports.getDashboard = async(req, res, next) => {
         })
 
         pool.query(`select company,title,location,created_at,company_logo,status,job_type, id
-            from jobs order by title asc
+            from jobs order by status desc
             limit ` + page_limit + ` offset ` + offset, (err, results) => {
             if (err) {
                 console.log(err)
