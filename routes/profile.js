@@ -9,17 +9,11 @@ const router = express.Router();
 const profileController = require('../controllers/profile');
 
 
-
+//get profile
 router.get('/profile', profileController.getProfile)
-
-
 
 //delete skilltags
 router.post('/profile/delete', profileController.postDeleteSkills)
-
-
-
-
 
 //add skilltags
 router.post('/profile', profileController.postCheckSkills)

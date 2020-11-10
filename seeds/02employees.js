@@ -20,7 +20,7 @@ exports.seed = function (knex) {
         },
         {
           id: 2,
-          status: 'employeeq',
+          status: 'employee',
           first_name: 'Vlad',
           last_name: 'Gael',
           email: 'vladg@email.com',

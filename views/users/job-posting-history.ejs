@@ -36,6 +36,10 @@
                         <p>Company logo:<%=jobQuery.company_logo%></p>
                         <p>How do talents apply for jobs:<%=jobQuery.how_to_apply%></p>
                     </div>
+                    <form action="/er-delete-job" method="POST">
+                        <input name="jobid" type="hidden" value="<%= jobQuery.id %>" >
+                        <button  type="submit">Delete</button>
+                    </form>
                     <%}%>
                 </div>
                 <%} else {%>

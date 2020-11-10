@@ -3,7 +3,6 @@ const knex = require('../models/knex');
 
 //routes
 exports.getJobPost = async (req, res, next) => {
-  // console.log(req.user.username)
   res.render('users/job-posting', {
     pageTitle: 'Job posting'
   })
@@ -23,8 +22,6 @@ exports.postJobPost = async (req, res, next) => {
     } = req.body;
 
     let userId = req.user.id;
-    // // console.log(req.user.id)
-    // console.log(userId, 'This is user Id');
 
     let insertJobs = await knex('jobs').returning('id').insert({
       company: `${nameCompany}`,
@@ -38,7 +35,6 @@ exports.postJobPost = async (req, res, next) => {
       status: 'true'
     });
 
-    // console.log(insertJobs[0])
 
     console.log(insertJobs.id, 'This is id of Jobs')
 
@@ -71,8 +67,6 @@ exports.postJobPost = async (req, res, next) => {
     console.log(jobQueriesArr)
 
 
-    // console.log(query.employers_id, 'this is employers id');
-    // console.log(jobQuery.company, 'this is respective jobs');
 
     res.render('users/job-posting-history', {
       pageTitle: 'Job posting',
@@ -81,6 +75,3 @@ exports.postJobPost = async (req, res, next) => {
   }
 
 }
-
-// insert into jobs table , 
-//insert jobs id and employers id to employers job listings

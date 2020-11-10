@@ -1,7 +1,6 @@
 //==== Routers set up ====//
 
 //require modules
-const path = require('path');
 const express = require('express');
 const router = express.Router();
 
@@ -12,6 +11,7 @@ router.get('/admin_dashboard', adminDashboardController.getAdmin);
 router.get('/admin_delete_jobs', adminDashboardController.getAdminDeleteJobs);
 router.get('/admin_delete_roles', adminDashboardController.getAdminDeleteRoles);
 
+//post 
 router.post('/admin_dashboard', adminDashboardController.postAdmin);
 router.post('/admin_delete_jobs', adminDashboardController.postAdminDeleteJobs);
 router.post('/admin_delete_roles', adminDashboardController.postAdminDeleteRoles);

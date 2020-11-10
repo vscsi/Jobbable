@@ -106,8 +106,6 @@ exports.postRegister = async(req, res, next) => {
                                 if (err) {
                                     throw err
                                 }
-                                // console.log(results.rows.password);
-                                // req.flash('success_msg','You are now registered. Please log in.')
                                 res.redirect('/login');
                             }
                         )
@@ -147,8 +145,6 @@ exports.postRegister = async(req, res, next) => {
                                     console.log(`Hiii ${results}`)
                                     throw err
                                 }
-                                // console.log(results.rows.password);
-                                // req.flash('success_msg','You are now registered. Please log in.')
                                 res.redirect('/login');
                             }
                         )

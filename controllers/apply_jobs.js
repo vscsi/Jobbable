@@ -19,9 +19,6 @@ exports.postApplyLoggedIn = async (req, res, next) => {
 
 
 
-
-
-
 //routes
 exports.getApplyJobs = async (req, res, next) => {
   let {
@@ -36,7 +33,6 @@ exports.getApplyJobs = async (req, res, next) => {
   })
 
 }
-
 
 
 exports.postCheckApply = async (req, res, next) => {

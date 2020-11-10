@@ -2,14 +2,6 @@ const pg = require('pg');
 const {
     pool
 } = require('../models/database');
-const knex = require('knex')({
-    client: 'postgresql',
-    connection: {
-        database: "jobbable",
-        user: "postgres",
-        password: "postgres"
-    }
-});
 
 const page_limit = 10;
 
@@ -22,10 +14,6 @@ exports.getDashboard = async(req, res, next) => {
     } else {
         user_role = 2;
     }
-    // let query = knex.select('jobs_skilltag'); 
-    // let ;
-
-    // console.log(req.user.email, req.user)
 
     let cur_page;
 
@@ -64,20 +52,16 @@ exports.getDashboard = async(req, res, next) => {
 
 
             let no_of_page = Math.ceil(total_rows_count / page_limit)
-                // console.log(results.rows[0].company);
-                // console.log(results.rows);
             res.render('users/user-dashboard', {
                 pageTitle: 'Dashboard > Employers',
                 pageHeader: 'Talents Pool',
                 path: '/',
-                //companies: 'test'
                 companies: results.rows,
                 no_of_page: no_of_page,
                 cur_page: cur_page,
                 username: username,
                 user_role: user_role
 
-                // console.log(results.rows[0].company);
             })
         })
 
@@ -97,14 +81,11 @@ exports.getDashboard = async(req, res, next) => {
             }
 
             let no_of_page = Math.ceil(total_rows_count / page_limit)
-                // console.log(results.rows[0].company);
-            // console.log(results.rows);
             res.render('users/user-dashboard', {
 
                 pageTitle: 'Dashboard > Employees',
                 pageHeader: 'Jobs Bookmarks',
                 path: '/',
-                //companies: 'test'
                 companies: results.rows,
                 no_of_page: no_of_page,
                 cur_page: cur_page,

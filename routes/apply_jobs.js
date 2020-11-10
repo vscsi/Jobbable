@@ -1,7 +1,6 @@
 //==== Routers set up ====//
 
 //require modules
-const path = require('path');
 const express = require('express');
 const router = express.Router();
 
@@ -17,7 +16,7 @@ router.post('/apply/loggedin', applyController.postApplyLoggedIn);
 //get the router from correct path
 router.get('/apply_jobs', applyController.getApplyJobs);
 
-
+//post to apply history
 router.post('/apply_jobs', applyController.postCheckApply)
 router.post('/apply_jobs', applyController.postApplyNotify);
 
