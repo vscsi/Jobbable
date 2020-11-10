@@ -2,6 +2,7 @@ const knex = require('../models/knex');
 
 
 //routes
+
 exports.getJobHist = async (req, res, next) => {
     // console.log(req.user.id, 'this is user id')
     let query = await knex.from('employers_job_listings').select().where('employers_id', `${req.user.id}`);
