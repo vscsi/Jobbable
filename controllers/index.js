@@ -10,7 +10,7 @@ const knex = require('knex')({
         password: "postgres"
     }
 });
-
+ 
 //passport middleware
 // exports.checkIndexAuthenticated = (req, res, next) => {
 //     if (req.isAuthenticated()) {
@@ -19,11 +19,12 @@ const knex = require('knex')({
 //     // console.log(`${req} yoyoyo2`)
 //     next();
 // }
-
-
+ 
+ 
 //routes
 exports.getIndex = async (req, res, next) => {
     // if(req.user === undefined) {console.log(req.user, 'yeaaaa')};
+
 
     if (req.user === undefined) {
 
@@ -35,18 +36,17 @@ exports.getIndex = async (req, res, next) => {
             cur_page = 1;
         }
 
+ 
         let query = await knex('jobs').select();
-
+ 
         let queryLength = query.length
-
+ 
         let totalPage = await knex('jobs').orderBy('status', 'desc').limit(10);
-
-        // console.log(totalPage)
-
+ 
         let totalPageLength = totalPage.length;
-
+ 
         let noOfPage = Math.ceil(queryLength / totalPageLength)
-
+ 
         res.render('index', {
             pageTitle: 'Index Page',
             path: '/',
@@ -207,6 +207,7 @@ exports.postIndex = async (req, res, next) => {
                 // cur_page: cur_page
             })
 
+
         } else if (locationQuery.length > 0) {
 
             // let locationLength = location.length
@@ -238,14 +239,8 @@ exports.postIndex = async (req, res, next) => {
                 user: req.user.id
                 // noOfPage: noOfPage,
                 // cur_page: cur_page
-
             })
         }
-
-
-
-
-
 
     }
 

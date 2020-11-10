@@ -1,0 +1,32 @@
+<%- include('../includes/head.ejs') %>
+<script src="https://kit.fontawesome.com/0909bd6695.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/css/login.css">
+</head>
+
+<!-- <a href="/users/dashboard">Dashboard</a> -->
+<div class="wrapper">
+  <div class="title">
+      Admin log-in
+  </div>
+  <div>
+    <%= error %>
+  </div>
+      <form class="form" action="/admin_login" method="POST">
+
+          <div class="inputfield">
+              <label>Username:</label>
+              <input name="adminUsername" type="text" class="input">
+          </div>
+
+          <div class="inputfield">
+              <label>Password:</label>
+              <input name="adminPassword" type="password" class="input">
+          </div>
+
+          <div class="inputfield">
+              <input type="submit" value="Log in" class="btn">
+          </div>
+</div>
+</form>
+
+<%- include('../includes/end.ejs') %>

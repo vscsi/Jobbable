@@ -1,0 +1,80 @@
+<%- include('./../includes/portal-head.ejs') %>
+    </head>
+
+    <link rel="stylesheet" href="/css/user-dashboard.css">
+
+    <body>
+
+        <div class="container">
+            <nav class="navbar">
+                <div class="nav_icon" onclick="toggleSidebar()">
+                    <i class="fa fa-bars"></i>
+                </div>
+                <div class="navbar__left">
+                </div>
+                <div class="navbar__right">
+                </div>
+            </nav>
+
+            <main>
+                <div class="main__container">
+                    <div class="main__title">
+                        <div class="main__greeting">
+                            <h1>Hello admin, </h1>
+                            <p>please execute commands on the left.</p>
+                        </div>
+                    </div>
+
+                    <%if(jobQueries.length>0){%>
+                        <div class="charts">
+                            <%for (let jobQuery of jobQueries){ %>
+                                <div class="charts__left">
+                                    <p>Jobs id: <%= jobQuery.id %> </p>
+                                    <p>Company:
+                                        <%=jobQuery.company%>
+                                    </p>
+                                    <p>Title:
+                                        <%=jobQuery.title%>
+                                    </p>
+                                    <p>Location:
+                                        <%=jobQuery.location%>
+                                    </p>
+                                    <p>Company url:
+                                        <%=jobQuery.url%>
+                                    </p>
+                                    <p>Job types:
+                                        <%=jobQuery.job_type%>
+                                    </p>
+                                    <p>Description:
+                                        <%=jobQuery.description%>
+                                    </p>
+                                    <p>Company logo:
+                                        <%=jobQuery.company_logo%>
+                                    </p>
+                                    <p>How do talents apply for jobs:
+                                        <%=jobQuery.how_to_apply%>
+                                    </p>
+                                    <form action="/admin_delete_jobs" method="post">
+                                      <button class="btn" type="submit">Delete</button>
+                                      <input type="hidden" name="nameJobsId" value="<%= jobQuery.id %>"></input>
+                                    </form>
+
+                                </div>
+                                <%}%>
+                        </div>
+                        <%} else {%>
+                            <h1> No job listings, post a job!</h1>
+                            <% } %>
+                </div>
+
+
+            </main>
+            <%- include('./../includes/portal_nav-admin.ejs') %>
+
+
+        </div>
+        </div>
+        </div>
+
+
+        <script src="/js/user-dashboard.js"></script>

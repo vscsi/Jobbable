@@ -41,6 +41,7 @@ exports.postJobPost = async (req, res, next) => {
     // console.log(insertJobs[0])
 
     console.log(insertJobs.id, 'This is id of Jobs')
+
     await knex('employers_job_listings').insert({
       employers_id: `${userId}`,
       jobs_id: `${insertJobs[0]}`

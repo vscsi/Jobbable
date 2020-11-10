@@ -14,7 +14,8 @@ const passport = require('passport');
 const errorController = require('./controllers/error');
 //routes set up
 const indexRoutes = require('./routes/index');
-const adminRoutes = require('./routes/admin');
+const adminLoginRoutes = require('./routes/admin_login');
+const adminDashboardRoutes = require('./routes/admin_dashboard')
 const usersRoutes = require('./routes/users');
 const registerRoutes = require('./routes/register');
 const loginRoutes = require('./routes/login');
@@ -57,7 +58,8 @@ app.use(bodyParser.urlencoded({ extended:false }));
 app.use(express.static(path.join(__dirname + '/public')))
 
 app.use(indexRoutes);
-app.use('/admin', adminRoutes);
+app.use(adminLoginRoutes);
+app.use(adminDashboardRoutes);
 app.use('/users', usersRoutes);
 app.use(registerRoutes);
 app.use(loginRoutes);
