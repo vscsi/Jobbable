@@ -100,21 +100,21 @@
                         Job type: <%= jobs.job_type %>
                     </p>
                     <p>
-                        Location: <%= jobs.location %>
+                        Location: <%= jobs.location %>  
                     </p>
  
                     <p class="description" style="display:none;">Description: <%= jobs.description %></p>
                 </div>
                 <div class="apply-btn">
                     <button type="button" class="btn btn-primary showMoreClass">Show more</button>
-
-                            <%if (user!=null) {%>
+ 
+                            <%if (user!==undefined) {%>
                                 <button type="button" class="btn btn-primary"> <a href= <%= jobs.status ===true? '/apply_jobs':jobs.url %>
                        > Apply</a></button>
                                 <%}else{%>
                                     <button type="button" class="btn btn-primary"> <a href= <%= jobs.status ===true? '/login':jobs.url %>
                                      > Apply</a></button>
-
+ 
                                     <%}%>
                 </div>
             </div>
@@ -164,3 +164,4 @@
         crossorigin="anonymous"></script>
     <script src="/js/main.js"></script>
     <%- include('./includes/end.ejs') %>
+
