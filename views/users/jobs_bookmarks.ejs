@@ -23,41 +23,31 @@
                     </div>
                 </div>
                 <%if(jobQueries.length>0){%>
-                    <div class="charts">
-                        <%for (let jobQuery of jobQueries){ %>
-                        <div class="charts__left">
-                            <p>Company:<%=jobQuery.company%></p>
-                            <p>Title:<%=jobQuery.title%></p>
-                            <p>Location:<%=jobQuery.location%></p>
-                            <p>Company url:<%=jobQuery.url%></p>
-                            <p>Job types:<%=jobQuery.job_type%></p>
-                            <p>Description:<%=jobQuery.description%></p>
-                        </div>
-                        <%}%>
+                <div class="charts">
+                    <%for (let jobQuery of jobQueries){ %>
+                    <div class="charts__left">
+                        <p>Company:<%=jobQuery.company%></p>
+                        <p>Title:<%=jobQuery.title%></p>
+                        <p>Location:<%=jobQuery.location%></p>
+                        <p>Company url:<%=jobQuery.url%></p>
+                        <p>Job types:<%=jobQuery.job_type%></p>
+                        <p>Description:<%=jobQuery.description%></p>
+                    </div>
+                    <%}%>
                     </div>
                     <%} else {%>
-                        <h1> No jobs saved, bookmark a job!</h1>
-                        <% } %>
-            </div>
-            <!-- <ul class="page-link text-center">
-                <li class="left-arrow"><a href="">&#8592;</a></li>
-                <li class="active"><a href="/dashboard/1">1</a></li>
-                <li><a href="/dashboard/2">2</a></li>
-                <li><a href="">3</a></li>
-                <li><a href="">4</a></li>
-                <li><a href="">5</a></li>
-                <li class="right-arrow"><a href=""> &#8594;</a></li>
-            </ul> -->
+                    <h1> No jobs saved, bookmark a job!</h1>
+                    <% } %>
+                </div>
         </main>
 
         <%- include('./../includes/portal_nav-employees.ejs') %>
-        
+
 
     </div>
-    
+
 </body>
 
 </html>
 
 <script src="/js/user-dashboard.js"></script>
-
