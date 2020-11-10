@@ -10,6 +10,7 @@ exports.getJobPost = async(req, res, next) => {
 }
 
 exports.postJobPost = async(req, res, next) => {
+  try{
     let {
         nameCompany,
         nameTitle,
@@ -44,7 +45,16 @@ exports.postJobPost = async(req, res, next) => {
         jobs_id: `${insertJobs.id}`
       }
     )
-    res.redirect('/job_posting_history')
+
+  }
+  catch(err){
+    console.log(err);
+    res.send('Sorry job posting failed, please go back!')
+  }
+  finally{
+    res.redirect('back')
+  }
+    
 }
 
 // insert into jobs table , 

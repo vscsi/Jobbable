@@ -12,7 +12,7 @@ exports.getTalentPool = async (req, res, next) => {
     // 1) [what jobs does this employers have posted]
 
     //  select * from employers_job_listings where employers_id = 2;
-
+    
     let whatJobs = await knex('employers_job_listings').select().where('employers_id', `${req.user.id}`);
 
     // console.log(whatJobs, `HAVE WHAT JOBS AH`)
