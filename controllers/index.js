@@ -23,7 +23,7 @@ const knex = require('knex')({
 
 //routes
 exports.getIndex = async(req, res, next) => {
-    if(req.user === undefined) {console.log(req.user, 'yeaaaa')};
+    // if(req.user === undefined) {console.log(req.user, 'yeaaaa')};
     let user1 = {}
     
     console.log(user1.length)
@@ -53,7 +53,7 @@ exports.getIndex = async(req, res, next) => {
                 jobsInfoArr: totalPage,
                 noOfPage: noOfPage,
                 cur_page: cur_page,
-                user: undefined
+                user: undefinedrsrs
             });
         } else {
             let cur_page;
