@@ -108,8 +108,12 @@
                     <button type="button" class="btn btn-primary showMoreClass">Show more</button>
                     <%if (user!==undefined) {%>
                     <form action="/apply/loggedin" method="POST">
-                        <input name="applyButton" value="<%= jobs.id %>"></input>
-                        <button type="submit" value='apply'>Applyyyyy</button>
+                        <input type="hidden" name="applyButton" value="<%= jobs.id %>"></input>
+                        <button class="btn btn-primary" type="submit" value='apply'>Apply</button>
+                    </form>
+                    <form action="/addBookmark" method="post">
+                        <input type="hidden" name="bookmarkButton" value="<%= jobs.id %>"></input>
+                        <button class="btn btn-primary" type="submit" value='apply'>Add to bookmarks</button>
                     </form>
                     <%} %>
                 </div>

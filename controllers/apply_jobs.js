@@ -41,8 +41,6 @@ exports.postCheckApply = async (req, res, next) => {
     jobsid
   } = req.body
 
-  console.log(`CHECKINGGGGGGGGGGGGGGGGGG`)
-
   let check = await knex('apply_history').select(1).where({
     jobs_id: `${jobsid}`,
     employees_id: `${req.user.id}`
@@ -51,8 +49,9 @@ exports.postCheckApply = async (req, res, next) => {
 
   if (check.length > 0) {
     //reload the profile page
-    res.render('users/apply-jobs-already-exist', {
+    res.render('users/already-exist', {
       pageTitle: 'Apply Jobs',
+      message: 'You already applied for this job!'
     })
   } else {
     next()
