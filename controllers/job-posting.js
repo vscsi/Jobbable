@@ -47,11 +47,9 @@ exports.postJobPost = async(req, res, next) => {
         jobs_id: `${insertJobs[0]}`
       }
     )
-
   }
-  catch(err){
-    console.log(err);
-    res.send('Sorry job posting failed, please go back!')
+  catch{
+    res.render('users/job-posting-history');
   }
   finally{
     res.redirect('back')

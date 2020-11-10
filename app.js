@@ -57,8 +57,9 @@ app.use(bodyParser.urlencoded({ extended:false }));
 app.use(express.static(path.join(__dirname + '/public')))
 
 app.use(indexRoutes);
-app.use('/admin', adminLoginRoutes);
-app.use('/users', adminDashboardRoutes);
+app.use(adminLoginRoutes);
+app.use(adminDashboardRoutes);
+app.use('/users', usersRoutes);
 app.use(registerRoutes);
 app.use(loginRoutes);
 app.use(dashboardRoutes);

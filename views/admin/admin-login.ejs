@@ -6,9 +6,11 @@
 <!-- <a href="/users/dashboard">Dashboard</a> -->
 <div class="wrapper">
   <div class="title">
-      Log in to Jobbable
+      Admin log-in
   </div>
-  <%- include('../includes/messages.ejs') %>
+  <div>
+    <%= error %>
+  </div>
       <form class="form" action="/admin_login" method="POST">
 
           <div class="inputfield">
@@ -23,9 +25,6 @@
 
           <div class="inputfield">
               <input type="submit" value="Log in" class="btn">
-          </div>
-          <div>
-              <p>Not one of our members? <a href="/register">Register here</a></p>
           </div>
 </div>
 </form>

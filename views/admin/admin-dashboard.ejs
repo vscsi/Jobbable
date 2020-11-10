@@ -1,8 +1,46 @@
-<%- include('../includes/head.ejs') %>
-</head>
-
+<%- include('./../includes/portal-head.ejs') %>
+    </head>
+    
+<link rel="stylesheet" href="/css/user-dashboard.css">
 <body>
-    <h1> Admin Dashboard </h1>
+    
+<div class="container">
+        <nav class="navbar">
+            <div class="nav_icon" onclick="toggleSidebar()">
+                <i class="fa fa-bars"></i>
+            </div>
+            <div class="navbar__left">
+            </div>
+            <div class="navbar__right">
+            </div>
+        </nav>
 
+        <main>
+            <div class="main__container">
+                <div class="main__title">
+                    <div class="main__greeting">
+                        <h1>Hello admin, </h1>
+                        <p>please execute commands on the left.</p>
+                    </div>
+                </div>
+                <div class="charts">
+                    <div class="charts__left">
+                        <div class="charts__left__title">
+                            <div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<%- include('../includes/end.ejs') %>
+            
+        </main>
+        <%- include('./../includes/portal_nav-admin.ejs') %>
+        
+
+            </div>
+        </div>
+    </div>
+    
+
+<script src="/js/user-dashboard.js"></script>
