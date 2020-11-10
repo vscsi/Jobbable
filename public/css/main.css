@@ -151,8 +151,9 @@
         
         .job-update {
             background: #fff;
-            padding: 10px 20px;
+            padding: 20px 50px;
             border-radius: 5px;
+
         }
         
         .job-update .fas {
@@ -253,3 +254,6 @@
             display: inline-block;
             cursor: pointer;
         }
+
+        /* Description */
+      

@@ -1,128 +1,126 @@
 <%- include('./includes/head.ejs') %>
-<link rel="stylesheet" href="/css/main.css">
- 
-<body>
-    </head>
- 
- 
-    <!-- header -->
-    <section id="header">
-        <div class="menu-bar">
-            <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-                <a class="navbar-brand" href="#">JOBBABLE</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
+    <link rel="stylesheet" href="/css/main.css">
+
+    <body>
+        </head>
+
+
+        <!-- header -->
+        <section id="header">
+            <div class="menu-bar">
+                <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+                    <a class="navbar-brand" href="#">JOBBABLE</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
- 
-                <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login"><img class="nav-img"
-                                    src="/images/icons/sign-in-alt-solid.svg"> LOGIN</a>
-                        </li>
-                    </ul>
- 
-                    <button class="btn btn-warning importantBtn" id="registerBtn">
-                        <a href="/register" class="text-white"><img class="nav-img" src="/images/icons/key-solid.svg">
-                            REGISTER</a>
-                    </button>
-                    <button class="btn btn-warning importantBtn">
-                        <a href="#" class="text-white">POST A JOB</a>
-                    </button>
-                </div>
-            </nav>
-        </div>
- 
-        <div class="banner text-center">
-            <h1>Your dream jobs are within reach!</h1>
-            <p>Explore jobs in your area</p>
-        </div>
-    </section>
-    <form action="/" method="POST">
-        <div class="form-group search-job text-center">
-            <input name="skill" type="text" class="form-control" placeholder="Search Skills">
-            <input name="nameCompany" type="text" class="form-control" placeholder="Company">
-            <input name="nameJobType" type="text" class="form-control" placeholder="Location">
- 
-            <input type="submit" class="btn btn-primary" value="Search">
-        </div>
-    </form>
-    <!-- top recruiters -->
-    <section id="recruiters">
-        <div class="container">
-            <div class="text-center">
-                <h2>You can post or apply for jobs here.</h2>
-                <h3>MATCH RECRUITERS LIKE THEM:</h3>
-                <div>
-                    <img src="/images/logo/dell.jpg" id="img1">
-                    <img src="/images/logo/netflix.svg" id="img2">
-                    <img src="/images/logo/oracle.svg" id="img3">
-                    <img src="/images/logo/cisco.svg" id="img4">
-                </div>
-            </div>
-        </div>
-    </section>
- 
-    <!-- recent jobs -->
-    <section id="jobs">
-        <div class="container">
-            <h5>RECENT UPDATES</h5>
-            <% if(jobsInfoArr.length >0) { %>
-            <% for (let jobs of jobsInfoArr){ %>
-            <div class="company-details">
-                <div class="job-update">
- 
- 
-                    <h4><img src=<%= jobs.company_logo %> alt="./images/photo-not-available"><b><%= jobs.title %></b>
-                    </h4>
-                    <p>Company: <%= jobs.company%></p>
- 
- 
-                    <p>Skills
-                        <button class="skillTags">Java</button>
-                        <button class="skillTags">Python</button>
-                        <button class="skillTags">HTML</button>
-                        <button class="skillTags">CSS</button>
-                        <button class="skillTags">Javascript</button>
-                    </p>
-                    <p>
-                        <button class="scrapeTags" style="<%= jobs.status == false ? 'display:none;' : '' %>">
-                            Exclusive to Jobbable
- 
-                        </button>
-                    </p>
-                    <p>
-                        <img class="calendarLogo" src='' alt=""> 3 days
-                    </p>
-                    <p>
-                        Job type: <%= jobs.job_type %>
-                    </p>
-                    <p>
-                        Location: <%= jobs.location %>  
-                    </p>
- 
-                    <p class="description" style="display:none;">Description: <%= jobs.description %></p>
-                </div>
-                <div class="apply-btn">
-                    <button type="button" class="btn btn-primary showMoreClass">Show more</button>
 
+                    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
                             <%if (user!==undefined) {%>
-                                <button type="button" class="btn btn-primary"> <a href= <%= jobs.status ===true? '/apply_jobs':jobs.url %>
-                       > Apply</a></button>
-                                <%}else{%>
-                                    <button type="button" class="btn btn-primary"> <a href= <%= jobs.status ===true? '/login':jobs.url %>
-                                     > Apply</a></button>
+                                <button class="btn btn-warning importantBtn" id="registerBtn">
+                                    <a href="/dashboard" class="text-white"><img class="nav-img" src="/images/icons/key-solid.svg">
+                                        DASHBOARD</a>
+                                    </button>  
+                                    <%}else {%>
+                                        <li class="nav-item">
+                                        <a class="nav-link" href="/login"><img class="nav-img" src="/images/icons/sign-in-alt-solid.svg"> LOGIN</a>
+                                    </li>
+                                    <button class="btn btn-warning importantBtn" id="registerBtn">
+                                        <a href="/register" class="text-white"><img class="nav-img" src="/images/icons/key-solid.svg">
+                                            REGISTER</a>
+                                        </button>
+                                    <%} %>
+                                    
+                        </ul>
+                    </div>
+                </nav>
+            </div>
 
-                                    <%}%>
+            <div class="banner text-center">
+                <h1>Your dream jobs are within reach!</h1>
+                <p>Explore jobs in your area</p>
+            </div>
+        </section>
+        <form action="/" method="POST">
+            <div class="form-group search-job text-center">
+                <input name="skill" type="text" class="form-control" placeholder="Search Skills">
+                <input name="nameCompany" type="text" class="form-control" placeholder="Company">
+                <input name="nameJobType" type="text" class="form-control" placeholder="Location">
+                <input type="submit" class="btn btn-primary" value="Search">
+            </div>
+        </form>
+        <!-- top recruiters -->
+        <section id="recruiters">
+            <div class="container">
+                <div class="text-center">
+                    <h3>In Jobbable, you can post or apply for all kinds of jobs, including remote ones.</h2>
+                    <h4>Join now to match Match recruiters like them: </h3>
+                    <div>
+                        <img src="/images/logo/dell.jpg" id="img1">
+                        <img src="/images/logo/netflix.svg" id="img2">
+                        <img src="/images/logo/oracle.svg" id="img3">
+                        <img src="/images/logo/cisco.svg" id="img4">
+                    </div>
                 </div>
             </div>
-            <% } %>
-            <% } else { %>
-            <h1>No jobs found!</h1>
-            <% } %>
-    </section>
+        </section>
+
+        <!-- recent jobs -->
+        <section id="jobs">
+            <div class="container">
+                <h5>RECENT UPDATES</h5>
+                <% if(jobsInfoArr.length >0) { %>
+                    <% for (let jobs of jobsInfoArr){ %>
+                        <div class="company-details">
+                            <div class="job-update">
+                                <h4><img src=<%= jobs.company_logo %> alt="./images/photo-not-available"><b><%= jobs.title %></b>
+                                </h4>
+                                <p>Company:
+                                    <%= jobs.company%>
+                                </p>
+                                <p>Skills
+                                    <button class="skillTags">Java</button>
+                                    <button class="skillTags">Python</button>
+                                    <button class="skillTags">HTML</button>
+                                    <button class="skillTags">CSS</button>
+                                    <button class="skillTags">Javascript</button>
+                                </p>
+                                <p>
+                                    <button class="scrapeTags" style="<%= jobs.status == false ? 'display:none;' : '' %>">
+                            Exclusive to Jobbable
+                        </button>
+                                </p>
+                                <p>
+                                    <img class="calendarLogo" src='./images/icons/calendar-alt-solid.svg' alt=""> <%= jobs.created_at %>
+                                </p>
+                                <p>
+                                    Job type:
+                                    <%= jobs.job_type %>
+                                </p>
+                                <p>
+                                    Location:
+                                    <%= jobs.location %>
+                                </p>
+                                <p class="description" style="display:none;">Description:
+                                    <%= jobs.description %>
+                                </p>
+                            </div>
+                            <div class="apply-btn">
+                                <button type="button" class="btn btn-primary showMoreClass">Show more</button>
+                                <%if (user!==undefined) {%>
+                                    <form action="/apply/loggedin" method="POST">
+                                        <input name="applyButton" value="<%= jobs.id %>"></input>
+                                        <button type="submit" value='apply'> </button>
+                                    </form>
+                                    <%} %>
+                            </div>
+                        </div>
+                        <% } %>
+                            <% } else { %>
+                                <h1>No jobs found!</h1>
+                                <% } %>
+        </section>
+
         <section id="footer" class="text-center">
             <h1 class="footer-logo">JOBBABLE</h1>
             <div class="navigation">
@@ -133,11 +131,9 @@
                     <li><a href="/register">Sign-up</a></li>
                 </ul>
             </div>
-    </section>
- 
-   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
-        integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
-        crossorigin="anonymous"></script>
-    <script src="/js/main.js"></script>
-    <%- include('./includes/end.ejs') %>
+        </section>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
+        <script src="/js/main.js"></script>
+        <%- include('./includes/end.ejs') %>

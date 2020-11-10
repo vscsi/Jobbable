@@ -101,7 +101,7 @@ exports.getDashboard = async(req, res, next) => {
             // console.log(results.rows);
             res.render('users/user-dashboard', {
 
-                pageTitle: 'Dashboard > Employees',
+                pageTitle: 'Dashboard',
                 pageHeader: 'Jobs Bookmarks',
                 path: '/',
                 //companies: 'test'
