@@ -9,12 +9,12 @@
     </div>
 
     <form class="form" action="/apply_jobs" method="POST">
-        <div class="inputfield">
+        <di class="inputfield">
             <input type="hidden" name="jobsid"  value="<%= jobsId %>"
                 class="btn">
-            <button type="submit" class="btn">Notify your employer!</button>
+            <p> <%= jobsApply %></p>
+            <button type="submit" class="btn">Add to apply history!</button>
         </div>
-        <h1> <%= jobsId %></h1>
     </form>
 </div>
 <%- include('../includes/end.ejs') %>

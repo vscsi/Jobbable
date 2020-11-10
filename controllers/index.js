@@ -55,9 +55,9 @@ exports.postIndex = async (req, res, next) => {
     } = req.body
 
 
-    let dataQuery = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location', 'description').where('description', 'ilike', `%${skill}%`);
-    let locationQuery = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location').where('location', 'ilike', `%${nameLocation}%`);
-    let companyQuery = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location').where('company', 'ilike', `%${nameCompany}%`);
+    let dataQuery = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location', 'description', 'how_to_apply').where('description', 'ilike', `%${skill}%`);
+    let locationQuery = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location', 'how_to_apply').where('location', 'ilike', `%${nameLocation}%`);
+    let companyQuery = await knex.from('jobs').select('company', 'title', 'created_at', 'company_logo', 'status', 'job_type', 'id', 'location', 'how_to_apply').where('company', 'ilike', `%${nameCompany}%`);
 
 
 
@@ -89,7 +89,8 @@ exports.postIndex = async (req, res, next) => {
                 jobsInfoArr: companyQuery,
                 user: undefined
             })
-        } else {
+        } 
+        else {
             res.render('index', {
                 pageTitle: 'Index Page',
                 jobsInfoArr: '',
@@ -104,7 +105,7 @@ exports.postIndex = async (req, res, next) => {
             res.render('index', {
                 pageTitle: 'Index Page',
                 jobsInfoArr: dataQuery,
-                user: req.user.id
+                user: req.user
             })
 
 
@@ -113,7 +114,7 @@ exports.postIndex = async (req, res, next) => {
             res.render('index', {
                 pageTitle: 'Index Page',
                 jobsInfoArr: locationQuery,
-                user: req.user.id
+                user: req.user
             })
 
         } else if (companyQuery.length > 0) {
@@ -121,7 +122,7 @@ exports.postIndex = async (req, res, next) => {
             res.render('index', {
                 pageTitle: 'Index Page',
                 jobsInfoArr: companyQuery,
-                user: req.user.id
+                user: req.user
             })
         }
 

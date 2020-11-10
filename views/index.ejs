@@ -20,20 +20,22 @@
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto mr-5">
                         <%if (user!==undefined) {%>
-                            <button class="btn btn-warning importantBtn" id="registerBtn">
-                                <a href="/dashboard" class="text-white">
-                                   GO BACK TO DASHBOARD</a>
-                                </button>  
-                                <%}else {%>
-                                    <li class="nav-item">
-                                    <a class="nav-link" href="/login"><img class="nav-img" src="/images/icons/sign-in-alt-solid.svg"> LOGIN</a>
-                                </li>
-                                <button class="btn btn-warning importantBtn" id="registerBtn">
-                                    <a href="/register" class="text-white"><img class="nav-img" src="/images/icons/key-solid.svg">
-                                        REGISTER</a>
-                                    </button>
-                                <%} %>
-                                
+                        <button class="btn btn-warning importantBtn" id="registerBtn">
+                            <a href="/dashboard" class="text-white">
+                                GO BACK TO DASHBOARD</a>
+                        </button>
+                        <%}else {%>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login"><img class="nav-img"
+                                    src="/images/icons/sign-in-alt-solid.svg"> LOGIN</a>
+                        </li>
+                        <button class="btn btn-warning importantBtn" id="registerBtn">
+                            <a href="/register" class="text-white"><img class="nav-img"
+                                    src="/images/icons/key-solid.svg">
+                                REGISTER</a>
+                        </button>
+                        <%} %>
+
                     </ul>
                 </div>
             </nav>
@@ -45,21 +47,21 @@
         </div>
     </section>
     <section id="landingForm">
-    <form action="/" method="POST">
-        <div class="form-group search-job text-center">
-            <input name="skill" type="text" class="form-control" placeholder="Search Skills">
-            <input name="nameCompany" type="text" class="form-control" placeholder="Company">
-            <input name="nameJobType" type="text" class="form-control" placeholder="Location">
-            <input type="submit" class="btn btn-primary" value="Search">
-        </div>
-    </form>
-</section>
+        <form action="/" method="POST">
+            <div class="form-group search-job text-center">
+                <input name="skill" type="text" class="form-control" placeholder="Search Skills">
+                <input name="nameCompany" type="text" class="form-control" placeholder="Company">
+                <input name="nameLocation" type="text" class="form-control" placeholder="Location">
+                <input type="submit" class="btn btn-primary" value="Search">
+            </div>
+        </form>
+    </section>
     <!-- top recruiters -->
     <section id="recruiters">
         <div class="container">
             <div class="text-center">
                 <h2>Who are we:</h2>
-                <h3>Jobbable is a website for you to freely post or apply for jobs. 
+                <h3>Jobbable is a website for you to freely post or apply for jobs.
                     Register now to match recruiters like them:</h3>
                 <div>
                     <img src="/images/logo/dell.jpg">
@@ -86,10 +88,10 @@
                 <div class="job-update">
                     <h4>
                         <% if(jobs.company_logo == undefined) {%>
-                            <img src="./images/not-available.jpg"><b><%= jobs.title %></b>
-                            <%}else {%>
-                            <img src=<%= jobs.company_logo %>><b><%= jobs.title %></b>
-                            <%} %>
+                        <img src="./images/not-available.jpg"><b><%= jobs.title %></b>
+                        <%}else {%>
+                        <img src=<%= jobs.company_logo %>><b><%= jobs.title %></b>
+                        <%} %>
                     </h4>
                     <p><strong>Company : </strong> <%= jobs.company%></p>
                     <p>
@@ -99,7 +101,8 @@
                         </button>
                     </p>
                     <p>
-                        <img class="calendarLogo" src='./images/icons/calendar-alt-solid.svg' alt=""> <%= jobs.created_at %>
+                        <img class="calendarLogo" src='./images/icons/calendar-alt-solid.svg' alt="">
+                        <%= jobs.created_at %>
                     </p>
                     <p>
                         <strong>Job type : </strong><%= jobs.job_type %>
@@ -107,18 +110,24 @@
                     <p>
                         <strong>Location :</strong><%= jobs.location %>
                     </p>
+                    <p class="how_to_apply">
+                        <strong>How to Apply:</strong> <%= jobs.how_to_apply%>
+                    </p>
 
                 </div>
                 <div class="apply-btn">
                     <%if (user!==undefined) {%>
+                    <% if(user.status == 'employee') { %>
                     <form action="/apply/loggedin" method="POST">
                         <input type="hidden" name="applyButton" value="<%= jobs.id %>"></input>
+                        <input type="hidden" name="howToApply" value="<%=jobs.how_to_apply%>"></input>
                         <button class="btn btn-primary" type="submit" value='apply'>Apply</button>
                     </form>
                     <form action="/addBookmark" method="post">
                         <input type="hidden" name="bookmarkButton" value="<%= jobs.id %>"></input>
                         <button class="btn btn-primary" type="submit" value='apply'>Add to bookmarks</button>
                     </form>
+                    <%}%>
                     <%} %>
                 </div>
             </div>
@@ -126,7 +135,7 @@
             <% } else { %>
             <h1>No jobs found!</h1>
             <% } %>
-            </div>
+        </div>
     </section>
 
     <section id="footer" class="text-center">
@@ -148,7 +157,6 @@
     <script src="/js/main.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-      AOS.init();
+        AOS.init();
     </script>
     <%- include('./includes/end.ejs') %>
-

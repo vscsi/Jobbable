@@ -3,7 +3,8 @@ const knex = require('../models/knex');
 
 exports.postApplyLoggedIn = async (req, res, next) => {
   let {
-    applyButton
+    applyButton,
+    howToApply
   } = req.body
 
   console.log(req.body)
@@ -11,7 +12,8 @@ exports.postApplyLoggedIn = async (req, res, next) => {
 
   res.render('users/apply-jobs', {
     pageTitle: 'Apply jobs',
-    jobsId: applyButton
+    jobsId: applyButton,
+    jobsApply: howToApply
   })
 
 
@@ -29,7 +31,8 @@ exports.getApplyJobs = async (req, res, next) => {
 
   res.render('users/apply-jobs', {
     pageTitle: 'Apply jobs',
-    jobsId: applyButton
+    jobsId: applyButton,
+    jobsApply: howToApply
   })
 
 }
