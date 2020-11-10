@@ -108,7 +108,7 @@
                 <div class="apply-btn">
                     <button type="button" class="btn btn-primary showMoreClass">Show more</button>
 
-                            <%if (user!=null) {%>
+                            <%if (user!==undefined) {%>
                                 <button type="button" class="btn btn-primary"> <a href= <%= jobs.status ===true? '/apply_jobs':jobs.url %>
                        > Apply</a></button>
                                 <%}else{%>
