@@ -1,10 +1,10 @@
 <%- include('./includes/head.ejs') %>
 <link rel="stylesheet" href="/css/main.css">
- 
+
 <body>
     </head>
- 
- 
+
+
     <!-- header -->
     <section id="header">
         <div class="menu-bar">
@@ -15,7 +15,7 @@
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
- 
+
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
@@ -23,7 +23,7 @@
                                     src="/images/icons/sign-in-alt-solid.svg"> LOGIN</a>
                         </li>
                     </ul>
- 
+
                     <button class="btn btn-warning importantBtn" id="registerBtn">
                         <a href="/register" class="text-white"><img class="nav-img" src="/images/icons/key-solid.svg">
                             REGISTER</a>
@@ -34,7 +34,7 @@
                 </div>
             </nav>
         </div>
- 
+
         <div class="banner text-center">
             <h1>Your dream jobs are within reach!</h1>
             <p>Explore jobs in your area</p>
@@ -45,7 +45,7 @@
             <input name="search" type="text" class="form-control" placeholder="Search Skills">
             <input name="company" type="text" class="form-control" placeholder="Company">
             <input name="location" type="text" class="form-control" placeholder="Location">
- 
+
             <input type="submit" class="btn btn-primary" value="Search">
         </div>
     </form>
@@ -64,7 +64,7 @@
             </div>
         </div>
     </section>
- 
+
     <!-- recent jobs -->
     <section id="jobs">
         <div class="container">
@@ -73,13 +73,13 @@
             <% for (let jobs of jobsInfoArr){ %>
             <div class="company-details">
                 <div class="job-update">
- 
- 
+
+
                     <h4><img src=<%= jobs.company_logo %> alt="./images/photo-not-available"><b><%= jobs.title %></b>
                     </h4>
                     <p>Company: <%= jobs.company%></p>
- 
- 
+
+
                     <p>Skills
                         <button class="skillTags">Java</button>
                         <button class="skillTags">Python</button>
@@ -90,7 +90,7 @@
                     <p>
                         <button class="scrapeTags" style="<%= jobs.status == false ? 'display:none;' : '' %>">
                             Exclusive to Jobbable
- 
+
                         </button>
                     </p>
                     <p>
@@ -100,22 +100,20 @@
                         Job type: <%= jobs.job_type %>
                     </p>
                     <p>
-                        Location: <%= jobs.location %>  
+                        Location: <%= jobs.location %>
                     </p>
- 
+
                     <p class="description" style="display:none;">Description: <%= jobs.description %></p>
                 </div>
                 <div class="apply-btn">
                     <button type="button" class="btn btn-primary showMoreClass">Show more</button>
- 
-                            <%if (user!==undefined) {%>
-                                <button type="button" class="btn btn-primary"> <a href= <%= jobs.status ===true? '/apply_jobs':jobs.url %>
-                       > Apply</a></button>
-                                <%}else{%>
-                                    <button type="button" class="btn btn-primary"> <a href= <%= jobs.status ===true? '/login':jobs.url %>
-                                     > Apply</a></button>
- 
-                                    <%}%>
+
+                    <%if (user!==undefined) {%>
+                    <form action="/apply/loggedin" method="POST">
+                        <input name="applyButton" value="<%= jobs.id %>"></input>
+                        <button type="submit" value='apply' />
+                    </form>
+                    <%} %>
                 </div>
             </div>
             <% } %>
@@ -123,45 +121,22 @@
             <h1>No jobs found!</h1>
             <% } %>
     </section>
-    <%/*%>
-    <section>
-        
-        <ul class="page-link text-center">
-            <li class="left-arrow"><a href="/home/<%= parseInt(cur_page) <= 1 ? 1 : parseInt(cur_page)-1 %>">&#8592;</a>
-            </li>
-            <!-- <% for (let i = 1; i <= noOfPage; i++ ) { %>
-                <li class="<%= cur_page == i ? 'active':'' %>"><a href="/index/<%= i %>"><%= i %></a></li>
-                <% } %> -->
-                <li>
-                    <select onchange="window.location='/home/'+this.value">
-                        <% for (let i = 1; i <= noOfPage; i++ ) { %>
-                            <option value="<%= i %>" <%= parseInt(cur_page) == i ? 'selected':'' %>><%= i %></option>
-                            <% } %>
-                        </select>
-                    </li>
-                    <li class="right-arrow"><a
-                    href="/home/<%= parseInt(cur_page) >= parseInt(noOfPage) ? cur_page : parseInt(cur_page)+1 %>">
-                    &#8594;</a></li>
-                </div>
-            </section>
-            
-            <%*/%>
-        <section id="footer" class="text-center">
-            <h1 class="footer-logo">JOBBABLE</h1>
-            <div class="navigation">
-                <p>Navigation</p>
-                <ul class="navigation-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/register">Sign-up</a></li>
-                </ul>
-            </div>
-    </section>
- 
-   
+
+    <section id="footer" class="text-center">
+        <h1 class="footer-logo">JOBBABLE</h1>
+        <div class="navigation">
+            <p>Navigation</p>
+            <ul class="navigation-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Sign-up</a></li>
+            </ul>
+        </div>
+
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
         integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
         crossorigin="anonymous"></script>
     <script src="/js/main.js"></script>
     <%- include('./includes/end.ejs') %>
-
