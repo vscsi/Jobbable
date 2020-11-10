@@ -23,8 +23,8 @@ exports.postJobPost = async(req, res, next) => {
     } = req.body;
 
     let userId = req.user.id;
-    // console.log(req.user)
-    // console.log(userId, 'This is user Id');
+    // console.log(req.user.id)
+    console.log(userId, 'This is user Id');
 
     let insertJobs = await knex('jobs').returning('id').insert(
             { company: `${nameCompany}` ,
@@ -37,12 +37,14 @@ exports.postJobPost = async(req, res, next) => {
              how_to_apply: `${nameHow_to_apply}` ,
             status: 'true'}
     );
+
+    // console.log(insertJobs[0])
     
     console.log(insertJobs.id, 'This is id of Jobs')
     await knex('employers_job_listings').insert(
         {
         employers_id: `${userId}`,
-        jobs_id: `${insertJobs.id}`
+        jobs_id: `${insertJobs[0]}`
       }
     )
 
