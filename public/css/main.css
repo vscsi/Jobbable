@@ -253,3 +253,39 @@
             display: inline-block;
             cursor: pointer;
         }
+
+        /* pageing css */
+
+        .page-link {
+            margin: 5px;
+        }
+        .page-link li {
+            height: 25px;
+            width: 25px;
+            list-style: none;
+            display: inline-block;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+
+        .page-link li a {
+            text-decoration: none;
+        }
+
+        .page-link li:hover,
+        .active {
+            color: #fff !important;
+            background-color: #44494C;
+        }
+
+        .left-arrow, .left-arrow a:visited {
+            color: #999;
+        }
+
+        .right-arrow, .right-arrow a:visited {
+            color: #29b929;
+        }
+
+        .text-center {
+            text-align: center;
+        } 

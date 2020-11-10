@@ -129,9 +129,9 @@
         <ul class="page-link text-center">
             <li class="left-arrow"><a href="/home/<%= parseInt(cur_page) <= 1 ? 1 : parseInt(cur_page)-1 %>">&#8592;</a>
             </li>
-            <% for (let i = 1; i <= noOfPage; i++ ) { %>
+            <!-- <% for (let i = 1; i <= noOfPage; i++ ) { %>
                 <li class="<%= cur_page == i ? 'active':'' %>"><a href="/index/<%= i %>"><%= i %></a></li>
-                <% } %>
+                <% } %> -->
                 <li>
                     <select onchange="window.location='/home/'+this.value">
                         <% for (let i = 1; i <= noOfPage; i++ ) { %>
