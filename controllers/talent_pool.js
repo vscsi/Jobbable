@@ -43,15 +43,15 @@ exports.getTalentPool = async (req, res, next) => {
     }
 
 
-    console.log(whoApplied, `WHO THE APPLIED`)
 
-
-    let theJobs, theFirstNames, theLastNames, theSkills;
+    let theJobs, theFirstNames, theLastNames, theSkills, theEmails;
 
     let theJobsArr = [];
     let theFirstNamesArr = [];
     let theLastNamesArr = [];
     let theSkillsArr = [];
+    let theEmailsArr = [];
+
     let temp =[];
 
     for (let a = 0; a < whoApplied.length; a++) {
@@ -69,6 +69,11 @@ exports.getTalentPool = async (req, res, next) => {
 
         theLastNamesArr.push(theLastNames[0])
 
+        theEmails = await knex('employees').select('email').where('id', `${whoApplied[a].employees_id}`)
+
+        theEmailsArr.push(theEmails[0])
+
+
         theSkills = await knex('skilltag')
             .join('employee_skilltag', 'employee_skilltag.skilltag_id', 'skilltag.id')
             .select('skilltag.skilltag_name')
@@ -84,18 +89,19 @@ exports.getTalentPool = async (req, res, next) => {
     }
 
     let applyhistoryArr = []
-    let applyhistoryObj = {jobs:'', firstname:'', lastname:'', skills: []}
+    let applyhistoryObj = {jobs:'', firstname:'', lastname:'', email: '', skills: []}
 
     for(let i=0; i<theJobsArr.length; i++){
 
         applyhistoryObj.jobs = theJobsArr[i].title;
         applyhistoryObj.firstname = theFirstNamesArr[i].first_name;
         applyhistoryObj.lastname = theLastNamesArr[i].last_name;
-        applyhistoryObj.skills = theSkillsArr[i]
+        applyhistoryObj.email = theEmailsArr[i].email;
+        applyhistoryObj.skills = theSkillsArr[i];
 
         applyhistoryArr.push(applyhistoryObj)
 
-        applyhistoryObj = {jobs:'', firstname:'', lastname:'', skills: []}
+        applyhistoryObj = {jobs:'', firstname:'', lastname:'', email: '', skills: []}
 
     }
 

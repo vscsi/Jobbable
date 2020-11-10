@@ -6,23 +6,53 @@ const knex = require('../models/knex');
 
 
 (async function skilltagname() {
-    let search, query, check = [];
-    let names = await knex.from('skilltag').select('id', 'skilltag_name');
-    for (let i = 0; i < names.length; i++) {
-        search = names[i].skilltag_name;
-        query = await knex.from('jobs').select('id', 'title').where('description', 'ilike', `%${search}%`);
-        check.push(query)
-    }
 
-    //loop over check first index number for the skills id
-    //so if check[0][i].id this will be all the jobs for the HTML skills
-    //then use knex, and insert into table, using a nested for loop
-    //something like, knex('jobs_skilltag').insert({jobs_id: "${j}", skilltag_id: "${i}"})
+        // console.log(`running jobskilltag function`)
 
-    for (let i = 0; i < check.length; i++) {
-        for (let j = 0; j < check[i].length; j++) {
-            console.log(`this is skilltag > ${i+1} and this is job > ${j+1}`)
-            await knex.insert({jobs_id: `${j+1}`, skilltag_id: `${i+1}`}).into('jobs_skilltag');
-        }
-    }
-})();
+        // let jobs = await knex('jobs').select('id')
+
+        // // console.log(jobs[0].id)
+
+
+        // let names = await knex.from('skilltag').select('skilltag_name');
+
+        // let search = [];
+
+        // for (let i = 0; i < names.length; i++) {
+        //     search.push(names[i].skilltag_name)
+        // }
+
+        // let query, insert;
+        // let temp = [];
+        // let obj = {st: '', jd: ''};
+        // let arr = [];
+
+
+        // for (let i = 0; i < jobs.length; i++) {
+        //     for (let j = 0; j < names.length; j++) {
+        //         query = await knex('jobs').select('id').where('title', 'ilike', `%${names[j].skilltag_name}%`).andWhere({id: `${jobs[i].id}`})
+        //         if(query.length>0){
+        //             obj.st = names[j+1].skilltag_name
+        //             obj.jd = jobs[i+1].id
+        //         }
+        //         console.log(obj)
+
+        //     }
+        // }
+
+
+
+        })()
+
+    /*
+
+    var subquery = knex('users')
+      .whereNot('votes', '>', 100)
+      .andWhere('status', 'active')
+      .orWhere('name', 'John')
+      .select('id');
+
+
+
+
+    */
