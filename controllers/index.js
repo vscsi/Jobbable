@@ -18,58 +18,25 @@ exports.getIndex = async (req, res, next) => {
 
     if (req.user === undefined) {
 
-        let cur_page;
-
-        if (req.params.page) {
-            cur_page = req.params.page;
-        } else {
-            cur_page = 1;
-        }
-
-
-        let query = await knex('jobs').select();
-
-        let queryLength = query.length
-
-        let totalPage = await knex('jobs').orderBy('status', 'desc').limit(10);
-
-        let totalPageLength = totalPage.length;
-
-        let noOfPage = Math.ceil(queryLength / totalPageLength)
+        let jobsInfoArr = await knex('jobs').select();
 
         res.render('index', {
             pageTitle: 'Index Page',
             path: '/',
-            jobsInfoArr: totalPage,
-            noOfPage: noOfPage,
-            cur_page: cur_page,
+            jobsInfoArr: jobsInfoArr,
             user: undefined
         });
+
+
     } else {
-        let cur_page;
 
-        if (req.params.page) {
-            cur_page = req.params.page;
-        } else {
-            cur_page = 1;
-        }
+        let jobsInfoArr = await knex('jobs').select();
 
-        let query = await knex('jobs').select();
-
-        let queryLength = query.length
-
-        let totalPage = await knex('jobs').orderBy('status', 'desc').limit(10);
-
-        let totalPageLength = totalPage.length;
-
-        let noOfPage = Math.ceil(queryLength / totalPageLength)
 
         res.render('index', {
             pageTitle: 'Index Page',
             path: '/',
-            jobsInfoArr: totalPage,
-            noOfPage: noOfPage,
-            cur_page: cur_page,
+            jobsInfoArr: jobsInfoArr,
             user: req.user
         })
 
@@ -80,14 +47,6 @@ exports.postIndex = async (req, res, next) => {
     //filtering jobs
     //user search in search box , receive names in server 
     //user:parameter method to render  after search page
-    let cur_page;
-
-    if (req.params.page) {
-        cur_page = req.params.page;
-    } else {
-        cur_page = 1;
-    }
-
 
     let {
         skill,
