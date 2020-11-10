@@ -144,7 +144,7 @@ exports.postRegister = async(req, res, next) => {
                             (err, results) => {
                                 if (err) {
                                     console.error(err)
-                                    console.log(`Hiii ${results}`)
+                                    console.log(`employer pool query error caught ${results}`)
                                     throw err
                                 }
                                 // console.log(results.rows.password);
