@@ -6,7 +6,7 @@ const express = require('express');
 const router = express.Router();
 
 const dashboardController = require('../controllers/dashboard');
-const loginController = require('../controllers/login')
+const loginController = require('../controllers/login');
 
 
 //get dashboard

@@ -5,6 +5,7 @@ const express = require('express');
 const router = express.Router();
 
 const dashboardController = require('../controllers/apply_history');
+const loginController = require('../controllers/login');
 
 //get apply history
 router.get('/apply_history', dashboardController.getApplyHistory)

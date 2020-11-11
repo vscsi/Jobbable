@@ -1,31 +1,33 @@
 <div id="sidebar">
     <div class="sidebar__title">
         <div class="sidebar__img">
-            <h1>JOBBABLE</h1>
+            <h1>JOBBABLE </h1>
+            <h2>Employees board</h2>
         </div>
         <i id="sidebarIcon" class="fas fa-times" onclick="closeSidebar()"></i>
     </div>
-
-    <% if (user_role == 1) { %>
-        <div class="sidebar__menu">
-            <div class="sidebar__link active_menu_link">
-                <a href="/jobs_bookmarks">Jobs Bookmarks</a>
-            </div>
-
-            <div class="sidebar__link">
-                <a href="/apply_history">Applied History</a>
-            </div>
-            <div class="sidebar__link">
-                <a href="/Profile">Profile</a>
-            </div>
-            <div class="sidebar__link">
-                <a href="/">Add jobs to your bookmarks</a>
-            </div>
-            <div class="sidebar__logout">
-                <a href="/logout">Logout</a>
-            </div>
+<% if (user_role == 1) { %>
+    
+    <div class="sidebar__menu">
+        <div class="sidebar__link active_menu_link">
+            <a href="/jobs_bookmarks">Jobs Bookmarks</a>
         </div>
-        <% } else if (user_role == 2) { %>
+        
+        <div class="sidebar__link">
+            <a href="/apply_history">Applied History</a>
+        </div>
+        <div class="sidebar__link">
+            <a href="/Profile">Profile</a>
+        </div>
+        <div class="sidebar__link">
+            <a href="/">Add jobs to your bookmarks</a>
+        </div>
+        <div class="sidebar__logout">
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <% } else if (user_role == 2) { %>
+    <div id="sidebar">
             <div class="sidebar__menu">
                 <div class="sidebar__link active_menu_link">
                     <a href="/talent_pool">Talents Pool: Who has applied?</a>
