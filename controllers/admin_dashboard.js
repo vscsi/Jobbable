@@ -8,7 +8,7 @@ exports.getAdmin = async(req, res, next) => {
 }
 
 exports.getAdminDeleteJobs = async(req, res, next) => {
-    let jobQueries = await knex.from('jobs').select();
+    let jobQueries = await knex.from('jobs').select().orderBy('status', 'desc');
 
     res.render('users/admin-delete-jobs', {
         pageTitle: 'Delete jobs',
