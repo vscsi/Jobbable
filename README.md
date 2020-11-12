@@ -1,11 +1,34 @@
-# Second Group Project
-test 
+# Jobbable
+JOBBABLE specializes in technology-related job listings for job seekers. With the decent UI, candidates can search jobs easily by company, location and skills. 
+Both parties need to register an account to unlock the functions of the application. The skill tag function for employees enhances their chances of matching with employers. For employers, they can post jobs and search for desired candidates in talent pool.
 
 ## Built With
+- HTML
+- CSS
+- Javascript
+- Pagination
+- NodeJS
+- Knex
+- Postgresql
+- Bootstrap
 
+## Features 
+- Searching function
+    - search by keywords
+- Dashboard for three roles
+    - Employees:
+        - Job application
+        - Job application history
+        - Skills sharing
+        - Job bookmarks
+    - Employers:
+        - Talent Pool (Apply history from employees)
+        - Post a job
+        - Delete job post
+        - Job listings history
 
-
-## Implementation
+    - Admin:
+        - Delete job posts
 
 
 
