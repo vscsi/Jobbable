@@ -2,6 +2,8 @@
 JOBBABLE specializes in technology-related job listings for job seekers. With the decent UI, candidates can search jobs easily by company, location and skills. 
 Both parties need to register an account to unlock the functions of the application. The skill tag function for employees enhances their chances of matching with employers. For employers, they can post jobs and search for desired candidates in talent pool.
 
+Check it out [here](http://ec2-54-255-58-41.ap-southeast-1.compute.amazonaws.com/)
+
 ## Built With
 - HTML
 - CSS
